@@ -25,31 +25,35 @@ injectGlobal`
   }
 
   @font-face {
-    font-family:"freight-sans-pro";
-    src:url("https://use.typekit.net/af/1709eb/000000000000000000010b60/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/1709eb/000000000000000000010b60/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/1709eb/000000000000000000010b60/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
-    font-display:auto;font-style:normal;font-weight:700;
-  }
+  font-family:"freight-sans-pro";
+  src:url("https://use.typekit.net/af/442215/000000000000000000010b5a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/442215/000000000000000000010b5a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/442215/000000000000000000010b5a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display:auto;font-style:normal;font-weight:500;
+}
   @import url(//db.onlinewebfonts.com/c/    07bc241768c969f6b6a27a7bf0dfb490?family=TT+Norms+Regular);
   @font-face {
     font-family: "TT Norms Regular"; src: url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.eot"); src: url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.woff") format("woff"), url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/07bc241768c969f6b6a27a7bf0dfb490.svg#TT Norms Regular") format("svg");
     font-display:auto;font-style:normal;font-weight:700; 
   }
 
+  @font-face {
+    font-family: "TT Norms Light";
+    src: url("/typefaces/TTNorms/TTNorms-Light.woff") format('woff'), url("/typefaces/TTNorms/TTNorms-Light.woff2") format('woff2');
+    font-weight: 1000;
+    font-style: normal;
+  }
+
   html {
     box-sizing: border-box;
-    font-size: 10px;
   }
   ${'' /* *, *:before, *:after {
     box-sizing: inherit;
   } */}
   body {
-    ${'' /* padding: 0;
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 2; */}
-    ${'' /* margin-top: 30px; */}
-    font-family: "TT Norms Regular";
+    font-family: "freight-sans-pro";
+    font-size: 16px;
     display: block;
+    line-height: 1.5;
+    margin:0;
   }
   a {
     text-decoration: none;
@@ -64,6 +68,7 @@ const StyledPage = styled.div`
 
   display: grid;
   grid-row-gap: 20px;
+  margin-top:30px;
 
   @media (max-width: 300px) {
     grid-template-columns: 30px 1fr 30px;
