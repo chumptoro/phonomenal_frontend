@@ -6,7 +6,7 @@ function OpenOrCLose(props) {
     var now = new Date();
     if (now.getDay() >= 0 && now.getDay() <= 5) {
         if (now.getHours() >= 11 && now.getHours() <= 21) {
-            return <p>We're today until 9 pm.</p>;
+            return <p>We're open today until 9 pm.</p>;
         }
     }
     else {

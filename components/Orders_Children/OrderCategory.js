@@ -6,30 +6,10 @@ import React, { Component } from "react";
 // Signature Pho
 // Banh Mi
 // Rice Platter
-// Family Combos 
+// Family Meals 
 // Vermicelli Noodle Bowl
 // Appetizers & Sides
 // Drinks & Desserts
-
-const StyledOrderCategory = styled.div`
-	/* grid-column-start: 2; */
-    /* grid-template-columns: 1fr;
-    display: grid; 
-    grid-column-gap: 20px; */
-    @media (min-width:900px){
-    }
-
-    /* border-bottom: 1px solid grey; */
-`;
-
-// const StyledUl = styled.ul`
-//   list-style-type: none;
-//   margin: 0;
-//   padding: 0;
-//   overflow: hidden;
-//   background-color: #333;
-// `;
-
 
 const StyledDropdown = styled.div`
   display: inline;
@@ -108,9 +88,6 @@ class DropDown extends Component {
             </Dropbtn>
             <DropDownContent>
                 <Link href="/">
-                    <SubA>Fan Favorites</SubA>
-                </Link>
-                <Link href="/">
                     <SubA>Vermicelli Noodle Bowls</SubA>
                 </Link>
                 <Link href="/">
@@ -129,6 +106,34 @@ class DropDown extends Component {
   };
 };
 
+const StyledOrderCategory = styled.div`
+	/* grid-column-start: 2; */
+    /* grid-template-columns: 1fr;
+    display: grid; 
+    grid-column-gap: 20px; */
+    @media (min-width:900px){
+    }
+    
+
+    a {
+        margin-right: 12px;
+        margin-left: 12px;
+	}
+
+    div {
+        margin-right: 30px;
+        margin-left: 30px;
+
+	}
+
+
+
+
+    /* border-bottom: 1px solid grey; */
+`;
+
+import Tabs from './RadioButtonSet';
+
 const OrderCategory = () => (
     <StyledOrderCategory>
         <Link href="/">
@@ -141,12 +146,27 @@ const OrderCategory = () => (
 			<a>Banh Mi</a>
 		</Link>
         <Link href="/">
-			<a>Vermicelli Noodle Bowls</a>
+			<a>Rice Platters</a>
 		</Link>
         <Link href="/">
 			<a>Family Meals</a>
 		</Link>
         <DropDown/>
+
+    <div>
+        <Tabs>
+        <div label="Gator">
+            See ya later, <em>Alligator</em>!
+        </div>
+        <div label="Croc">
+            After 'while, <em>Crocodile</em>!
+        </div>
+        <div label="Sarcosuchus">
+            Nothing to see here, this tab is <em>extinct</em>!
+        </div>
+        </Tabs>
+    </div>
+
     </StyledOrderCategory>
 );
 
