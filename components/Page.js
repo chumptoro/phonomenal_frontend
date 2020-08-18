@@ -6,7 +6,7 @@ import Order from '../components/Order.js';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
-  red: '#FF0000',
+  red: 'rgb(235, 70, 40)',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
@@ -55,6 +55,7 @@ injectGlobal`
     display: block;
     line-height: 1.5;
     margin:0;
+    background: rgb(255,255,255);
   }
   a {
     text-decoration: none;
@@ -64,9 +65,7 @@ injectGlobal`
 `;
 
 const StyledPage = styled.div`
-	background: white;
-	color: ${props => props.theme.black};
-
+	
   display: grid;
   grid-row-gap: 20px;
   margin-top:30px;

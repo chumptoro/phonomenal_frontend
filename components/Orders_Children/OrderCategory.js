@@ -114,17 +114,12 @@ const StyledOrderCategory = styled.div`
     @media (min-width:900px){
     }
     
-
+/* 
     a {
         margin-right: 12px;
         margin-left: 12px;
-	}
+	} */
 
-    div {
-        margin-right: 30px;
-        margin-left: 30px;
-
-	}
 
 
 
@@ -132,11 +127,11 @@ const StyledOrderCategory = styled.div`
     /* border-bottom: 1px solid grey; */
 `;
 
-import Tabs from './RadioButtonSet';
+import Tabs from './Tabs';
 
 const OrderCategory = () => (
     <StyledOrderCategory>
-        <Link href="/">
+        {/* <Link href="/">
 			<a>Fan Favorites</a>
 		</Link>
         <Link href="/">
@@ -151,23 +146,32 @@ const OrderCategory = () => (
         <Link href="/">
 			<a>Family Meals</a>
 		</Link>
-        <DropDown/>
+        <DropDown/> */}
 
-    <div>
-        <Tabs>
-        <div label="Gator">
-            See ya later, <em>Alligator</em>!
-        </div>
-        <div label="Croc">
-            After 'while, <em>Crocodile</em>!
-        </div>
-        <div label="Sarcosuchus">
-            Nothing to see here, this tab is <em>extinct</em>!
-        </div>
-        </Tabs>
-    </div>
+            <Tabs>
+            <div label="Fan Favorites">
+                See ya later, <em>Alligator</em>!
+            </div>
+            <div label="Signature Pho">
+                After 'while, <em>Crocodile</em>!
+            </div>
+            <div label="Banh Mi">
+                Banh Mi Bi 
+            </div>
+            <div label="Rice Platters">
+                Com Ga, Com Tam 
+            </div>
 
+            <div label="Family Meals">
+                Canh chua ca loc <em>extinct</em>!
+            </div>
+            </Tabs>
+        
     </StyledOrderCategory>
+
+
+
+    
 );
 
 export default OrderCategory;
