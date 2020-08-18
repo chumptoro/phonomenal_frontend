@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header.js';
 import Meta from '../components/Meta.js';
 import Hero from '../components/Hero.js';
+import Order from '../components/Order.js';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
@@ -96,6 +97,7 @@ class Page extends Component {
 					<Meta/>
 					<Header/>
           <Hero/>
+          <Order/>
 					<Inner>{this.props.children}</Inner>
 				</StyledPage>
 			</ThemeProvider>
