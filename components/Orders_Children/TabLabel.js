@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 const StyledTabLabel = styled.div`
   /* text-align: center; */
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: -100px;
+  margin-left: -100px;
   /* display: inline; */
   color: ${props => props.selected? props.theme.red : props.theme.black};
 

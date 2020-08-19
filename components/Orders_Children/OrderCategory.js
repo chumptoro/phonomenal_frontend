@@ -89,12 +89,12 @@ class DropDown extends Component {
 };
 
 const StyledOrderCategory = styled.div`
-	/* grid-column-start: 2; */
+	grid-column-start: 2;
     /* grid-template-columns: 1fr;
     display: grid; 
     grid-column-gap: 20px; */
-    @media (min-width:900px){
-    }
+    /* @media (min-width:900px){
+    } */
 `;
 
 import Tabs from './Tabs';
@@ -118,41 +118,41 @@ const OrderCategory = () => (
 		</Link>
         <DropDown/> */}
 
-    <Tabs>
-      <div label="Fan Favorites">
-          See ya later, <em>Alligator</em>!
-      </div>
-      <div label="Signature Pho">
-          After 'while, <em>Crocodile</em>!
-      </div>
-      <div label="Banh Mi">
-          Banh Mi Bi 
-      </div>
-      <div label="Rice Platters">
-          Com Ga, Com Tam 
-      </div>
+      <Tabs>
+        <div label="Fan Favorites">
+            See ya later, <em>Alligator</em>!
+        </div>
+        <div label="Signature Pho">
+            After 'while, <em>Crocodile</em>!
+        </div>
+        <div label="Banh Mi">
+            Banh Mi Bi 
+        </div>
+        <div label="Rice Platters">
+            Com Ga, Com Tam 
+        </div>
 
-      <div label="Family Meals">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
-      <div label="Vermicelli Bowls">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
-      <div label="Drinks & Desserts">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
+        <div label="Family Meals">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
+        <div label="Vermicelli Bowls">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
+        <div label="Drinks & Desserts">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
 
-      <div label="Family Meals">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
-      <div label="Family Meals">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
-      <div label="Family Meals">
-          Canh chua ca loc <em>extinct</em>!
-      </div>
-      
-    </Tabs>
+        <div label="Family Meals">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
+        <div label="Family Meals">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
+        <div label="Family Meals">
+            Canh chua ca loc <em>extinct</em>!
+        </div>
+        
+      </Tabs>
         
     </StyledOrderCategory>
 

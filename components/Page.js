@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Header from '../components/Header.js';
-import Meta from '../components/Meta.js';
-import Hero from '../components/Hero.js';
-import Order from '../components/Order.js';
+import Header from './Header.js';
+import Meta from './Meta.js';
+import Hero from './Hero.js';
+import OrderCategory from './Orders_Children/OrderCategory.js';
+import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
+
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
@@ -101,8 +103,14 @@ class Page extends Component {
 					<Meta/>
 					<Header/>
           <Hero/>
-          <Order/>
+          {/* <HorizontalScrollGridItem/> */}
+          <OrderCategory/>
+        
 					{/* <Inner>{this.props.children}</Inner> */}
+          
+           
+
+
 				</StyledPage>
 			</ThemeProvider>
 		);
