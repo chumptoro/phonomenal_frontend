@@ -6,6 +6,7 @@ import OrderCategory from './Orders_Children/OrderCategory';
 
 const StyledOrder = styled.div`
   grid-column-start:2;
+  /* grid-column-end:3; */
 `;
 
 const Order = () => (

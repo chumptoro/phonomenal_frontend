@@ -135,10 +135,10 @@ const OrderCategory = () => (
       <div label="Family Meals">
           Canh chua ca loc <em>extinct</em>!
       </div>
-      <div label="Family Meals">
+      <div label="Vermicelli Bowls">
           Canh chua ca loc <em>extinct</em>!
       </div>
-      <div label="Family Meals">
+      <div label="Drinks & Desserts">
           Canh chua ca loc <em>extinct</em>!
       </div>
 

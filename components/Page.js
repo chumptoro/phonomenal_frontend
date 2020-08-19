@@ -69,7 +69,11 @@ const StyledPage = styled.div`
 	
   display: grid;
   grid-row-gap: 20px;
+  grid-column-gap:0;
   margin-top:30px;
+  /* width: 100vw; */
+  /* justify-content:center; */
+  /* justify-items:center; */
 
   @media (max-width: 300px) {
     grid-template-columns: 30px 1fr 30px;
@@ -98,7 +102,7 @@ class Page extends Component {
 					<Header/>
           <Hero/>
           <Order/>
-					<Inner>{this.props.children}</Inner>
+					{/* <Inner>{this.props.children}</Inner> */}
 				</StyledPage>
 			</ThemeProvider>
 		);

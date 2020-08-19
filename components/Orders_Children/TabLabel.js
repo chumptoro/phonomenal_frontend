@@ -7,7 +7,7 @@ const StyledTabLabel = styled.div`
   /* text-align: center; */
   margin-right: 20px;
   margin-left: 20px;
-  display: inline-block;
+  /* display: inline; */
   color: ${props => props.selected? props.theme.red : props.theme.black};
 
   :hover {

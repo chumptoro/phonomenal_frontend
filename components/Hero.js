@@ -46,14 +46,6 @@ const StyledHeroBanner = styled.div`
         border-radius : 0px 3px 3px 0px;
         padding: 10px 20px 10px 50px;
     }
-/* 
-    .content {
-        font-family: sans-serif;
-        line-height: 2;
-        color: white;
-        width: 25em;
-        max-width: 100%;
-    } */
 `;
 
 const Hero = () => (
