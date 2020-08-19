@@ -14,7 +14,9 @@ const StyledItemsList = styled.div`
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 30px;
+  /* grid-auto-flow: column; */
   /* margin: 0 auto; */
+  /* overflow-x: initial; */
 `;
 
 class TabContent extends Component {

@@ -19,14 +19,10 @@ const Dropbtn = styled.div`
   display: inline-block;
   color: black;
   text-align: center;
-  /* padding: 14px 16px; */
-  
-  /* border: solid gray 0.5px; */
 `;
 
 const DropDownContent = styled.div`
   display: none;
-
   border-radius: 2px;
   position: absolute;
   background-color: white;
@@ -48,17 +44,6 @@ const DropDownLi = styled(StyledLi)`
     display: block;
   }
 `;
-
-// const StyledA = styled.a`
-//   display: inline-block;
-//   color: white;
-//   text-align: center;
-//   padding: 14px 16px;
-//   text-decoration: none;
-//   &:hover {
-//     background-color: red;
-//   }
-// `;
 
 const SubA = styled.a`
   color: black;
@@ -96,9 +81,6 @@ class DropDown extends Component {
                 <Link href="/">
                     <SubA>Drinks & Desserts</SubA>
                 </Link>
-                {/* <SubA onClick={() => this.handleClick("Link1")}>Vermicelli Noodle Bowls</SubA>
-                <SubA onClick={() => this.handleClick("Link2")}>Appetizers & Sides</SubA>
-                <SubA onClick={() => this.handleClick("Link3")}>Drinks & Desserts</SubA> */}
             </DropDownContent>
         </DropDownLi>
     </StyledDropdown>
@@ -113,18 +95,6 @@ const StyledOrderCategory = styled.div`
     grid-column-gap: 20px; */
     @media (min-width:900px){
     }
-    
-/* 
-    a {
-        margin-right: 12px;
-        margin-left: 12px;
-	} */
-
-
-
-
-
-    /* border-bottom: 1px solid grey; */
 `;
 
 import Tabs from './Tabs';
@@ -148,24 +118,41 @@ const OrderCategory = () => (
 		</Link>
         <DropDown/> */}
 
-            <Tabs>
-            <div label="Fan Favorites">
-                See ya later, <em>Alligator</em>!
-            </div>
-            <div label="Signature Pho">
-                After 'while, <em>Crocodile</em>!
-            </div>
-            <div label="Banh Mi">
-                Banh Mi Bi 
-            </div>
-            <div label="Rice Platters">
-                Com Ga, Com Tam 
-            </div>
+    <Tabs>
+      <div label="Fan Favorites">
+          See ya later, <em>Alligator</em>!
+      </div>
+      <div label="Signature Pho">
+          After 'while, <em>Crocodile</em>!
+      </div>
+      <div label="Banh Mi">
+          Banh Mi Bi 
+      </div>
+      <div label="Rice Platters">
+          Com Ga, Com Tam 
+      </div>
 
-            <div label="Family Meals">
-                Canh chua ca loc <em>extinct</em>!
-            </div>
-            </Tabs>
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+      <div label="Family Meals">
+          Canh chua ca loc <em>extinct</em>!
+      </div>
+      
+    </Tabs>
         
     </StyledOrderCategory>
 

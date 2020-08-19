@@ -56,6 +56,7 @@ injectGlobal`
     line-height: 1.5;
     margin:0;
     background: rgb(255,255,255);
+    /* overflow-x:hidden; */
   }
   a {
     text-decoration: none;

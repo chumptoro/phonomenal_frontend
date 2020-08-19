@@ -8,6 +8,7 @@ const StyledItem = styled.div`
   border: solid 0.1px black;
   margin: 10px;
   padding: 20px;
+  
 `;
 
 class TabContentItem extends Component {
