@@ -15,9 +15,14 @@ const theme = {
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
   blue:'blue',
+  divider_gray: 'rgb(231,231,231)',
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   titleFontSize: '20px',
+  max_component_vertical_distance: '40px',
+  mid_component_vertical_distance: '20px',
+  min_component_vertical_distance: '15px',
+
 };
 
 injectGlobal`
@@ -71,9 +76,9 @@ injectGlobal`
 const StyledPage = styled.div`
 	
   display: grid;
-  grid-row-gap: 20px;
+  grid-row-gap: 0px;
   grid-column-gap:0;
-  margin-top:30px;
+  margin-top: 0px;
   /* width: 100vw; */
   /* justify-content:center; */
   /* justify-items:center; */
@@ -82,7 +87,7 @@ const StyledPage = styled.div`
     grid-template-columns: 30px 1fr 30px;
   }
   @media (min-width: 301px) {
-    grid-template-columns: 0.11fr 1fr 0.11fr;
+    grid-template-columns: 0.05fr 1fr 0.05fr;
   }
   @media (min-width: 1455px) {
 		grid-template-columns: 1fr 1121px 1fr;
@@ -100,17 +105,20 @@ class Page extends Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
+      
+      <div>
+        <Header/>
 				<StyledPage>
 					<Meta/>
-					<Header/>
+					{/* <Header/> */}
           <Hero/>
           {/* <HorizontalScrollGridItem/> */}
           {/* <OrderCategory/> */}
 
         <Tabs>
-          <div label="Fan Favorites">
+          {/* <div label="Fan Favorites">
               See ya later, <em>Alligator</em>!
-          </div>
+          </div> */}
           <div label="Signature Pho">
               After 'while, <em>Crocodile</em>!
           </div>
@@ -119,9 +127,6 @@ class Page extends Component {
           </div>
           <div label="Rice Platters">
               Com Ga, Com Tam 
-          </div>
-          <div label="Family Meals">
-              Canh chua ca loc <em>extinct</em>!
           </div>
           <div label="Vermicelli Bowls">
               Canh chua ca loc <em>extinct</em>!
@@ -135,11 +140,9 @@ class Page extends Component {
       </Tabs>
         
 					{/* <Inner>{this.props.children}</Inner> */}
-          
-           
-
 
 				</StyledPage>
+        </div>
 			</ThemeProvider>
 		);
 	}

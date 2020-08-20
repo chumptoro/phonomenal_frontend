@@ -5,8 +5,9 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 
 const StyledItem = styled.div`
-  border: solid 0.1px black;
-  margin: 10px;
+  border: solid 1px ${props => props.theme.divider_gray};
+  border-radius: 2.5px;
+  margin: 0px;
   padding: 20px;
   
 `;

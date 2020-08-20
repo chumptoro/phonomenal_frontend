@@ -27,6 +27,7 @@ const Logo = styled.h1`
 `;
 
 //header is a sub-component of Page so it can reference props.theme!
+//*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledHeader = styled.header`
   ${'' /* .bar {
     border-bottom: 10px solid ${props => props.theme.black};
@@ -44,9 +45,32 @@ const StyledHeader = styled.header`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
   } */}
-  	display: block;
-	grid-column-start: 2;
+  	/* grid-column-start: 2; */
+  	display: grid;
+	z-index: 1;
+	position: fixed;
+	top: 0;
+  	width: 100%;
+	padding: 24px 0px 26px 0px;
 	
+	background-color:white;
+  	border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+
+
+	@media (max-width: 300px) {
+		grid-template-columns: 30px 1fr 30px;
+	}
+	@media (min-width: 301px) {
+		grid-template-columns: 0.05fr 1fr 0.05fr;
+	}
+	@media (min-width: 1455px) {
+		grid-template-columns: 1fr 1121px 1fr;
+	}
+
+
+	.wrapper {
+		grid-column-start:2;
+	}
 	.logo_title {
 		float: left;
 		padding-top: 0.27px;
@@ -64,33 +88,36 @@ const StyledHeader = styled.header`
 
 const Header = () => (
 	<StyledHeader>
-		<div className="logo_title">
-			<Link href="/">
-				<a>Nomenal</a>
-			</Link>
-		</div>
-		<div className="nav_links">
-			<Link href="/items">
-				<a>shop</a>
-			</Link>
-			<Link href="/sell">
-				<a>sell</a>
-			</Link>
-			<Link href="/signup">
-				<a>sign up</a>
-			</Link>
-			<Link href="/orders">
-				<a>bag</a>
-			</Link>
-			<Link href="/account">
-				<a>account</a>
-			</Link>
-		</div>
-		{/* <div className="sub-bar">
-			<p>Search</p>
-		</div>
+		<div className="wrapper">
+			<div className="logo_title">
+				<Link href="/">
+					<a>Phomenal</a>
+				</Link>
+			</div>
+			<div className="nav_links">
+				<Link href="/locations">
+					<a>locations & hours</a>
+				</Link>
+				{/* <Link href="/sell">
+					<a>sell</a>
+				</Link> */}
+				{/* <Link href="/signup">
+					<a>sign up</a>
+				</Link> */}
+				<Link href="/account">
+					<a>account</a>
+				</Link>
+				<Link href="/bag">
+					<a>bag</a>
+				</Link>
+			</div>
+			{/* <div className="sub-bar">
+				<p>Search</p>
+			</div>
 
-		<div>Cart</div> */}
+			<div>Cart</div> */}
+		</div>
+		
 	</StyledHeader>
 );
 

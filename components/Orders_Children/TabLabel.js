@@ -9,9 +9,11 @@ import PropTypes from 'prop-types';
 // https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents
 // https://stackoverflow.com/questions/52872079/how-to-get-a-border-bottom-line-with-rounded-corner
 // https://stackoverflow.com/questions/48502647/conditional-rendering-in-styled-components
+
+
 const StyledTabLabel = styled.div`
-  text-align: center;
-  padding: 14px 24px 14px 24px;
+  /* text-align: center; */
+  padding: 14px 0px 14px 0px;
   /* color: ${props => props.selected? props.theme.red : props.theme.black}; */
   
 
@@ -32,7 +34,7 @@ const StyledTabLabel = styled.div`
           right: 0;
           bottom: -7px;
           height: 0;
-          border: 1.7px solid;
+          border: 2px solid rgb(230,230,230) ;
           border-radius : 100px;
         } 
     `}

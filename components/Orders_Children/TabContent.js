@@ -11,13 +11,21 @@ var data_array = [dummy_data_point, dummy_data_point, dummy_data_point, dummy_da
 
 const StyledItemsList = styled.div`
   display: grid;
-  align-items: center;
+  /* align-items: center; */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 30px;
+  margin-top: ${props => props.theme.min_component_vertical_distance}; 
+  /* background-color: ${props => props.theme.divider_gray}; */
   /* grid-auto-flow: column; */
   /* margin: 0 auto; */
   /* overflow-x: initial; */
 `;
+
+const LevelTwoHeader = styled.h2`
+  margin-bottom:0;
+  margin-top:${props => props.theme.max_component_vertical_distance}
+`;
+
 
 class TabContent extends Component {
     static propTypes = {
@@ -38,9 +46,13 @@ class TabContent extends Component {
       //   className += ' tab-list-active';
       // }
       return (
-        <StyledItemsList>
-        {data_array.map(item => <TabContentItem item={item} key={item.id} category={this.props.category} />)}
-        </StyledItemsList>
+        <div>
+          <LevelTwoHeader>Signature Pho</LevelTwoHeader>
+          <StyledItemsList>
+          {data_array.map(item => <TabContentItem item={item} key={item.id} category={this.props.category} />)}
+          </StyledItemsList>
+        </div>
+
       );
     }
 }
