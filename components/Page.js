@@ -126,19 +126,10 @@ class Page extends Component {
           <div label="Vermicelli Bowls">
               Canh chua ca loc <em>extinct</em>!
           </div>
+          <div label="Vegetarian Dishes">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
           <div label="Drinks & Desserts">
-              Canh chua ca loc <em>extinct</em>!
-          </div>
-          <div label="Banh Mi">
-              Banh Mi Bi 
-          </div>
-          <div label="Vermicelli Bowls">
-              Canh chua ca loc <em>extinct</em>!
-          </div>
-          <div label="Banh Mi">
-              Banh Mi Bi 
-          </div>
-          <div label="Vermicelli Bowls">
               Canh chua ca loc <em>extinct</em>!
           </div>
       </Tabs>

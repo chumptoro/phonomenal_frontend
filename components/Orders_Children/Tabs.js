@@ -17,30 +17,34 @@ import TabContent from './TabContent.js';
 
 var gutter = 2;
 
-const StyledTabHorizontalScroll = styled.div`
+// const StyledTabHorizontalScroll = styled.div`
     
+//     display: grid;
+//     /* grid-gap: calc(${gutter}px / 2); */
+//     /* grid-column-gap: 5px; */
+//     grid-template-columns: repeat(auto-fill, 150px);
+    
+    
+//     /* grid-template-rows: 1fr; */
+//     grid-auto-flow: column; 
+//     overflow-x: scroll;
+//     scroll-snap-type: x proximity;
+//     /* grid-template-rows: minmax(150px, 1fr);  */
+//     /* padding-bottom: calc(.75 * ${gutter}px);
+//     margin-bottom: calc(-.25 * ${gutter}px);  */
+//     /* grid-auto-columns: calc(50% - ${gutter}px * 2); */
+
+//     ::-webkit-scrollbar { 
+//       display:none;
+//     }
+//     scrollbar-width: none;
+//     -ms-overflow-style: none;
+// `;
+
+const StyledTabHorizontalScroll = styled.div`    
     display: grid;
-    /* grid-gap: calc(${gutter}px / 2); */
-    /* grid-column-gap: 5px; */
-    grid-template-columns: repeat(auto-fill, 150px);
-    
-    
-    /* grid-template-rows: 1fr; */
-    grid-auto-flow: column; 
-    overflow-x: scroll;
-    scroll-snap-type: x proximity;
-    /* grid-template-rows: minmax(150px, 1fr);  */
-    /* padding-bottom: calc(.75 * ${gutter}px);
-    margin-bottom: calc(-.25 * ${gutter}px);  */
-    /* grid-auto-columns: calc(50% - ${gutter}px * 2); */
-
-    ::-webkit-scrollbar { 
-      display:none;
-    }
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    grid-column-start: 2;
+    grid-template-columns: repeat(auto-fill, 165px);
+    /* grid-row-gap: 12px; */
 `;
 
 const StyledTabs = styled.div`
@@ -60,7 +64,7 @@ class Tabs extends Component {
       const { onClickTabItem, props: {children,}, state: {activeTab,}
             } = this;
       return (
-       //<StyledTabs>
+       <StyledTabs>
           <StyledTabHorizontalScroll>
             {
               children.map((child) => {
@@ -79,9 +83,9 @@ class Tabs extends Component {
               <TabContent category={activeTab}/>
             </div>             */}
           </StyledTabHorizontalScroll>
-          //<TabContent category={activeTab}/>
+          <TabContent category={activeTab}/>
           
-        //</StyledTabs>
+        </StyledTabs>
           
          
       );
