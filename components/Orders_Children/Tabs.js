@@ -15,43 +15,37 @@ import TabContent from './TabContent.js';
 // http://jsfiddle.net/PieBie/6y291fud/
 // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
 
-var gutter = 1;
+var gutter = 2;
 
 const StyledTabHorizontalScroll = styled.div`
-  
-  display: grid;
-  /* grid-gap: calc(${gutter}px / 2); */
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  /* grid-template-rows: 1fr; */
-  
-  grid-auto-flow: column; 
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  grid-template-rows: minmax(150px, 1fr); 
-  /* padding-bottom: calc(.75 * ${gutter}px);
-  margin-bottom: calc(-.25 * ${gutter}px); */
-  /* grid-auto-columns: 100px; */
-  
-  
-  /* overflow: auto;
-  white-space: nowrap;
-  min-width: 0; */
-/*   
-  display: flex;
-  background-color: #2c3e50;
-  min-width: 100%;
-  min-height: 200px;
-  overflow-x: auto; 
-   */
-  
-  
+    
+    display: grid;
+    /* grid-gap: calc(${gutter}px / 2); */
+    /* grid-column-gap: 5px; */
+    grid-template-columns: repeat(auto-fill, 150px);
+    
+    
+    /* grid-template-rows: 1fr; */
+    grid-auto-flow: column; 
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    /* grid-template-rows: minmax(150px, 1fr);  */
+    /* padding-bottom: calc(.75 * ${gutter}px);
+    margin-bottom: calc(-.25 * ${gutter}px);  */
+    /* grid-auto-columns: calc(50% - ${gutter}px * 2); */
 
+    ::-webkit-scrollbar { 
+      display:none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-  ::scrollbar {
-  display: none;
-}
+    grid-column-start: 2;
 `;
 
+const StyledTabs = styled.div`
+  grid-column-start: 2;
+`;
 class Tabs extends Component {
     static propTypes = {
       children: PropTypes.instanceOf(Array).isRequired,
@@ -66,7 +60,7 @@ class Tabs extends Component {
       const { onClickTabItem, props: {children,}, state: {activeTab,}
             } = this;
       return (
-        <div>
+       //<StyledTabs>
           <StyledTabHorizontalScroll>
             {
               children.map((child) => {
@@ -81,18 +75,15 @@ class Tabs extends Component {
                 );
               })
             }
-          
-            {/* <div>
-              {children.map((child) => {
-                if (child.props.label !== activeTab) return undefined;
-                return child.props.children;
-              })}
-            </div> */}
-
+            {/* <div className="TabContentWrapper">
+              <TabContent category={activeTab}/>
+            </div>             */}
           </StyledTabHorizontalScroll>
-          <TabContent category={activeTab}/>
+          //<TabContent category={activeTab}/>
           
-        </div>
+        //</StyledTabs>
+          
+         
       );
     }
   }

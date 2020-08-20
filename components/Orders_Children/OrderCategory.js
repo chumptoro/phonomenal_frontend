@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import React, { Component } from "react";
+import Tabs from './Tabs';
 
 // Fan Favorites
 // Signature Pho
@@ -97,7 +98,7 @@ const StyledOrderCategory = styled.div`
     } */
 `;
 
-import Tabs from './Tabs';
+
 
 const OrderCategory = () => (
     <StyledOrderCategory>

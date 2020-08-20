@@ -4,6 +4,7 @@ import Meta from './Meta.js';
 import Hero from './Hero.js';
 import OrderCategory from './Orders_Children/OrderCategory.js';
 import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
+import Tabs from './Orders_Children/Tabs.js';
 
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
@@ -104,7 +105,43 @@ class Page extends Component {
 					<Header/>
           <Hero/>
           {/* <HorizontalScrollGridItem/> */}
-          <OrderCategory/>
+          {/* <OrderCategory/> */}
+
+        <Tabs>
+          <div label="Fan Favorites">
+              See ya later, <em>Alligator</em>!
+          </div>
+          <div label="Signature Pho">
+              After 'while, <em>Crocodile</em>!
+          </div>
+          <div label="Banh Mi">
+              Banh Mi Bi 
+          </div>
+          <div label="Rice Platters">
+              Com Ga, Com Tam 
+          </div>
+          <div label="Family Meals">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
+          <div label="Vermicelli Bowls">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
+          <div label="Drinks & Desserts">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
+          <div label="Banh Mi">
+              Banh Mi Bi 
+          </div>
+          <div label="Vermicelli Bowls">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
+          <div label="Banh Mi">
+              Banh Mi Bi 
+          </div>
+          <div label="Vermicelli Bowls">
+              Canh chua ca loc <em>extinct</em>!
+          </div>
+      </Tabs>
         
 					{/* <Inner>{this.props.children}</Inner> */}
           

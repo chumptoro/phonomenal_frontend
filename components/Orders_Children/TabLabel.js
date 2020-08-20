@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 
 const StyledTabLabel = styled.div`
   /* text-align: center; */
-  margin-right: -100px;
-  margin-left: -100px;
-  /* display: inline; */
   color: ${props => props.selected? props.theme.red : props.theme.black};
 
   :hover {
