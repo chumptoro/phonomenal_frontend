@@ -95,9 +95,9 @@ const Header = () => (
 				</Link>
 			</div>
 			<div className="nav_links">
-				<Link href="/locations">
+				{/* <Link href="/locations">
 					<a>locations & hours</a>
-				</Link>
+				</Link> */}
 				{/* <Link href="/sell">
 					<a>sell</a>
 				</Link> */}

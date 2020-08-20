@@ -22,6 +22,9 @@ const theme = {
   max_component_vertical_distance: '40px',
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
+  font_size_content: '14px',
+  font_size_nav_bar_small: '15px',
+
 
 };
 
@@ -64,11 +67,11 @@ injectGlobal`
     line-height: 1.5;
     margin:0;
     background: rgb(255,255,255);
+    font-size: ${theme.font_size_content};
     /* overflow-x:hidden; */
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
   }
   button {  font-family: 'freight-sans-pro'; }
 `;
@@ -119,6 +122,7 @@ class Page extends Component {
           {/* <div label="Fan Favorites">
               See ya later, <em>Alligator</em>!
           </div> */}
+
           <div label="Signature Pho">
               After 'while, <em>Crocodile</em>!
           </div>
@@ -131,7 +135,10 @@ class Page extends Component {
           <div label="Vermicelli Bowls">
               Canh chua ca loc <em>extinct</em>!
           </div>
-          <div label="Vegetarian Dishes">
+          <div label="Sides">
+              After 'while, <em>Crocodile</em>!
+          </div>
+          <div label="Vegetarian">
               Canh chua ca loc <em>extinct</em>!
           </div>
           <div label="Drinks & Desserts">

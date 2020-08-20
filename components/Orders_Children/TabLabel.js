@@ -12,11 +12,10 @@ import PropTypes from 'prop-types';
 
 
 const StyledTabLabel = styled.div`
-  /* text-align: center; */
+  font-size:${props => props.theme.font_size_nav_bar_small};
+  text-align: center;
   padding: 14px 0px 14px 0px;
   /* color: ${props => props.selected? props.theme.red : props.theme.black}; */
-  
-
   div {
     position:relative;
     display: inline-block;
@@ -24,7 +23,6 @@ const StyledTabLabel = styled.div`
     :hover { 
     cursor: pointer;
     }
-
     ${({ selected }) => selected && `
       ::before {
           content: '';
@@ -38,14 +36,7 @@ const StyledTabLabel = styled.div`
           border-radius : 100px;
         } 
     `}
-
-    
-
-    
   }
-
-
-
 `;
 
 const StyledTabSelectionIndicator = styled.div`

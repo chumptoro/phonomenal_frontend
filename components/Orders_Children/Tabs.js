@@ -43,7 +43,7 @@ var gutter = 2;
 
 const StyledTabHorizontalScroll = styled.div`    
     display: grid;
-    grid-template-columns: repeat(auto-fill, 162px);
+    grid-template-columns: repeat(auto-fill, 130px);
     /* grid-row-gap: 12px; */
     padding-bottom: ${props => props.theme.min_component_vertical_distance} ;
     margin-bottom: ${props => props.theme.min_component_vertical_distance} ;
@@ -51,6 +51,8 @@ const StyledTabHorizontalScroll = styled.div`
     
     border-bottom: solid 1px; 
     border-color: ${props => props.theme.divider_gray} ;
+    /* background-color: rgb(240, 240, 240); */
+    
 `;
 
 const StyledTabs = styled.div`
