@@ -11,6 +11,8 @@
 	.st5{letter-spacing:-7;}
 	.st6{fill:#E3111B;}
 	.st7{fill:#FFFFFF;}
+	.st8{font-size:357.7633px;}
+	.st9{letter-spacing:-10;}
 </style>
 <g id="Layer_1" class="st0">
 	<rect class="st1" width="350" height="350"/>
@@ -20,9 +22,14 @@
 	<rect class="st1" width="350" height="350"/>
 	<text transform="matrix(1 0 0 1 111.08 291)" class="st2 st3 st4 st5">P</text>
 </g>
-<g id="Layer_1_copy_2">
+<g id="for_icon" class="st0">
+	<rect x="512" class="st1" width="350" height="350"/>
+	<circle class="st1" cx="175" cy="175" r="170"/>
+	<text transform="matrix(1 0 0 1 111.08 285)" class="st2 st3 st4 st5">P</text>
+</g>
+<g id="for_logo">
 	<rect x="512" class="st6" width="350" height="350"/>
 	<circle class="st6" cx="175" cy="175" r="170"/>
-	<text transform="matrix(1 0 0 1 111.08 285)" class="st7 st3 st4 st5">P</text>
+	<text transform="matrix(1 0 0 1 99.7737 343.5478)" class="st7 st3 st8 st9">P</text>
 </g>
 </svg>

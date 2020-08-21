@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 const StyledTabLabel = styled.div`
   font-size:${props => props.theme.font_size_nav_bar_small};
-  text-align: center;
+  /* text-align: center; */
   padding: 14px 0px 14px 0px;
   /* color: ${props => props.selected? props.theme.red : props.theme.black}; */
   div {
@@ -32,7 +32,7 @@ const StyledTabLabel = styled.div`
           right: 0;
           bottom: -7px;
           height: 0;
-          border: 2px solid rgb(230,230,230) ;
+          border: 2px solid rgb(0,204,153) ;
           border-radius : 100px;
         } 
     `}
@@ -40,8 +40,6 @@ const StyledTabLabel = styled.div`
 `;
 
 const StyledTabSelectionIndicator = styled.div`
-
-
 `;
 
 class TabLabel extends Component {

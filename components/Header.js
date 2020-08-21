@@ -3,70 +3,31 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const Logo = styled.h1`
-	${'' /* font-size: 4rem;
-	margin-left: 2rem;
-	position: relative;
-	z-index: 2;
-	transform: skew(-7deg);
-
-	a{
-		padding: 0.5 rem 1rem;
-		background: ${props => props.theme.red};
-		color: white;
-		text-transformation: uppercase;
-		text-decoration: none;
-	}
-
-	@media (max-width: 1300px) {
-		margin: 0;
-		text-align: center;
-	} */}
-
-	float: left;
-	padding-top: 0.27px;
 `;
 
 //header is a sub-component of Page so it can reference props.theme!
 //*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledHeader = styled.header`
-  ${'' /* .bar {
-    border-bottom: 10px solid ${props => props.theme.black};
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
-    @media (max-width: 1300px) {
-      grid-template-columns: 1fr;
-      justify-content: center;
-    }
-  }
-  .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    border-bottom: 1px solid ${props => props.theme.lightgrey};
-  } */}
-  	/* grid-column-start: 2; */
   	display: grid;
 	z-index: 1;
 	position: fixed;
 	top: 0;
   	width: 100%;
-	padding: 24px 0px 26px 0px;
+	padding: 20px 0px 8px 0px;
 	
 	background-color:white;
   	border-bottom: 1px solid rgba(217, 219, 224, 0.5);
 
 
 	@media (max-width: 300px) {
-		grid-template-columns: 30px 1fr 30px;
-	}
-	@media (min-width: 301px) {
-		grid-template-columns: 0.05fr 1fr 0.05fr;
-	}
-	@media (min-width: 1455px) {
-		grid-template-columns: 1fr 1121px 1fr;
-	}
-
+    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+    }
+    @media (min-width: 301px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+    }
+    @media (min-width: 1455px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+    }
 
 	.wrapper {
 		grid-column-start:2;
@@ -77,11 +38,15 @@ const StyledHeader = styled.header`
 	}
 	.nav_links {
 		float: right;
-		padding-top: 0.27px;
+		padding-top: 10px;;
 
 		a {
 			margin-right: 12px;
 			margin-left: 12px;
+		}
+
+		.location_pin_icon {
+			padding-top: 5px;
 		}
 	}
 `;
@@ -91,7 +56,7 @@ const Header = () => (
 		<div className="wrapper">
 			<div className="logo_title">
 				<Link href="/">
-					<a>Phomenal</a>
+					<img border="0" alt="phonomenal logo" src="./phonomenal_logo.svg" width="45" height="45" /> 
 				</Link>
 			</div>
 			<div className="nav_links">
@@ -101,14 +66,20 @@ const Header = () => (
 				{/* <Link href="/sell">
 					<a>sell</a>
 				</Link> */}
-				{/* <Link href="/signup">
-					<a>sign up</a>
-				</Link> */}
-				<Link href="/account">
-					<a>account</a>
+				<Link href="/signup">
+					<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./location_pin_thin.svg" width="30" height="30" /> 
 				</Link>
+	
+				<Link href="/account">
+					<a> 
+						<img border="0" alt="user_profile_icon" src="./user_profile.svg" width="30" height="30" /> 
+					</a>
+				</Link>
+
 				<Link href="/bag">
-					<a>bag</a>
+					<a> 
+						<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./shopping-bag-green.svg" width="30" height="30" /> 
+					</a>
 				</Link>
 			</div>
 			{/* <div className="sub-bar">

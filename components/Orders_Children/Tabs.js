@@ -44,15 +44,16 @@ var gutter = 2;
 
 const StyledTabs = styled.div`
   display: grid;
-    @media (max-width: 300px) {
-    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
-    }
-    @media (min-width: 301px) {
-      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
-    }
-    @media (min-width: 1455px) {
-      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
-    }
+  @media (max-width: 300px) {
+  grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+  }
+  @media (min-width: 301px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+  }
+  @media (min-width: 1455px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+  }
+
 `;
 const StyledTabHorizontalScroll = styled.div` 
     grid-column-start: 2;   
@@ -63,8 +64,9 @@ const StyledTabHorizontalScroll = styled.div`
     margin-bottom: ${props => props.theme.min_component_vertical_distance} ;
  
     
-    border-bottom: solid 1px; 
-    border-color: ${props => props.theme.divider_gray} ;
+    /* border-bottom: solid 1px; 
+    border-color: ${props => props.theme.divider_gray} ; */
+
     /* background-color: rgb(240, 240, 240); */    
 `;
 class Tabs extends Component {

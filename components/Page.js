@@ -9,6 +9,7 @@ import Tabs from './Orders_Children/Tabs.js';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
+  green:"rgb(0,204,153)",
   red: 'rgb(235, 70, 40)',
   black: '#393939',
   grey: '#3A3A3A',
@@ -26,7 +27,7 @@ const theme = {
   font_size_nav_bar_small: '15px',
 
   grid_template_desktop_small_width: '30px 1fr 30px',
-  grid_template_desktop_mid_width: '0.05fr 1fr 0.05fr',
+  grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
   grid_template_desktop_large_width: '1fr 1121px 1fr',
 
 
@@ -73,7 +74,7 @@ injectGlobal`
     margin:0;
     background: rgb(255,255,255);
     font-size: ${theme.font_size_content};
-    /* overflow-x:hidden; */
+    overflow-x:hidden;
   }
   a {
     text-decoration: none;

@@ -26,6 +26,7 @@ const StyledHeroBanner = styled.div`
     box-sizing: border-box;
     padding: 10vw 10vw 10vw 10vw;
     background-image: url('/AdobeStock_309157141.jpeg');
+    /* background-image: url('/AdobeStock_309156516.jpeg'); */
     /* (https://res.cloudinary.com/druhu3xb6/image/upload/q_auto:low,f_auto/v1592479764/Junzi/Banner/junzi_kitchen_banner.png); */
     background-size: cover;
     background-repeat: no-repeat;
