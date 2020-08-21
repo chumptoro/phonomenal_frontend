@@ -17,15 +17,12 @@ function OpenOrCLose(props) {
     return <p>We're closed</p>;
 }
 //header is a sub-component of Page so it can reference props.theme!
-const StyledHeroBanner = styled.div`
-	grid-column-start: 1;
-    grid-column-end: 4;
-    /* grid-template-columns: 1fr;
-    display: grid; 
-    grid-column-gap: 20px; */
-
+const StyledHeroBanner = styled.div` 
+    display: grid;
+    grid-row-gap: 0px;
+    grid-column-gap:0;
     width: 100%;
-    height: 340px;
+    height: 360px;
     box-sizing: border-box;
     padding: 10vw 10vw 10vw 10vw;
     background-image: url('/AdobeStock_309157141.jpeg');
@@ -34,23 +31,30 @@ const StyledHeroBanner = styled.div`
     background-repeat: no-repeat;
     background-position: center;
 
-
-    @media (min-width:900px){
-        /* grid-template-columns: 0.5fr 1fr; */
+    @media (max-width: 300px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
     }
+    @media (min-width: 301px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+    }
+    @media (min-width: 1455px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+    }
+
     .heroBannerText {
-        position: absolute;
+        /* position: absolute;
         font-size: 20px;
         top: 33%;
         background-color: white;
         border-radius : 0px 3px 3px 0px;
-        padding: 10px 20px 10px 50px;
+        padding: 10px 20px 10px 50px; */
+        grid-column-start:2;
     }
 `;
 
 const Hero = () => (
     <StyledHeroBanner>
-        <div className="">
+        <div className="heroBannerText">
             <h1>You want Pho. We get it. </h1>
             <OpenOrCLose/>  
             {/* <a href="/">enter code 'getpho' for 10% off your first order.</a> */}

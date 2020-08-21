@@ -41,7 +41,21 @@ var gutter = 2;
 //     -ms-overflow-style: none;
 // `;
 
-const StyledTabHorizontalScroll = styled.div`    
+
+const StyledTabs = styled.div`
+  display: grid;
+    @media (max-width: 300px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+    }
+    @media (min-width: 301px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+    }
+    @media (min-width: 1455px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+    }
+`;
+const StyledTabHorizontalScroll = styled.div` 
+    grid-column-start: 2;   
     display: grid;
     grid-template-columns: repeat(auto-fill, 130px);
     /* grid-row-gap: 12px; */
@@ -51,12 +65,7 @@ const StyledTabHorizontalScroll = styled.div`
     
     border-bottom: solid 1px; 
     border-color: ${props => props.theme.divider_gray} ;
-    /* background-color: rgb(240, 240, 240); */
-    
-`;
-
-const StyledTabs = styled.div`
-  grid-column-start: 2;
+    /* background-color: rgb(240, 240, 240); */    
 `;
 class Tabs extends Component {
     static propTypes = {

@@ -25,6 +25,11 @@ const theme = {
   font_size_content: '14px',
   font_size_nav_bar_small: '15px',
 
+  grid_template_desktop_small_width: '30px 1fr 30px',
+  grid_template_desktop_mid_width: '0.05fr 1fr 0.05fr',
+  grid_template_desktop_large_width: '1fr 1121px 1fr',
+
+
 
 };
 
@@ -87,14 +92,14 @@ const StyledPage = styled.div`
   /* justify-items:center; */
 
   @media (max-width: 300px) {
-    grid-template-columns: 30px 1fr 30px;
+    grid-template-columns: ${theme.grid_template_desktop_small_width};
   }
   @media (min-width: 301px) {
-    grid-template-columns: 0.05fr 1fr 0.05fr;
+    grid-template-columns: ${theme.grid_template_desktop_mid_width};
   }
   @media (min-width: 1455px) {
-		grid-template-columns: 1fr 1121px 1fr;
-}
+		grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+  }
 
 `;
 
@@ -111,13 +116,7 @@ class Page extends Component {
       
       <div>
         <Header/>
-				<StyledPage>
-					<Meta/>
-					{/* <Header/> */}
-          <Hero/>
-          {/* <HorizontalScrollGridItem/> */}
-          {/* <OrderCategory/> */}
-
+        <Hero/>
         <Tabs>
           {/* <div label="Fan Favorites">
               See ya later, <em>Alligator</em>!
@@ -145,9 +144,13 @@ class Page extends Component {
               Canh chua ca loc <em>extinct</em>!
           </div>
       </Tabs>
-        
+				<StyledPage>
+					<Meta/>
+					{/* <Header/> */}
+          {/* <Hero/> */}
+          {/* <HorizontalScrollGridItem/> */}
+          {/* <OrderCategory/> */}
 					{/* <Inner>{this.props.children}</Inner> */}
-
 				</StyledPage>
         </div>
 			</ThemeProvider>

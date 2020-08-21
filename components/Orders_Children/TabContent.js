@@ -9,7 +9,13 @@ import TabContentItem from './TabContentItem.js';
 var dummy_data_point = {"name":"Pho Tai", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak", "id":"1"};
 var data_array = [dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point];
 
+const StyledTabContent = styled.div`
+  grid-column-start: 2;   
+`;
+
+
 const StyledItemsList = styled.div`
+grid-column-start: 2;   
   display: grid;
   /* align-items: center; */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -46,12 +52,12 @@ class TabContent extends Component {
       //   className += ' tab-list-active';
       // }
       return (
-        <div>
+        <StyledTabContent>
           <LevelTwoHeader>Signature Pho</LevelTwoHeader>
           <StyledItemsList>
           {data_array.map(item => <TabContentItem item={item} key={item.id} category={this.props.category} />)}
           </StyledItemsList>
-        </div>
+        </StyledTabContent>
 
       );
     }
