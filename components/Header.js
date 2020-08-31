@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
 	position: fixed;
 	top: 0;
   	width: 100%;
-	padding: 20px 0px 8px 0px;
+	padding: 17px 0px 8px 0px;
 	
 	background-color:white;
   	border-bottom: 1px solid rgba(217, 219, 224, 0.5);
@@ -45,7 +45,7 @@ const StyledHeader = styled.header`
 			margin-left: 12px;
 		}
 
-		.location_pin_icon {
+		.user_profile_icon {
 			padding-top: 5px;
 		}
 	}
@@ -56,7 +56,7 @@ const Header = () => (
 		<div className="wrapper">
 			<div className="logo_title">
 				<Link href="/">
-					<img border="0" alt="phonomenal logo" src="./phonomenal_logo.svg" width="45" height="45" /> 
+					<img border="0" alt="phonomenal logo" src="./phonomenal_icon_alt2.jpg" width="45" height="45" /> 
 				</Link>
 			</div>
 			<div className="nav_links">
@@ -67,12 +67,14 @@ const Header = () => (
 					<a>sell</a>
 				</Link> */}
 				<Link href="/signup">
-					<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./location_pin_thin.svg" width="30" height="30" /> 
+					<a> 
+						<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./location_pin_thin.svg" width="30" height="30" /> 
+					</a>
 				</Link>
 	
 				<Link href="/account">
 					<a> 
-						<img border="0" alt="user_profile_icon" src="./user_profile.svg" width="30" height="30" /> 
+						<img border="0" alt="user_profile_icon" src="./user_profile_grayed_out.svg" width="30" height="30" /> 
 					</a>
 				</Link>
 

@@ -5,15 +5,15 @@ import PropTypes from 'prop-types';
 
 
 // how to create a rounded line to underline words, suhc as tab labels:
-// references:
-// https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents
-// https://stackoverflow.com/questions/52872079/how-to-get-a-border-bottom-line-with-rounded-corner
-// https://stackoverflow.com/questions/48502647/conditional-rendering-in-styled-components
+//* references:
+//* https://stackoverflow.com/questions/450903/how-can-i-make-a-div-not-larger-than-its-contents
+//* https://stackoverflow.com/questions/52872079/how-to-get-a-border-bottom-line-with-rounded-corner
+//* https://stackoverflow.com/questions/48502647/conditional-rendering-in-styled-components
 
 
 const StyledTabLabel = styled.div`
   font-size:${props => props.theme.font_size_nav_bar_small};
-  /* text-align: center; */
+  text-align: center;
   padding: 14px 0px 14px 0px;
   /* color: ${props => props.selected? props.theme.red : props.theme.black}; */
   div {
@@ -39,8 +39,8 @@ const StyledTabLabel = styled.div`
   }
 `;
 
-const StyledTabSelectionIndicator = styled.div`
-`;
+// const StyledTabSelectionIndicator = styled.div`
+// `;
 
 class TabLabel extends Component {
     static propTypes = {

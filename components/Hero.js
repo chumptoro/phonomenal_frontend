@@ -18,14 +18,16 @@ function OpenOrCLose(props) {
 }
 //header is a sub-component of Page so it can reference props.theme!
 const StyledHeroBanner = styled.div` 
+    margin-top: 76px;
     display: grid;
     grid-row-gap: 0px;
     grid-column-gap:0;
     width: 100%;
-    height: 360px;
+    height: 386px;
     box-sizing: border-box;
     padding: 10vw 10vw 10vw 10vw;
-    background-image: url('/AdobeStock_309157141.jpeg');
+    background-image: url('/heroes/hero.jpeg');
+    /* background-image: url('/AdobeStock_309157141.jpeg'); */
     /* background-image: url('/AdobeStock_309156516.jpeg'); */
     /* (https://res.cloudinary.com/druhu3xb6/image/upload/q_auto:low,f_auto/v1592479764/Junzi/Banner/junzi_kitchen_banner.png); */
     background-size: cover;
@@ -56,8 +58,8 @@ const StyledHeroBanner = styled.div`
 const Hero = () => (
     <StyledHeroBanner>
         <div className="heroBannerText">
-            <h1>You want Pho. We get it. </h1>
-            <OpenOrCLose/>  
+            {/* <h1>You want Pho. We get it. </h1>
+            <OpenOrCLose/>   */}
             {/* <a href="/">enter code 'getpho' for 10% off your first order.</a> */}
         </div>
     </StyledHeroBanner>

@@ -114,46 +114,45 @@ class Page extends Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-      
-      <div>
-        <Header/>
-        <Hero/>
-        <Tabs>
-          {/* <div label="Fan Favorites">
-              See ya later, <em>Alligator</em>!
-          </div> */}
+        <div>
+          <Header/>
+          <Hero/>
+          <Tabs>
+            {/* <div label="Fan Favorites">
+                See ya later, <em>Alligator</em>!
+            </div> */}
 
-          <div label="Signature Pho">
-              After 'while, <em>Crocodile</em>!
+            <div label="Signature Pho">
+                After 'while, <em>Crocodile</em>!
+            </div>
+            <div label="Banh Mi">
+                Banh Mi Bi 
+            </div>
+            <div label="Rice Platters">
+                Com Ga, Com Tam 
+            </div>
+            <div label="Vermicelli Bowls">
+                Canh chua ca loc <em>extinct</em>!
+            </div>
+            <div label="Sides">
+                After 'while, <em>Crocodile</em>!
+            </div>
+            <div label="Vegetarian">
+                Canh chua ca loc <em>extinct</em>!
+            </div>
+            <div label="Drinks & Desserts">
+                Canh chua ca loc <em>extinct</em>!
+            </div>
+          </Tabs>
+          <StyledPage>
+            <Meta/>
+            {/* <Header/> */}
+            {/* <Hero/> */}
+            {/* <HorizontalScrollGridItem/> */}
+            {/* <OrderCategory/> */}
+            {/* <Inner>{this.props.children}</Inner> */}
+          </StyledPage>
           </div>
-          <div label="Banh Mi">
-              Banh Mi Bi 
-          </div>
-          <div label="Rice Platters">
-              Com Ga, Com Tam 
-          </div>
-          <div label="Vermicelli Bowls">
-              Canh chua ca loc <em>extinct</em>!
-          </div>
-          <div label="Sides">
-              After 'while, <em>Crocodile</em>!
-          </div>
-          <div label="Vegetarian">
-              Canh chua ca loc <em>extinct</em>!
-          </div>
-          <div label="Drinks & Desserts">
-              Canh chua ca loc <em>extinct</em>!
-          </div>
-      </Tabs>
-				<StyledPage>
-					<Meta/>
-					{/* <Header/> */}
-          {/* <Hero/> */}
-          {/* <HorizontalScrollGridItem/> */}
-          {/* <OrderCategory/> */}
-					{/* <Inner>{this.props.children}</Inner> */}
-				</StyledPage>
-        </div>
 			</ThemeProvider>
 		);
 	}
