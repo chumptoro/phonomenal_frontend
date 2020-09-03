@@ -9,6 +9,13 @@ const StyledItem = styled.div`
   border-radius: 2.5px;
   margin: 0px;
   padding: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 129px;
+
+  /* .item_photo {
+    float: right;
+  } */
   
 `;
 
@@ -29,9 +36,14 @@ class TabContentItem extends Component {
 
       return (
         <StyledItem>
-          <div>{item.name}</div>
-          <div>{item.description}</div>
-          <div>{category}</div>
+          <div>
+            <div>{item.name}</div>
+            <div>{item.description}</div>
+            <div>{category}</div>
+          </div>
+          <div><img src="photai.png" alt="" width="128px" height="128px" /></div>
+
+          {/* <div className="item_photo">hi</div> */}
 
         </StyledItem>
       );

@@ -110,6 +110,25 @@ const Inner = styled.div`
 	padding: 2rem; */}
 `;
 
+const Contact = styled.div`
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: grid;
+  padding-bottom: ${props => props.theme.max_component_vertical_distance};
+  padding-top: ${props => props.theme.max_component_vertical_distance};
+  /* background-color: rgb(250,250,250); */
+  @media (max-width: 300px) {
+  grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+  }
+  @media (min-width: 301px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+  }
+  @media (min-width: 1455px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+  }
+`;
+
 class Page extends Component {
 	render() {
 		return (
@@ -152,6 +171,25 @@ class Page extends Component {
             {/* <OrderCategory/> */}
             {/* <Inner>{this.props.children}</Inner> */}
           </StyledPage>
+          <Contact>
+            <div></div>
+            <div text-align="center">
+              <div>
+                135 W 41st St, New York, NY 10036, USA
+              </div>
+              <div>
+                Telephone: +1(703)-909-6810
+              </div>
+              <div>
+                <small>Copyright ©2020 Phonomenal. All rights reserved.</small>
+              </div>
+              <div>
+                <small>Terms of Service & Privacy Policy</small> 
+              </div>
+             
+            
+            </div>
+          </Contact>
           </div>
 			</ThemeProvider>
 		);

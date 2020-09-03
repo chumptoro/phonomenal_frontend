@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import TabContentItem from './TabContentItem.js';
 
 var dummy_data_point = {"name":"Pho Tai", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak", "id":"1"};
-var data_array = [dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point];
+var dummy_data_point_two = {"name":"Pho Tai Gau", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak and fatty cuts", "id":"1"};
+var data_array = [dummy_data_point, dummy_data_point, dummy_data_point_two, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point];
 
 
 const wrapper_for_grid_coloring = styled.div`
@@ -27,7 +28,7 @@ const StyledItemsList = styled.div`
 grid-column-start: 2;   
   display: grid;
   /* align-items: center; */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
   grid-gap: 30px;
   margin-top: ${props => props.theme.min_component_vertical_distance}; 
   /* background-color: ${props => props.theme.divider_gray}; */

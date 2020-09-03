@@ -44,6 +44,7 @@ var gutter = 2;
 
 const StyledTabs = styled.div`
   display: grid;
+  margin-bottom: ${props => props.theme.max_component_vertical_distance};
   /* background-color: rgb(250,250,250); */
   @media (max-width: 300px) {
   grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
@@ -54,8 +55,6 @@ const StyledTabs = styled.div`
   @media (min-width: 1455px) {
     grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
   }
-  
-
 `;
 const StyledTabHorizontalScroll = styled.div` 
     grid-column-start: 2;   
