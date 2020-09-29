@@ -9,11 +9,12 @@ import Tabs from './Orders_Children/Tabs.js';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
-  green:"rgb(0,204,153)",
+  green:'rgb(0,204,153)',
   red: 'rgb(235, 70, 40)',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
+  content_gray: 'rgba(143, 149, 163, 0.9)',
   offWhite: '#EDEDED',
   blue:'blue',
   divider_gray: 'rgb(231,231,231)',
@@ -23,8 +24,18 @@ const theme = {
   max_component_vertical_distance: '40px',
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
+
+  font_size_title_small: '15.5px',
   font_size_content: '14px',
   font_size_nav_bar_small: '15px',
+
+  font_weight_extra_bold: 'bolder',
+  font_weight_bold: 'bold',
+  font_weight_normal: 'normal',
+  font_weight_light: 'lighter',
+
+  line_height_content: '1.5',
+  line_height_between_paragraphs: '3',
 
   grid_template_desktop_small_width: '30px 1fr 30px',
   grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
@@ -35,6 +46,15 @@ const theme = {
 };
 
 injectGlobal`
+
+  @font-face {
+  font-family:"europa";
+  src:url("https://use.typekit.net/af/4eabcf/00000000000000003b9b12fd/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/4eabcf/00000000000000003b9b12fd/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/4eabcf/00000000000000003b9b12fd/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display:auto;
+  font-style:normal;
+  font-weight:400;
+  }
+
   @font-face {
     font-family: 'radnika_next';
     src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
@@ -67,13 +87,14 @@ injectGlobal`
     box-sizing: inherit;
   } */}
   body {
-    font-family: "freight-sans-pro";
-    font-size: 16px;
+    font-family: "europa";
+    font-size: ${theme.font_size_content};
+    font-weight: ${theme.font_weight_normal};
     display: block;
-    line-height: 1.5;
+    line-height:  ${theme.line_height_content};
     margin:0;
     background: rgb(255,255,255);
-    font-size: ${theme.font_size_content};
+    
     overflow-x:hidden;
   }
   a {
@@ -159,7 +180,10 @@ class Page extends Component {
             <div label="Vegetarian">
                 Canh chua ca loc <em>extinct</em>!
             </div>
-            <div label="Drinks & Desserts">
+            <div label="Sweets">
+                Canh chua ca loc <em>extinct</em>!
+            </div>
+            <div label="Wine & Beer">
                 Canh chua ca loc <em>extinct</em>!
             </div>
           </Tabs>
@@ -175,10 +199,10 @@ class Page extends Component {
             <div></div>
             <div text-align="center">
               <div>
-                135 W 41st St, New York, NY 10036, USA
+              20447 Exchange Street, Ashburn, VA 20147
               </div>
               <div>
-                Telephone: +1(703)-909-6810
+                Telephone: +1(571) 293-9519
               </div>
               <div>
                 <small>Copyright ©2020 Phonomenal. All rights reserved.</small>
@@ -186,8 +210,6 @@ class Page extends Component {
               <div>
                 <small>Terms of Service & Privacy Policy</small> 
               </div>
-             
-            
             </div>
           </Contact>
           </div>

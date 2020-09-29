@@ -12,11 +12,33 @@ const StyledItem = styled.div`
 
   display: grid;
   grid-template-columns: 1fr 129px;
+  grid-column-gap: 20px;
 
+  line-height: ${props => props.theme.line_height_between_paragraphs};
   /* .item_photo {
     float: right;
   } */
   
+`;
+
+const DishName = styled.div`
+  font-weight: ${props => props.theme.font_weight_normal};
+  font-size: ${props => props.theme.font_size_title_small};
+  
+`;
+const DishDescription = styled.div`
+  /* font-weight: ${props => props.theme.font_weight_light}; */
+  line-height: ${props => props.theme.line_height_content};
+  color:${props => props.theme.content_gray};
+`;
+const Price = styled.div`
+  /* font-weight: ${props => props.theme.font_weight_bold}; */
+  color:${props => props.theme.green};
+`;
+const PriceCompare = styled.small`
+  /* text-decoration: line-through; */
+  color: black;
+
 `;
 
 class TabContentItem extends Component {
@@ -32,16 +54,18 @@ class TabContentItem extends Component {
     render() {
       //const { onClick, props: {activeTab, label,}, } = this;
     
-      const { item, category } = this.props;
+      const { item } = this.props;
 
       return (
         <StyledItem>
           <div>
-            <div>{item.name}</div>
-            <div>{item.description}</div>
-            <div>{category}</div>
+            <DishName>{item.name}</DishName>
+            <DishDescription>{item.description}</DishDescription>
+            <Price>
+              ${item.price} <PriceCompare> </PriceCompare>
+            </Price>
           </div>
-          <div><img src="photai.png" alt="" width="128px" height="128px" /></div>
+          <div><img src={item.image} alt="" width="128px" height="128px" /></div>
 
           {/* <div className="item_photo">hi</div> */}
 
