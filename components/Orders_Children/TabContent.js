@@ -79,7 +79,8 @@ class DishesUnderEachCategory extends Component {
             console.log (data)
             return (
               <StyledItemsList>
-                {data.dishes.filter(function(item) {console.log("item.category's name is " +item.category.name); return item.category.name == category.name ;}).map(item => <TabContentItem item={item} key={item.id} />)}
+                {data.dishes.filter(function(item) {
+                  console.log("item.category's name is " +item.category.name); return item.category.name == category.name ;}).map(item => <TabContentItem item={item} key={item.id} />)}
               </StyledItemsList> 
             );
             }

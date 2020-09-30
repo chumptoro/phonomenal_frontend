@@ -162,28 +162,29 @@ class Page extends Component {
                 See ya later, <em>Alligator</em>!
             </div> */}
 
-            <div label="Signature Pho">
+            <div label="Small Dishes">
+                After 'while, <em>Crocodile</em>!
+            </div>
+            <div label="Pho">
                 After 'while, <em>Crocodile</em>!
             </div>
             <div label="Banh Mi">
-                Banh Mi Bi 
+                Banh Mi
             </div>
-            <div label="Rice Platters">
+            <div label="Rice">
                 Com Ga, Com Tam 
             </div>
-            <div label="Vermicelli Bowls">
+            <div label="Vermicelli">
                 Canh chua ca loc <em>extinct</em>!
             </div>
-            <div label="Sides">
-                After 'while, <em>Crocodile</em>!
-            </div>
+
             <div label="Vegetarian">
                 Canh chua ca loc <em>extinct</em>!
             </div>
-            <div label="Sweets">
+            <div label="Bar">
                 Canh chua ca loc <em>extinct</em>!
             </div>
-            <div label="Wine & Beer">
+            <div label="Desserts">
                 Canh chua ca loc <em>extinct</em>!
             </div>
           </Tabs>
