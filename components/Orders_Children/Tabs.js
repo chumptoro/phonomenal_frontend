@@ -1,6 +1,7 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import styled from 'styled-components';
 import React, { Component } from "react";
+import { Link } from 'react-scroll';
 import PropTypes from 'prop-types';
 import TabLabel from './TabLabel.js';
 import TabContent from './TabContent.js';

@@ -1,7 +1,8 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import styled from 'styled-components';
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import { Link } from 'react-scroll';
 
 
 // how to create a rounded line to underline words, suhc as tab labels:
@@ -60,7 +61,9 @@ class TabLabel extends Component {
       if (activeTab === label) {
         return (
           <StyledTabLabel selected onClick={onClick}>
-            <div>{label}</div>
+            <Link activeClass="active" to={label} spy={true} smooth={true} duration={1000}>
+              <div>{label}</div>
+            </Link>
           </StyledTabLabel>
   
         );
@@ -70,7 +73,9 @@ class TabLabel extends Component {
         //   {label}
         // </div>
         <StyledTabLabel onClick={onClick}>
-          <div>{label}</div>
+            <Link activeClass="active" to={label} spy={true} smooth={true} duration={1000}>
+              <div>{label}</div>
+            </Link>
         </StyledTabLabel>
 
       );

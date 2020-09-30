@@ -69,7 +69,8 @@ class DishesUnderEachCategory extends Component {
   render() {
     const { category } = this.props;
     return (
-      <div>
+      <div id={category.display_name}>
+
         <LevelTwoHeader>{category.display_name}</LevelTwoHeader>
         <Query query={ALL_DISHES_QUERY}>
           {
