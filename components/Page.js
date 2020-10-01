@@ -9,8 +9,9 @@ import Tabs from './Orders_Children/Tabs.js';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
+  white: 'rgb(255,255,255)',
   green:'rgb(0,204,153)',
-  red: 'rgb(235, 70, 40)',
+  red: 'rgb(235, 23, 0)',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
@@ -184,7 +185,7 @@ class Page extends Component {
             <div label="Bar">
                 Canh chua ca loc <em>extinct</em>!
             </div>
-            <div label="Desserts">
+            <div label="Dessert">
                 Canh chua ca loc <em>extinct</em>!
             </div>
           </Tabs>
