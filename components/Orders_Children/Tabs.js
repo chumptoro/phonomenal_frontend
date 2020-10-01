@@ -59,8 +59,10 @@ const StyledTabs = styled.div`
 `;
 const StyledTabHorizontalScroll = styled.div` 
     grid-column-start: 2;   
-    
     display: grid;
+    position: sticky;
+    top: 75px;
+    background-color: white;
     grid-template-columns: repeat(auto-fill, 107px);
     /* grid-row-gap: 12px; */
     padding-bottom: ${props => props.theme.min_component_vertical_distance} ;

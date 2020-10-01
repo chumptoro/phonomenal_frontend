@@ -60,11 +60,12 @@ class TabLabel extends Component {
   
       if (activeTab === label) {
         return (
-          <StyledTabLabel selected onClick={onClick}>
-            <Link activeClass="active" to={label} spy={true} smooth={true} duration={1000}>
+          <Link to={label} offset={-140} spy={true} smooth={true} duration={1000}>
+            <StyledTabLabel selected onClick={onClick}>
               <div>{label}</div>
-            </Link>
-          </StyledTabLabel>
+            </StyledTabLabel>
+          </Link>
+
   
         );
       }
@@ -72,11 +73,11 @@ class TabLabel extends Component {
         // <div className={className} onClick={onClick}>
         //   {label}
         // </div>
-        <StyledTabLabel onClick={onClick}>
-            <Link activeClass="active" to={label} spy={true} smooth={true} duration={1000}>
-              <div>{label}</div>
-            </Link>
-        </StyledTabLabel>
+        <Link to={label} offset={-140} spy={true} smooth={true} duration={1000}>
+          <StyledTabLabel onClick={onClick}>
+            <div>{label}</div>
+          </StyledTabLabel>
+        </Link>
 
       );
     }
