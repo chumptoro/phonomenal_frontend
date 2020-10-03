@@ -4,7 +4,7 @@ import Meta from './Meta.js';
 import Hero from './Hero.js';
 import OrderCategory from './Orders_Children/OrderCategory.js';
 import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
-import Tabs from './Orders_Children/Tabs.js';
+import Tabs from './Tab/Tabs.js';
 
 import Order from './Order';
 
@@ -43,9 +43,6 @@ const theme = {
   grid_template_desktop_small_width: '30px 1fr 30px',
   grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
   grid_template_desktop_large_width: '1fr 1121px 1fr',
-
-
-
 };
 
 injectGlobal`

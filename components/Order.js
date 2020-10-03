@@ -34,31 +34,21 @@ class Order extends Component {
 
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
   handleTextInputChange = (e) => {
-    const { field, value } = e.target;
     //const val = type === 'number'? parseFloat(value) : value;
     //we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
-    this.setState({[field]:value});
+
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
+    console.log("state is currently " + this.state[name]);
+    console.log("togglin state to value " + e.target.value);
     //console.log (this.state.title);
   };
 
   handleRadioButton = (e) => {
-    //const { name, value } = e.target;
-    // if(e.target.checked) {
-    //   console.log("state field current has value " + this.state.delivery_method);
-    //   console.log("switch button has value " + e.target.value);
-    //   this.setState({delivery_method: e.target.value});
-    // }
-    // else {
-    //   e.target.checked == true;
-    //   console.log("field delivery_method now has value " + this.state.delivery_method);
-    // }
-  
-
     console.log("state is currently " + this.state.delivery_method);
-    console.log("togglin state to value " + e.target.id);
-    this.setState({ delivery_method: e.target.id });
-    
-    
+    console.log("togglin state to value " + e.target.value);
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -68,7 +58,6 @@ class Order extends Component {
           state: this.state,
           handleTextInputChange: e => this.handleTextInputChange(e),
           handleRadioButton: e => this.handleRadioButton(e)
-            
         }}
       >
         {this.props.children}
