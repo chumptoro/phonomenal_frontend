@@ -67,6 +67,9 @@ const StyledTabHorizontalScroll = styled.div`
     /* grid-row-gap: 12px; */
     padding-bottom: ${props => props.theme.min_component_vertical_distance} ;
     margin-bottom: ${props => props.theme.min_component_vertical_distance} ;
+    border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+    /* border-left: 1px solid rgba(217, 219, 224, 0.5);
+    border-right: 1px solid rgba(217, 219, 224, 0.5); */
  
     
     /* border-bottom: solid 1px; 
@@ -74,6 +77,47 @@ const StyledTabHorizontalScroll = styled.div`
 
     /* background-color: rgb(240, 240, 240); */    
 `;
+
+const DividerRight = styled.div` 
+    grid-column-start: 3;   
+    display: grid;
+    position: sticky;
+    top: 75px;
+    background-color: white;
+    grid-template-columns: repeat(auto-fill, 107px);
+    /* grid-row-gap: 12px; */
+    padding-bottom: ${props => props.theme.min_component_vertical_distance} ;
+    margin-bottom: ${props => props.theme.min_component_vertical_distance} ;
+    border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+ 
+    
+    /* border-bottom: solid 1px; 
+    border-color: ${props => props.theme.divider_gray} ; */
+
+    /* background-color: rgb(240, 240, 240); */    
+
+    color: white;
+`;
+const DividerLeft = styled.div` 
+    grid-column-start: 1;   
+    display: grid;
+    position: sticky;
+    top: 75px;
+    background-color: white;
+    grid-template-columns: repeat(auto-fill, 107px);
+    /* grid-row-gap: 12px; */
+    padding-bottom: ${props => props.theme.min_component_vertical_distance} ;
+    margin-bottom: ${props => props.theme.min_component_vertical_distance} ;
+    border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+ 
+    
+    /* border-bottom: solid 1px; 
+    border-color: ${props => props.theme.divider_gray} ; */
+
+    /* background-color: rgb(240, 240, 240); */    
+    color: white;
+`;
+
 class Tabs extends Component {
     static propTypes = {
       children: PropTypes.instanceOf(Array).isRequired,
@@ -89,6 +133,7 @@ class Tabs extends Component {
             } = this;
       return (
        <StyledTabs>
+        {/* <DividerLeft>hi</DividerLeft> */}
           <StyledTabHorizontalScroll>
             {
               children.map((child) => {
@@ -107,6 +152,8 @@ class Tabs extends Component {
               <TabContent category={activeTab}/>
             </div>             */}
           </StyledTabHorizontalScroll>
+          {/* <DividerRight>hi</DividerRight> */}
+
           <TabContent category={activeTab}/>
         </StyledTabs>
           

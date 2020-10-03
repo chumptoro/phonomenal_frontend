@@ -6,6 +6,8 @@ import OrderCategory from './Orders_Children/OrderCategory.js';
 import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
 import Tabs from './Orders_Children/Tabs.js';
 
+import Order from './Order';
+
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
@@ -155,7 +157,7 @@ class Page extends Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-        <div>
+        <Order>
           <Header/>
           <Hero/>
           <Tabs>
@@ -214,7 +216,7 @@ class Page extends Component {
               </div>
             </div>
           </Contact>
-          </div>
+          </Order>
 			</ThemeProvider>
 		);
 	}

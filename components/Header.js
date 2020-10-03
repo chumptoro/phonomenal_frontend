@@ -1,6 +1,7 @@
 import Nav from './Nav.js'
 import Link from 'next/link';
 import styled from 'styled-components';
+import ContextDescendantRadioButton from './ContextDescendantRadioButton';
 
 const Logo = styled.h1`
 `;
@@ -124,12 +125,14 @@ const Header = () => (
 				</a>
 			</div>
 
-			<StyledRadioToggle className="switch-field">
+			{/* <StyledRadioToggle className="switch-field">
 					<input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
 					<label for="radio-one">Delivery</label>
 					<input type="radio" id="radio-two" name="switch-one" value="no" />
 					<label for="radio-two">Pickup</label>
-			</StyledRadioToggle>
+			</StyledRadioToggle> */}
+
+			<ContextDescendantRadioButton />
 
 			<div className="right_sided_nav">
 				<Link href="/account">

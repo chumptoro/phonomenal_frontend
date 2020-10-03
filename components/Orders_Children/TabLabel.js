@@ -60,7 +60,7 @@ class TabLabel extends Component {
   
       if (activeTab === label) {
         return (
-          <Link to={label} offset={-150} spy={true} smooth={true} duration={1000}>
+          <Link to={label} offset={-180} spy={true} smooth={true} duration={1000}>
             <StyledTabLabel selected onClick={onClick}>
               <div>{label}</div>
             </StyledTabLabel>
@@ -73,7 +73,7 @@ class TabLabel extends Component {
         // <div className={className} onClick={onClick}>
         //   {label}
         // </div>
-        <Link to={label} offset={-150} spy={true} smooth={true} duration={1000}>
+        <Link to={label} offset={-180} spy={true} smooth={true} duration={1000}>
           <StyledTabLabel onClick={onClick}>
             <div>{label}</div>
           </StyledTabLabel>

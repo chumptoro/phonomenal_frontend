@@ -77,11 +77,11 @@ class DishesUnderEachCategory extends Component {
             ({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
-            console.log (data)
+            {/* console.log (data) */}
             return (
               <StyledItemsList>
                 {data.dishes.filter(function(item) {
-                  console.log("item.category's name is " +item.category.name); return item.category.name == category.name ;}).map(item => <TabContentItem item={item} key={item.id} />)}
+                  {/* console.log("item.category's name is " +item.category.name);  */}return item.category.name == category.name ;}).map(item => <TabContentItem item={item} key={item.id} />)}
               </StyledItemsList> 
             );
             }
@@ -117,7 +117,7 @@ class TabContent extends Component {
               ({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
               if (error) return <p>Error: {error.message}</p>;
-              console.log (data)
+              {/* console.log (data) */}
 
               return (
                 <StyledTabContent>
