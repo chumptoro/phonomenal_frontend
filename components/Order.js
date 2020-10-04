@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import React, { Component } from "react";
-import OrderCategory from './Orders_Children/OrderCategory';
+
 
 import { Provider } from "./Context";
 // export { Provider, Consumer };
@@ -19,6 +19,8 @@ class Order extends Component {
   state = {
       activeTab: this.props.children[0].props.label,
 
+      show: false,
+
       delivery_method: "pickup",
       total_price: "0",
       progress_status: "shopping bag is populated",
@@ -31,6 +33,14 @@ class Order extends Component {
   	  delivery_address: "",
       payment_card_number: "",
   };
+
+   
+  showModal = () => {
+      this.setState({ show: true });
+  }
+  hideModal = () => {
+      this.setState({ show: false });
+  }
 
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
   handleTextInputChange = (e) => {
@@ -57,10 +67,13 @@ class Order extends Component {
         value={{
           state: this.state,
           handleTextInputChange: e => this.handleTextInputChange(e),
-          handleRadioButton: e => this.handleRadioButton(e)
+          handleRadioButton: e => this.handleRadioButton(e),
+          showModal: this.showModal,
+          hideModal: this.hideModal
         }}
       >
         {this.props.children}
+        
       </Provider>
     );
   }

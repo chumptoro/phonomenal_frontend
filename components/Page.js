@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Header from './Header.js';
 import Meta from './Meta.js';
 import Hero from './Hero.js';
-import OrderCategory from './Orders_Children/OrderCategory.js';
 import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
 import Tabs from './Tab/Tabs.js';
 
 import Order from './Order';
 
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import styled, { ThemeProvider, injectGlobal, createGlobalStyle } from 'styled-components';
+
+import { Provider, Consumer } from "./Context";
 
 const theme = {
   white: 'rgb(255,255,255)',
@@ -45,7 +46,7 @@ const theme = {
   grid_template_desktop_large_width: '1fr 1121px 1fr',
 };
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
 
   @font-face {
   font-family:"europa";
@@ -96,12 +97,15 @@ injectGlobal`
     background: rgb(255,255,255);
     
     overflow-x:hidden;
+    height: 100%;
+    
   }
   a {
     text-decoration: none;
   }
-  button {  font-family: 'freight-sans-pro'; }
+  button {  font-family: 'europa'; }
 `;
+
 
 const StyledPage = styled.div`
 	
@@ -154,6 +158,8 @@ class Page extends Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
+        <GlobalStyle/>
+
         <Order>
           <Header/>
           <Hero/>
