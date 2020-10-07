@@ -15,6 +15,7 @@ const theme = {
   white: 'rgb(255,255,255)',
   green:'rgb(0,204,153)',
   red: 'rgb(235, 23, 0)',
+  red_selected: 'rgb(209, 23, 2)',
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
@@ -29,9 +30,12 @@ const theme = {
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
 
+  font_size_title_mid: '17px',
   font_size_title_small: '15.5px',
   font_size_content: '14px',
   font_size_nav_bar_small: '15px',
+
+  emoji_size_mid : '20px',
 
   font_weight_extra_bold: 'bolder',
   font_weight_bold: 'bold',

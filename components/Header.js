@@ -65,8 +65,6 @@ const StyledHeader = styled.header`
     	font-family: "europa";
 		border: none;
 		outline: none;
-		
-		
 	}
 
 `;

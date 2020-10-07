@@ -19,28 +19,20 @@ class Order extends Component {
   state = {
       activeTab: this.props.children[0].props.label,
 
-      show: false,
-
-      delivery_method: "pickup",
-      total_price: "0",
-      progress_status: "shopping bag is populated",
-      payment_status: false,
-
       first_name: "",
   	  last_name: "",
   	  email: "",
   	  phone_number: "",
   	  delivery_address: "",
       payment_card_number: "",
-  };
 
-   
-  showModal = () => {
-      this.setState({ show: true });
-  }
-  hideModal = () => {
-      this.setState({ show: false });
-  }
+      delivery_method: "pickup",
+      total_price: "0",
+      progress_status: "shopping bag is populated",
+      payment_status: false,
+
+      order_items: [{dish: "id", quantity: 1, special_instruction: "", price: 4.99}],
+  };
 
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
   handleTextInputChange = (e) => {
@@ -61,6 +53,17 @@ class Order extends Component {
     this.setState({ [name]: value });
   };
 
+  //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
+  handleAddingItemOrder = (e) => {
+    //const val = type === 'number'? parseFloat(value) : value;
+    //we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
+    console.log("state is currently " + this.state[name]);
+    console.log("togglin state to value " + e.target.value);
+    //console.log (this.state.title);
+  };
+
   render() {
     return (
       <Provider
@@ -68,8 +71,6 @@ class Order extends Component {
           state: this.state,
           handleTextInputChange: e => this.handleTextInputChange(e),
           handleRadioButton: e => this.handleRadioButton(e),
-          showModal: this.showModal,
-          hideModal: this.hideModal
         }}
       >
         {this.props.children}
