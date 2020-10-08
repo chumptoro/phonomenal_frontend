@@ -7,7 +7,8 @@ const StyledOrderItemDetail = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin-bottom: 30px;
+  
+  /* margin-bottom: 30px; */
 
   .box {
     margin: ${props => props.theme.max_component_vertical_distance};

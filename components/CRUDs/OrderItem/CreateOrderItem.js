@@ -6,31 +6,33 @@ import Router from 'next/router';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
 
+import StyledOrderItemDetail from "../../Styling/Form";
+import {StyledButton, ButtonRow} from "../../Styling/Button";
+
+
 //the below says: run a CREATE_ITEM_MUTATION function with $title, $description, etc... arguments.  This function will then call a function createItem we specifies in our schema
 
 //the variables ($description, $title) are given to CREATE_ITEM_MUTATION using apollo's <Mutation>,which has a variables prop (see below)
-const CREATE_ITEM_MUTATION = gql`
-	mutation CREATE_ITEM_MUTATION ($title: String $description: String, $price: Int! $image: String $largeImage: String) 
+const CREATE_ORDER_ITEM_MUTATION = gql`
+	mutation CREATE_ORDER_ITEM_MUTATION ($dish:Dish $price: Int! $image: String $largeImage: String) 
 	{
-		createItem(
-			title: $title
-			description: $description
-			price:  $price
-			image: $image
-			largeImage: $largeImage
+		createOrderItem(
+			dish: $dish
+			quantity:  $quantity
+			special_instruction: $special_instruction
+			price: $price
 		) {
 		  id		
 		}
 	}
 `;
 
-class CreateItem extends Component {
+class CreateOrderItem extends Component {
 	state = {
-		title:'new dish',
-		description:' great food',
-		image:'food.jpeg',
-		largeImage:'',
-		price: 1000,
+		dish: this.props.dish,
+		quantity:1,
+		special_instruction:'',
+		price: 0,
 	}
 
 	//if we  use this arrow property, there is no need to bind handleChange to the cirrect this,  it wil be handled
@@ -39,64 +41,13 @@ class CreateItem extends Component {
 		const val = type === 'number'? parseFloat(value) : value;
 		//we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
 		this.setState({[name]:val});
-
-		//console.log (this.state.title);
 	}
 	render() {
 		return (
-			<Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
 					(createItem, {loading, error}) => (
-						<Form onSubmit={ async e => {
-								e.preventDefault();
-								const res = await createItem();
-								console.log(res);
-								// Router.push({
-								// 	pathname: '/item',
-								// 	query: { id: res.data.createItem.id }
-								// })
-							}}
-						>
-							<Error error={error}/>
-							<fieldset disabled={loading}>
-								<label htmlFor="title">
-									Title
-									<input 
-										type="text" 
-										id="title" 
-										name="title"
-										required
-										value ={this.state.title}
-										onChange={this.handleChange}
-									/>
-								</label>
-
-								<label htmlFor="price">
-									Price
-									<input 
-										type="number" 
-										id="price" 
-										name="price"
-										required
-										value ={this.state.price}
-										onChange={this.handleChange}
-									/>
-								</label>
-
-								<label htmlFor="description">
-									Description
-									<input 
-										type="text" 
-										id="description" 
-										name="description"
-										required
-										value ={this.state.description}
-										onChange={this.handleChange}
-									/>
-								</label>
-								<button type = 'submit'>Submit</button>
-							</fieldset>
-						</Form>
+						
 					)
 				}
 			</Mutation>
@@ -104,5 +55,5 @@ class CreateItem extends Component {
 	}
 };
 
-export default CreateItem;
-export { CREATE_ITEM_MUTATION };
+export default CreateOrderItem;
+export { CREATE_ORDER_ITEM_MUTATION };

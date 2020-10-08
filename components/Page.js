@@ -26,9 +26,12 @@ const theme = {
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   titleFontSize: '20px',
+
+  extra_max_component_vertical_distance: '110px',
   max_component_vertical_distance: '40px',
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
+  
 
   font_size_title_mid: '17px',
   font_size_title_small: '15.5px',

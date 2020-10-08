@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Consumer } from "../Context";
 
 import StyledOrderItemDetail from "../Styling/Form";
+import {StyledButton, ButtonRow} from "../Styling/Button"
 
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
@@ -125,44 +126,70 @@ const StyledCloseButton = styled.div`
   background-image: url('/icons/close_button.svg');
 `;
 
-const StyledButton = styled.div`
-  width: auto;
-  height: auto; 
-  margin: auto;
-  padding: 12px;
-  background-color: ${props => props.theme.red} ;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  font-size: ${props => props.theme.font_size_title_mid};
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${props => props.theme.red_selected} ;
-  }
+// const StyledButton = styled.div`
+//   width: auto;
+//   height: auto; 
   
-`;
+//   margin: auto;
+//   margin-top:${props => props.theme.extra_max_component_vertical_distance};
+//   margin-bottom: ${props => props.theme.mid_component_vertical_distance};
+
+//   padding: 12px;
+//   background-color: ${props => props.theme.red} ;
+//   border-radius: 4px;
+//   color: white;
+//   font-weight: bold;
+//   font-size: ${props => props.theme.font_size_title_mid};
+
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: ${props => props.theme.red_selected} ;
+//   }
+
+//   /* animation */ 
+//   transition: all 0.25s;
+
+//   /* have the button span the last row of a grid: 
+//   grid-column: 1 / -1;
+//   grid-row-start: span 900; */
+  
+// `;
 
 const StyledAddItemButton = styled(StyledButton)`
-  margin: auto;
-  margin-bottom: ${props => props.theme.max_component_vertical_distance}; 
-  display: ${props => (props.order_item_added ? 'none' : 'grid')};
-  transition: all 0.25s;
+  grid-column: 1 / -1;
+  grid-row-start: 90;
+  display: ${props => (props.order_item_added ? 'none' : 'block')};
+  
 `;
 
 const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
-  width: 150px;
+  width: auto;
   height: auto;
-  margin: auto;
-  margin-bottom: ${props => props.theme.max_component_vertical_distance}; 
-  display: ${props => (props.order_item_added ? 'grid' : 'none')};
-  transition: all 0.25s;
+  display: ${props => (props.order_item_added ? 'block' : 'none')};
+  
 `;
 
 const StyledAddMoreButton = styled(StyledCheckOutButton)`
 `;
+
+// const ButtonRow = styled.div`
+//   grid-column: 1 / -1;
+//   grid-row-start: 90;
+//   margin: auto;
+
+//   display:grid;
+//   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+//   grid-auto-flow: column;
+
+//   /* distance between buttons */
+//   div {
+//     margin-right: 15px;
+//     margin-left: 15px;
+//   }
+
+// `;
 
 
 class TabContentItemThumbnail extends Component {
@@ -189,19 +216,16 @@ class TabContentItemThumbnail extends Component {
 class TabContentItemModal extends Component {
   state = { 
     order_item_added: false,
-    order_item_not_yet_created: false,
+    order_item_initial: true,
     dish: this.props.item,
     quantity: 1,
     special_instruction: this.props.item.price
   }
   showItemAddingSuccessMessage = () => {
     this.setState({ order_item_added: true });
-    
-    console.log("running showItemAddingSuccessMessage.  state is " + this.state.order_item_added);
   }
   hideItemAddingSuccessMessage = () => {
     this.setState({ order_item_added: false });
-    console.log("running hideItemAddingSuccessMessage.  state is " + this.state.order_item_added);
   }
   
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
@@ -212,19 +236,24 @@ class TabContentItemModal extends Component {
     this.setState({ [name]: value });
     console.log("order item field currently has value " + this.state[name]);
     console.log("changing ore item field value to " + e.target.value);
-    //console.log (this.state.title);
+  
   };
-
   render() {
     const { item, handleClose, show} = this.props;
     console.log(show);
+    console.log(" state of order_item_added is " + this.state.order_item_added);
     return (
         <StyledBlurLayer clicked={show}>
           <StyledModal>
               <StyledCloseButton onClick={handleClose}></StyledCloseButton>
-              <StyledHeroBanner />
+             
+              <StyledHeroBanner/>
 
-              <StyledOrderItemDetail order_item_added={this.state.order_item_added} >
+           {/*    <CreateOrderItem dish={item} order_item_added={this.state.order_item_added} /> */}
+
+              <StyledOrderItemDetail 
+                order_item_added={this.state.order_item_added} 
+              >
                 <div className="box">
                   <div className="title">
                     {item.name}
@@ -238,29 +267,34 @@ class TabContentItemModal extends Component {
                   <input type="number" name = "quantity" placeholder="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
                 </div>
                 <div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-              </StyledOrderItemDetail>
 
-              <StyledAddItemButton 
+                <StyledAddItemButton 
                 order_item_added={this.state.order_item_added} 
                 onClick={this.showItemAddingSuccessMessage}
-              >
-                add item
-              </StyledAddItemButton>
-              
-              <div className="buttons_span">
-                <StyledCheckOutButton 
-                  order_item_added={this.state.order_item_added} 
-                  onClick={handleClose}
                 >
-                  check out 
-                </StyledCheckOutButton>
-                <StyledAddMoreButton
-                  order_item_added={this.state.order_item_added} 
-                  onClick={handleClose}
-                >
-                  add more dishes
-                </StyledAddMoreButton> 
-              </div> 
+                  add item
+                </StyledAddItemButton>
+
+                <ButtonRow>
+                  <StyledCheckOutButton 
+                    order_item_added={this.state.order_item_added} 
+                    onClick={handleClose}
+                  >
+                    check out 
+                  </StyledCheckOutButton>
+                  
+                  <StyledAddMoreButton
+                    order_item_added={this.state.order_item_added} 
+                    onClick={handleClose}
+                  >
+                    add dishes
+                  </StyledAddMoreButton>
+                </ButtonRow>
+              </StyledOrderItemDetail>
+
+
+          
+
           </StyledModal>
         </StyledBlurLayer>
     );
