@@ -5,6 +5,8 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { Consumer } from "../Context";
 
+import CreateOrderItem from "../CRUDs/OrderItem/CreateOrderItem"
+
 import StyledOrderItemDetail from "../Styling/Form";
 import {StyledButton, ButtonRow} from "../Styling/Button"
 
@@ -159,7 +161,7 @@ const StyledCloseButton = styled.div`
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
   grid-row-start: 90;
-  display: ${props => (props.order_item_added ? 'none' : 'block')};
+  display: ${props => (props.order_item_created ? 'none' : 'block')};
   
 `;
 
@@ -167,7 +169,7 @@ const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
   width: auto;
   height: auto;
-  display: ${props => (props.order_item_added ? 'block' : 'none')};
+  display: ${props => (props.order_item_created ? 'block' : 'none')};
   
 `;
 
@@ -215,17 +217,19 @@ class TabContentItemThumbnail extends Component {
 
 class TabContentItemModal extends Component {
   state = { 
-    order_item_added: false,
-    order_item_initial: true,
+    order_item_created: false,
+    order_item_update_first_time_shown: true,
+
     dish: this.props.item,
     quantity: 1,
     special_instruction: this.props.item.price
   }
   showItemAddingSuccessMessage = () => {
-    this.setState({ order_item_added: true });
+    this.setState({ order_item_created: true });
+    console.log(" state of order_item_created is " + this.state.order_item_created);
   }
   hideItemAddingSuccessMessage = () => {
-    this.setState({ order_item_added: false });
+    this.setState({ order_item_created: false });
   }
   
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
@@ -240,8 +244,8 @@ class TabContentItemModal extends Component {
   };
   render() {
     const { item, handleClose, show} = this.props;
-    console.log(show);
-    console.log(" state of order_item_added is " + this.state.order_item_added);
+    // console.log(show);
+    // console.log(" state of order_item_created is " + this.state.order_item_created);
     return (
         <StyledBlurLayer clicked={show}>
           <StyledModal>
@@ -249,10 +253,10 @@ class TabContentItemModal extends Component {
              
               <StyledHeroBanner/>
 
-           {/*    <CreateOrderItem dish={item} order_item_added={this.state.order_item_added} /> */}
+              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} />
 
-              <StyledOrderItemDetail 
-                order_item_added={this.state.order_item_added} 
+              {/* <StyledOrderItemDetail 
+                order_item_created={this.state.order_item_created} 
               >
                 <div className="box">
                   <div className="title">
@@ -269,7 +273,7 @@ class TabContentItemModal extends Component {
                 <div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                 <StyledAddItemButton 
-                order_item_added={this.state.order_item_added} 
+                order_item_created={this.state.order_item_created} 
                 onClick={this.showItemAddingSuccessMessage}
                 >
                   add item
@@ -277,20 +281,20 @@ class TabContentItemModal extends Component {
 
                 <ButtonRow>
                   <StyledCheckOutButton 
-                    order_item_added={this.state.order_item_added} 
+                    order_item_created={this.state.order_item_created} 
                     onClick={handleClose}
                   >
                     check out 
                   </StyledCheckOutButton>
                   
                   <StyledAddMoreButton
-                    order_item_added={this.state.order_item_added} 
+                    order_item_created={this.state.order_item_created} 
                     onClick={handleClose}
                   >
                     add dishes
                   </StyledAddMoreButton>
                 </ButtonRow>
-              </StyledOrderItemDetail>
+              </StyledOrderItemDetail> */}
 
 
           

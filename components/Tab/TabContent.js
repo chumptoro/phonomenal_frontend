@@ -13,6 +13,7 @@ var data_array = [dummy_data_point, dummy_data_point, dummy_data_point_two, dumm
 const ALL_DISHES_QUERY = gql`
   query ALL_DISHES_QUERY {
     dishes (orderBy:menu_order_ASC) {
+      id
 		  name
       description
       image

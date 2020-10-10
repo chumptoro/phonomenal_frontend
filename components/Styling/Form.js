@@ -21,13 +21,14 @@ const StyledOrderItemDetail = styled.div`
   .message {
     margin: 0;
     margin-left: ${props => props.theme.max_component_vertical_distance};
-    color: ${props => (props.order_item_added ? props.theme.green : 'white')};
+    color: ${props => (props.order_item_created ? props.theme.green : 'white')};
+    opacity: ${props => (props.order_item_created ? 1 : 0)};
     font-size: ${props => props.theme.font_size_title_small};
     grid-column-start: 1;
 
     span {
       font-size: ${props => props.theme.emoji_size_mid};
-      opacity: ${props => (props.order_item_added ? '1' : '0')};
+      opacity: ${props => (props.order_item_created ? '1' : '0')};
     }
   }
   input[type="text"]
