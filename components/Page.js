@@ -98,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "europa";
     font-size: ${theme.font_size_content};
     font-weight: ${theme.font_weight_normal};
-    display: block;
+    
     line-height:  ${theme.line_height_content};
     margin:0;
     background: rgb(255,255,255);

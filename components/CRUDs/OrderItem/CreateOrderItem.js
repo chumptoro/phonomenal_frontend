@@ -10,7 +10,6 @@ const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
   grid-row-start: 90;
   display: ${props => (props.order_item_created ? 'none' : 'block')};
-  
 `;
 
 const StyledCheckOutButton = styled(StyledButton)`
@@ -18,10 +17,13 @@ const StyledCheckOutButton = styled(StyledButton)`
   width: auto;
   height: auto;
   display: ${props => (props.order_item_created ? 'block' : 'none')};
-  
 `;
 
 const StyledAddMoreButton = styled(StyledCheckOutButton)`
+`;
+
+const ShowHideController = styled.div`
+	/* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
 `;
 
 
@@ -34,15 +36,13 @@ const CREATE_ORDER_ITEM_MUTATION = gql`
 	{
 		createOrderItem(
 			data: {
-			quantity:  $quantity
-			special_instruction: $special_instruction
-			price: $price,
-			dish_id: $dish_id
-			dish: { connect: {id: $dish_id}},
-			dish_name: $dish_name,
-
+				quantity:  $quantity
+				special_instruction: $special_instruction
+				price: $price,
+				dish_id: $dish_id
+				dish: { connect: {id: $dish_id}},
+				dish_name: $dish_name,
 			}
-
 		) {
 		  id		
 		}
@@ -62,7 +62,11 @@ class CreateOrderItem extends Component {
 	handleTextInputChange = (e) => {
 		const { name, type, value } = e.target;
 		var val = type === 'number'? parseFloat(value) : value;
-		val = name === "quantity" ? parseFloat(value)*this.state.quantity : value
+		if (name === "quantity") 
+		{
+			this.setState({ price: val*parseFloat(this.props.dish.price)});
+		} 
+
 		//we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
 		this.setState({[name]:val});
 		console.log("order item field currently has value " + this.state[name]);
@@ -70,6 +74,7 @@ class CreateOrderItem extends Component {
 	}
 	render() {
 		return (
+			<ShowHideController  order_item_created={this.props.order_item_created} >
 			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
 					(createOrderItem, {loading, error}) => (
@@ -102,18 +107,15 @@ class CreateOrderItem extends Component {
 								// 	pathname: '/item',
 								// 	query: { id: res.data.createItem.id }
 								// })
-
 							}}
 							>
 							add item
 							</StyledAddItemButton>
-
-							
 						</StyledOrderItemDetail>
-						
 					)
 				}
 			</Mutation>
+			</ShowHideController>
 		);
 	}
 };

@@ -78,7 +78,8 @@ class DishesUnderEachCategory extends Component {
             ({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
-            {/* console.log (data) */}
+            {/* console.log (data); */}
+            {/* console.log(data.dishes[1].name); */}
             return (
               <StyledItemsList>
                 {data.dishes.filter(function(item) {
@@ -164,7 +165,7 @@ class TabContento extends Component {
             ({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
-            console.log (data)
+            {/* console.log (data) */}
             return (
               <StyledItemsList>
                 {data.dishes.filter(function(item) {return item.category == "pho";}).map(item => <TabContentItem item={item} key={item.id} />)}

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Consumer } from "../Context";
 
 import CreateOrderItem from "../CRUDs/OrderItem/CreateOrderItem"
+import QueryOrderItem from "../CRUDs/OrderItem/QueryOrderItem"
 
 import StyledOrderItemDetail from "../Styling/Form";
 import {StyledButton, ButtonRow} from "../Styling/Button"
@@ -246,6 +247,19 @@ class TabContentItemModal extends Component {
     const { item, handleClose, show} = this.props;
     // console.log(show);
     // console.log(" state of order_item_created is " + this.state.order_item_created);
+    let form;
+    // console.log("status of order_item_created: " + this.state.order_item_created);
+
+    if (this.state.order_item_created == false) {
+      /* console.log("false"); */
+      form =              
+              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> ;
+    } else {
+      /* console.log("true"); */
+      form =               
+              <QueryOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> ;
+    }
+
     return (
         <StyledBlurLayer clicked={show}>
           <StyledModal>
@@ -253,7 +267,10 @@ class TabContentItemModal extends Component {
              
               <StyledHeroBanner/>
 
-              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} />
+              {form}
+              {/* <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> 
+
+              <UpdateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} />  */}
 
               {/* <StyledOrderItemDetail 
                 order_item_created={this.state.order_item_created} 
