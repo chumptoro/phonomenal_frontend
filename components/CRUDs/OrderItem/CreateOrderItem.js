@@ -69,8 +69,8 @@ class CreateOrderItem extends Component {
 
 		//we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
 		this.setState({[name]:val});
-		console.log("order item field currently has value " + this.state[name]);
-		console.log("changing ore item field value to " + e.target.value);
+		// console.log("order item field currently has value " + this.statex[name]);
+		// console.log("changing ore item field value to " + e.target.value);
 	}
 	render() {
 		return (
