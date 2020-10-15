@@ -53,6 +53,22 @@ const ButtonRow = styled.div`
 
 `;
 
+const StyledWindowTopBarCloseButton = styled(StyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  margin:0;
+  padding: 5px;
+
+  /* background-image: url('/icons/close_button.svg'); */
+  background-color: ${props => props.theme.lightgrey} ;
+
+  &:hover {
+  background-color: ${props => props.theme.red_selected} ;
+}
+
+  
+`;
 
 
 

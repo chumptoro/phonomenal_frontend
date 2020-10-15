@@ -86,6 +86,9 @@ class QueryOrderItem extends Component {
 									data ={data}
 								 	parent_props={this.props} 
 								 	onUpdate={this.handleTextInputChange}
+									order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
+									order_item_created={this.props.order_item_created}
+									onSubmission={this.props.showItemAddingSuccessMessage}
 								/>
 							);
 						}

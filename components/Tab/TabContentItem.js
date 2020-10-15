@@ -129,35 +129,6 @@ const StyledCloseButton = styled.div`
   background-image: url('/icons/close_button.svg');
 `;
 
-// const StyledButton = styled.div`
-//   width: auto;
-//   height: auto; 
-  
-//   margin: auto;
-//   margin-top:${props => props.theme.extra_max_component_vertical_distance};
-//   margin-bottom: ${props => props.theme.mid_component_vertical_distance};
-
-//   padding: 12px;
-//   background-color: ${props => props.theme.red} ;
-//   border-radius: 4px;
-//   color: white;
-//   font-weight: bold;
-//   font-size: ${props => props.theme.font_size_title_mid};
-
-//   cursor: pointer;
-
-//   &:hover {
-//     background-color: ${props => props.theme.red_selected} ;
-//   }
-
-//   /* animation */ 
-//   transition: all 0.25s;
-
-//   /* have the button span the last row of a grid: 
-//   grid-column: 1 / -1;
-//   grid-row-start: span 900; */
-  
-// `;
 
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
@@ -177,22 +148,6 @@ const StyledCheckOutButton = styled(StyledButton)`
 const StyledAddMoreButton = styled(StyledCheckOutButton)`
 `;
 
-// const ButtonRow = styled.div`
-//   grid-column: 1 / -1;
-//   grid-row-start: 90;
-//   margin: auto;
-
-//   display:grid;
-//   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-//   grid-auto-flow: column;
-
-//   /* distance between buttons */
-//   div {
-//     margin-right: 15px;
-//     margin-left: 15px;
-//   }
-
-// `;
 
 
 class TabContentItemThumbnail extends Component {
@@ -225,12 +180,12 @@ class TabContentItemModal extends Component {
     quantity: 1,
     special_instruction: this.props.item.price
   }
-  showItemAddingSuccessMessage = () => {
+  itemAddingSuccessMessageCanBeShown = () => {
     this.setState({ order_item_created: true });
-    console.log(" state of order_item created is " + this.state.order_item_created);
+    //console.log(" state of order_item created is " + this.state.order_item_created);
   }
-  hideItemAddingSuccessMessage = () => {
-    this.setState({ order_item_created: false });
+  showItemAddingSuccessMessageButTurnItOff = () => {
+    this.setState({ order_item_update_first_time_shown: false });
   }
   
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
@@ -253,11 +208,11 @@ class TabContentItemModal extends Component {
     if (this.state.order_item_created == false) {
       /* console.log("false"); */
       form =              
-              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> ;
+              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.itemAddingSuccessMessageCanBeShown} /> ;
     } else {
       /* console.log("true"); */
       form =               
-              <QueryOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> ;
+              <QueryOrderItem dish={item} order_item_created={this.state.order_item_created} order_item_update_first_time_shown={this.state.order_item_update_first_time_shown} onSubmission={this.showItemAddingSuccessMessage} /> ;
     }
     return (
         <StyledBlurLayer clicked={show}>

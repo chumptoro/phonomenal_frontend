@@ -6,6 +6,9 @@ import gql from 'graphql-tag';
 import StyledOrderItemDetail from "../../Styling/Form";
 import {StyledButton, ButtonRow} from "../../Styling/Button";
 
+import DeleteOrderItem from "./DeleteOrderItem.js";
+
+
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
   grid-row-start: 90;
@@ -16,19 +19,20 @@ const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
   width: auto;
   height: auto;
+  background-color: ${props => props.theme.red} ;
   /* display: ${props => (props.order_item_created ? 'block' : 'none')}; */
 `;
 
 const StyledAddMoreButton = styled(StyledCheckOutButton)`
+    background-color: ${props => props.theme.ui_actionable_green} ;
+    &:hover {
+    background-color: ${props => props.theme.ui_actionable_selected_green} ;
+  }
 `;
 
 const ShowHideController = styled.div`
 	/* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
 `;
-
-
-
-
 const UPDATE_ORDER_ITEM_MUTATION = gql`
 	mutation UPDATE_ORDER_ITEM_MUTATION ($id: ID $quantity: Int $special_instruction: String $price: Float) 
 	{
@@ -53,7 +57,6 @@ class UpdateOrderItem extends Component {
         quantity: this.props.data.orderItems[0].quantity,
         price: this.props.data.orderItems[0].price,
         id: this.props.data.orderItems[0].id,
-
 
         disable_special_instruction_field: true,
         disable_quantity_field: true,
@@ -112,6 +115,17 @@ class UpdateOrderItem extends Component {
 							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                             <ButtonRow>
+                                <StyledAddMoreButton
+                                    onClick= {   
+                                        async e => {
+								            e.preventDefault();
+								            const res = await updateOrderItem();
+								            console.log(res);
+                                        }
+							        }
+                                >
+                                    back to menu
+                                </StyledAddMoreButton>
                                 <StyledCheckOutButton 
                                     onClick= {   
                                         async e => {
@@ -124,17 +138,9 @@ class UpdateOrderItem extends Component {
                                     check out 
                                 </StyledCheckOutButton>
                                 
-                                <StyledAddMoreButton
-                                    onClick= {   
-                                        async e => {
-								            e.preventDefault();
-								            const res = await updateOrderItem();
-								            console.log(res);
-                                        }
-							        }
-                                >
-                                    add more dishes
-                                </StyledAddMoreButton>
+                                
+
+                                <DeleteOrderItem id={this.state.id}/>
                             </ButtonRow>
 						</StyledOrderItemDetail>
 					)

@@ -23,6 +23,14 @@ const theme = {
   offWhite: '#EDEDED',
   blue:'blue',
   divider_gray: 'rgb(231,231,231)',
+
+
+  ui_actionable_lightgrey:'#E1E1E1',
+  ui_actionable_selected_lightgrey:'#BABABA',
+  ui_actionable_green:'rgb(0,204,153)',
+  ui_actionable_selected_green:'rgb(0, 194, 145)',
+
+
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   titleFontSize: '20px',

@@ -21,8 +21,8 @@ const StyledOrderItemDetail = styled.div`
   .message {
     margin: 0;
     margin-left: ${props => props.theme.max_component_vertical_distance};
-    color: ${props => (props.order_item_created ? props.theme.green : 'white')};
-    opacity: ${props => (props.order_item_created ? 1 : 0)};
+    color: ${props => (props.order_item_created ? props.theme.green : props.theme.green)};
+    /* opacity: ${props => (props.order_item_created ? 1 : 0)}; */
     font-size: ${props => props.theme.font_size_title_small};
     grid-column-start: 1;
 
