@@ -227,7 +227,7 @@ class TabContentItemModal extends Component {
   }
   showItemAddingSuccessMessage = () => {
     this.setState({ order_item_created: true });
-    console.log(" state of order_item_created is " + this.state.order_item_created);
+    console.log(" state of order_item created is " + this.state.order_item_created);
   }
   hideItemAddingSuccessMessage = () => {
     this.setState({ order_item_created: false });
@@ -259,63 +259,12 @@ class TabContentItemModal extends Component {
       form =               
               <QueryOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> ;
     }
-
     return (
         <StyledBlurLayer clicked={show}>
           <StyledModal>
               <StyledCloseButton onClick={handleClose}></StyledCloseButton>
-             
               <StyledHeroBanner/>
-
               {form}
-              {/* <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} /> 
-
-              <UpdateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.showItemAddingSuccessMessage} />  */}
-
-              {/* <StyledOrderItemDetail 
-                order_item_created={this.state.order_item_created} 
-              >
-                <div className="box">
-                  <div className="title">
-                    {item.name}
-                  </div>
-                    <input type="text" name="special_instruction" placeholder="  &#9999;  enter any special instructions" className="text_input_box" onChange={e => this.handleTextInputChange(e)} />
-                </div>
-                <div className="box">
-                  <div className="title">
-                    number of orders
-                  </div>
-                  <input type="number" name = "quantity" placeholder="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
-                </div>
-                <div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-
-                <StyledAddItemButton 
-                order_item_created={this.state.order_item_created} 
-                onClick={this.showItemAddingSuccessMessage}
-                >
-                  add item
-                </StyledAddItemButton>
-
-                <ButtonRow>
-                  <StyledCheckOutButton 
-                    order_item_created={this.state.order_item_created} 
-                    onClick={handleClose}
-                  >
-                    check out 
-                  </StyledCheckOutButton>
-                  
-                  <StyledAddMoreButton
-                    order_item_created={this.state.order_item_created} 
-                    onClick={handleClose}
-                  >
-                    add dishes
-                  </StyledAddMoreButton>
-                </ButtonRow>
-              </StyledOrderItemDetail> */}
-
-
-          
-
           </StyledModal>
         </StyledBlurLayer>
     );

@@ -10,7 +10,7 @@ import Error from './ErrorMessage';
 
 //the variables ($description, $title) are given to CREATE_ITEM_MUTATION using apollo's <Mutation>,which has a variables prop (see below)
 const UPDATE_ITEM_MUTATION = gql`
-	mutation CREATE_ITEM_MUTATION ($title: String $description: String, $price: Int! $image: String $largeImage: String) 
+	mutation UPDATE_ITEM_MUTATION ($title: String $description: String, $price: Int! $image: String $largeImage: String) 
 	{
 		updateItem(
 			title: $title
@@ -44,7 +44,7 @@ class UpdateItem extends Component {
 	}
 	render() {
 		return (
-			<Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
+			<Mutation mutation={UPDAT_ITEM_MUTATION} variables={this.state}>
 				{
 					(updateItem, {loading, error}) => (
 						<Form onSubmit={ async e => {

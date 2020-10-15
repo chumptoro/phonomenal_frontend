@@ -26,18 +26,21 @@ const ShowHideController = styled.div`
 	/* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
 `;
 
-const CREATE_ORDER_ITEM_MUTATION = gql`
-	mutation CREATE_ORDER_ITEM_MUTATION ($dish_id: ID $quantity: Int $special_instruction: String $price: Float $dish_name: String) 
+
+
+
+const UPDATE_ORDER_ITEM_MUTATION = gql`
+	mutation UPDATE_ORDER_ITEM_MUTATION ($id: ID $quantity: Int $special_instruction: String $price: Float) 
 	{
-		createOrderItem(
+		updateOrderItem  ( 
 			data: {
-			quantity:  $quantity
-			special_instruction: $special_instruction
-			price: $price,
-			dish_id: $dish_id
-			dish: { connect: {id: $dish_id}},
-			dish_name: $dish_name,
+                quantity:  $quantity
+                special_instruction: $special_instruction
+                price: $price,
 			}
+            where: {
+                id: $id
+            }
 		) {
 		  id		
 		}
@@ -49,6 +52,7 @@ class UpdateOrderItem extends Component {
         special_instruction: this.props.data.orderItems[0].special_instruction,
         quantity: this.props.data.orderItems[0].quantity,
         price: this.props.data.orderItems[0].price,
+        id: this.props.data.orderItems[0].id,
 
 
         disable_special_instruction_field: true,
@@ -81,10 +85,11 @@ class UpdateOrderItem extends Component {
     }
 
 	render() {
+        console.log("id is " + this.state.id );
 		return (
-			// <Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
-			// 	{
-			// 		(createOrderItem, {loading, error}) => (
+			<Mutation mutation={UPDATE_ORDER_ITEM_MUTATION} variables={this.state}>
+				{
+					(updateOrderItem, {loading, error}) => (
 
 						<StyledOrderItemDetail 
 							order_item_created={this.props.order_item_created} 
@@ -108,23 +113,33 @@ class UpdateOrderItem extends Component {
 
                             <ButtonRow>
                                 <StyledCheckOutButton 
-                                    //order_item_created={this.state.order_item_created} 
-                                    onClick={this.handleClose}
+                                    onClick= {   
+                                        async e => {
+								            e.preventDefault();
+								            const res = await updateOrderItem();
+								            console.log(res);
+                                        }
+							        }
                                 >
                                     check out 
                                 </StyledCheckOutButton>
                                 
                                 <StyledAddMoreButton
-                                    //order_item_created={this.state.order_item_created} 
-                                    onClick={this.handleClose}
+                                    onClick= {   
+                                        async e => {
+								            e.preventDefault();
+								            const res = await updateOrderItem();
+								            console.log(res);
+                                        }
+							        }
                                 >
                                     add more dishes
                                 </StyledAddMoreButton>
                             </ButtonRow>
 						</StyledOrderItemDetail>
-					//)
-				//}
-			//</Mutation>
+					)
+				}
+			</Mutation>
 		);
 	}
 };

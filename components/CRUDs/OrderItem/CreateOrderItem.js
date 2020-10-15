@@ -62,11 +62,9 @@ class CreateOrderItem extends Component {
 	handleTextInputChange = (e) => {
 		const { name, type, value } = e.target;
 		var val = type === 'number'? parseFloat(value) : value;
-		if (name === "quantity") 
-		{
+		if (name === "quantity") {
 			this.setState({ price: val*parseFloat(this.props.dish.price)});
 		} 
-
 		//we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
 		this.setState({[name]:val});
 		// console.log("order item field currently has value " + this.statex[name]);
@@ -101,7 +99,7 @@ class CreateOrderItem extends Component {
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await createOrderItem();
-								console.log(res);
+								console.log("res is " + res);
 								this.props.onCreated();
 								// Router.push({
 								// 	pathname: '/item',
