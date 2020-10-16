@@ -73,6 +73,7 @@ class QueryOrderItem extends Component {
 									order_item_created={this.props.order_item_created}
 									onSubmission={this.props.onSubmission}
 									onReset={this.props.onReset}
+									hideModal={this.props.hideModal}
 								/>
 							);
 						}

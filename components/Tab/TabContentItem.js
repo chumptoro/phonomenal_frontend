@@ -216,6 +216,7 @@ class TabContentItemModal extends Component {
                 order_item_created={this.state.order_item_created} order_item_update_first_time_shown={this.state.order_item_update_first_time_shown} 
                 onSubmission={this.hideItemCreationSuccessMessage}
                 onReset={this.itemDeletionResetState}  
+                hideModal={this.props.hideModal}
               /> ;
     }
     return (
@@ -248,9 +249,9 @@ class TabContentItem extends Component {
       <div>
         <div onClick={this.showModal}>
           {/* <button type='button' onClick={this.showModal} >Open</button> */}
-          <TabContentItemThumbnail item={item}/>
+          <TabContentItemThumbnail item={item} />
         </div>
-          <TabContentItemModal item={item} show={this.state.show} handleClose={this.hideModal}/>
+          <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
       </div>
 
     );

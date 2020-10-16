@@ -116,7 +116,6 @@ class UpdateOrderItem extends Component {
 							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                             <ButtonRow>
-                            
                                 <StyledAddMoreButton
                                     onClick= {   
                                         async e => {
@@ -124,6 +123,7 @@ class UpdateOrderItem extends Component {
 								            const res = await updateOrderItem();
 								            //console.log(res);
                                             const x = await this.props.onSubmission();
+                                            this.props.hideModal();
                                             console.log(
                                                 "back_to_menu button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
                                             );
@@ -153,6 +153,7 @@ class UpdateOrderItem extends Component {
                                     onReset={this.props.onReset}
                                     order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 									order_item_created={this.props.order_item_created}
+                                    hideModal={this.props.hideModal}
                                 />
                             </ButtonRow>
 						</StyledOrderItemDetail>

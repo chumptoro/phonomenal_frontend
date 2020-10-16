@@ -20,11 +20,6 @@ const StyledDeleteButton = styled(StyledButton)`
     background-color: ${props => props.theme.ui_actionable_selected_lightgrey} ;
   }
 
-  div {
-	  
-	  
-  }
-
   /* display: ${props => (props.order_item_created ? 'block' : 'none')}; */
 `;
 
@@ -59,6 +54,7 @@ class DeleteOrderItem extends Component {
 										const res = await deleteOrderItem();
 										console.log("item is deleted")
 										this.props.onReset();
+										this.props.hideModal();
 									}
 								}
 							>
