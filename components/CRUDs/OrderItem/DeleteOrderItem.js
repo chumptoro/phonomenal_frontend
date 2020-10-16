@@ -12,12 +12,17 @@ const StyledDeleteButton = styled(StyledButton)`
   width: auto;
   height: auto;
   background-color: ${props => props.theme.ui_actionable_lightgrey} ;
-  padding-left:1px;
-  padding-right:1px;
+  /* padding-left:1px;
+  padding-right:1px; */
 
 
   &:hover {
     background-color: ${props => props.theme.ui_actionable_selected_lightgrey} ;
+  }
+
+  div {
+	  
+	  
   }
 
   /* display: ${props => (props.order_item_created ? 'block' : 'none')}; */
@@ -43,25 +48,26 @@ class DeleteOrderItem extends Component {
 	render() {
         console.log("id is " + this.state.id);
 		return (
-			<StyledDeleteButton>
+			
 				<Mutation mutation={DELETE_ORDER_ITEM_MUTATION} variables={this.state}>
 					{
 						(deleteOrderItem, {loading, error}) => (
-							<div
+							<StyledDeleteButton
 								onClick= {   
 									async e => {
 										e.preventDefault();
 										const res = await deleteOrderItem();
-										console.log(res);
+										console.log("item is deleted")
+										this.props.onReset();
 									}
 								}
 							>
 							cancel item
-							</div>
+							</StyledDeleteButton>
 						)
 					}
 				</Mutation>
-			</StyledDeleteButton>
+			
 		);
 	}
 };

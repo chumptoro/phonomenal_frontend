@@ -53,7 +53,7 @@ const ButtonRow = styled.div`
 
 `;
 
-const StyledWindowTopBarCloseButton = styled(StyledButton)`
+const StyledWindowTopBarCloseWithTextButton = styled(StyledButton)`
   position: absolute;
   top: 10px;
   right: 25px;

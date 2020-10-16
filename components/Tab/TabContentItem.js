@@ -130,13 +130,6 @@ const StyledCloseButton = styled.div`
 `;
 
 
-const StyledAddItemButton = styled(StyledButton)`
-  grid-column: 1 / -1;
-  grid-row-start: 90;
-  display: ${props => (props.order_item_created ? 'none' : 'block')};
-  
-`;
-
 const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
   width: auto;
@@ -144,10 +137,6 @@ const StyledCheckOutButton = styled(StyledButton)`
   display: ${props => (props.order_item_created ? 'block' : 'none')};
   
 `;
-
-const StyledAddMoreButton = styled(StyledCheckOutButton)`
-`;
-
 
 
 class TabContentItemThumbnail extends Component {
@@ -180,12 +169,19 @@ class TabContentItemModal extends Component {
     quantity: 1,
     special_instruction: this.props.item.price
   }
-  itemAddingSuccessMessageCanBeShown = () => {
+  itemCreationSuccessMessageCanBeShown = () => {
     this.setState({ order_item_created: true });
     //console.log(" state of order_item created is " + this.state.order_item_created);
   }
-  showItemAddingSuccessMessageButTurnItOff = () => {
+
+  hideItemCreationSuccessMessage = () => {
     this.setState({ order_item_update_first_time_shown: false });
+  }
+
+  itemDeletionResetState = () => {
+    this.setState({ order_item_created: false });
+    this.setState({ order_item_update_first_time_shown: true });
+    //console.log(" state of order_item created is " + this.state.order_item_created);
   }
   
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
@@ -208,11 +204,19 @@ class TabContentItemModal extends Component {
     if (this.state.order_item_created == false) {
       /* console.log("false"); */
       form =              
-              <CreateOrderItem dish={item} order_item_created={this.state.order_item_created} onCreated={this.itemAddingSuccessMessageCanBeShown} /> ;
+              <CreateOrderItem 
+                dish={item} 
+                order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
+               /> ;
     } else {
       /* console.log("true"); */
       form =               
-              <QueryOrderItem dish={item} order_item_created={this.state.order_item_created} order_item_update_first_time_shown={this.state.order_item_update_first_time_shown} onSubmission={this.showItemAddingSuccessMessage} /> ;
+              <QueryOrderItem 
+                dish={item} 
+                order_item_created={this.state.order_item_created} order_item_update_first_time_shown={this.state.order_item_update_first_time_shown} 
+                onSubmission={this.hideItemCreationSuccessMessage}
+                onReset={this.itemDeletionResetState}  
+              /> ;
     }
     return (
         <StyledBlurLayer clicked={show}>

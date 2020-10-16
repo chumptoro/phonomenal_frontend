@@ -99,8 +99,9 @@ class CreateOrderItem extends Component {
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await createOrderItem();
-								console.log("res is " + res);
+								console.log("order item is created.  QueryOrderItem takes over");
 								this.props.onCreated();
+					
 								// Router.push({
 								// 	pathname: '/item',
 								// 	query: { id: res.data.createItem.id }

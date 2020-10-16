@@ -33,24 +33,6 @@ const ShowHideControllerUpdateOrderItem = styled.div`
 //the below says: run a CREATE_ITEM_MUTATION function with $title, $description, etc... arguments.  This function will then call a function createItem we specifies in our schema
 
 //the variables ($description, $title) are given to CREATE_ITEM_MUTATION using apollo's <Mutation>,which has a variables prop (see below)
-const CREATE_ORDER_ITEM_MUTATION = gql`
-	mutation CREATE_ORDER_ITEM_MUTATION ($dish_id: ID $quantity: Int $special_instruction: String $price: Float $dish_name: String) 
-	{
-		createOrderItem(
-			data: {
-			quantity:  $quantity
-			special_instruction: $special_instruction
-			price: $price,
-			dish_id: $dish_id
-			dish: { connect: {id: $dish_id}},
-			dish_name: $dish_name,
-			}
-		) {
-		  id		
-		}
-	}
-`;
-
 const ONE_ORDER_ITEM_QUERY = gql`
   query ONE_ORDER_ITEM_QUERY ($dish_id: ID) {
     orderItems(where: {dish_id: $dish_id}) 
@@ -71,13 +53,14 @@ class QueryOrderItem extends Component {
 	}
 	render() {
 		return (
-			<Query query={ONE_ORDER_ITEM_QUERY} variables={this.state}>
+			<Query fetchPolicy="no-cache" query={ONE_ORDER_ITEM_QUERY} variables={this.state}>
 				{
 					({data, loading, error}) => {
 						{/* console.log(data); */}
 						if (loading) return <p>Loading...</p>;
 						if (error) return <p>Error: {error.message}</p>;
 						else {
+							console.log("data is ");
 							console.log(data);
 							console.log("special instruction of queried order item is: " + data.orderItems[0].special_instruction);
 							console.log("id of queried order item is: " + data.orderItems[0].id);
@@ -88,7 +71,8 @@ class QueryOrderItem extends Component {
 								 	onUpdate={this.handleTextInputChange}
 									order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 									order_item_created={this.props.order_item_created}
-									onSubmission={this.props.showItemAddingSuccessMessage}
+									onSubmission={this.props.onSubmission}
+									onReset={this.props.onReset}
 								/>
 							);
 						}

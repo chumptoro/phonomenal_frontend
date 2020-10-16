@@ -96,6 +96,7 @@ class UpdateOrderItem extends Component {
 
 						<StyledOrderItemDetail 
 							order_item_created={this.props.order_item_created} 
+                            order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 						>
 							<div className="box">
 							<div className="title">
@@ -115,12 +116,17 @@ class UpdateOrderItem extends Component {
 							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                             <ButtonRow>
+                            
                                 <StyledAddMoreButton
                                     onClick= {   
                                         async e => {
 								            e.preventDefault();
 								            const res = await updateOrderItem();
-								            console.log(res);
+								            //console.log(res);
+                                            const x = await this.props.onSubmission();
+                                            console.log(
+                                                "back_to_menu button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
+                                            );
                                         }
 							        }
                                 >
@@ -131,16 +137,23 @@ class UpdateOrderItem extends Component {
                                         async e => {
 								            e.preventDefault();
 								            const res = await updateOrderItem();
-								            console.log(res);
+								            //console.log(res);
+                                            const x = await this.props.onSubmission();
+                                            console.log(
+                                                "check_out button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
+                                            );
                                         }
 							        }
                                 >
                                     check out 
                                 </StyledCheckOutButton>
                                 
-                                
-
-                                <DeleteOrderItem id={this.state.id}/>
+                                <DeleteOrderItem 
+                                    id={this.state.id}
+                                    onReset={this.props.onReset}
+                                    order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
+									order_item_created={this.props.order_item_created}
+                                />
                             </ButtonRow>
 						</StyledOrderItemDetail>
 					)
