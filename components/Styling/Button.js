@@ -53,7 +53,23 @@ const ButtonRow = styled.div`
 
 `;
 
-const StyledWindowTopBarCloseWithTextButton = styled(StyledButton)`
+
+const StyledWindowTopBarCloseXSymbolButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-image: url('/icons/close_button.svg');
+
+  &:hover {
+    background-image: url('/icons/close_button_selected.svg'); ;
+}`
+
+
+
+const StyledWindowTopBarCloseButtonWithText = styled.div`
   position: absolute;
   top: 10px;
   right: 25px;
@@ -67,9 +83,11 @@ const StyledWindowTopBarCloseWithTextButton = styled(StyledButton)`
   background-color: ${props => props.theme.red_selected} ;
 }
 
+
+
   
 `;
 
 
 
-export {StyledButton, ButtonRow};
+export {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow};

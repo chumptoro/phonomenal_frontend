@@ -103,6 +103,7 @@ class UpdateOrderItem extends Component {
 								{this.props.parent_props.dish.name}
 							</div>
 								<input type="text" name="special_instruction" 
+                                placeholder="  &#9999;  enter requests or instructions"
                                 value={this.state.special_instruction} 
                                 className="text_input_box" 
                                 onChange={this.handleChange} />

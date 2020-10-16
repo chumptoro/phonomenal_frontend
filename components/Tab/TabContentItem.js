@@ -195,7 +195,7 @@ class TabContentItemModal extends Component {
   
   };
   render() {
-    const { item, handleClose, show} = this.props;
+    const { item, hideModal, show} = this.props;
     // console.log(show);
     // console.log(" state of order_item_created is " + this.state.order_item_created);
     let form;
@@ -207,6 +207,7 @@ class TabContentItemModal extends Component {
               <CreateOrderItem 
                 dish={item} 
                 order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
+                hideModal={this.props.hideModal}
                /> ;
     } else {
       /* console.log("true"); */
@@ -222,7 +223,7 @@ class TabContentItemModal extends Component {
     return (
         <StyledBlurLayer clicked={show}>
           <StyledModal>
-              <StyledCloseButton onClick={handleClose}></StyledCloseButton>
+              {/* <StyledCloseButton onClick={hideModal}></StyledCloseButton> */}
               <StyledHeroBanner/>
               {form}
           </StyledModal>

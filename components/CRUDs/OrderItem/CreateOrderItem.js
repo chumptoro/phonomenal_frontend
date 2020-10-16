@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import StyledOrderItemDetail from "../../Styling/Form";
-import {StyledButton, ButtonRow} from "../../Styling/Button";
+import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
@@ -16,10 +16,7 @@ const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
   width: auto;
   height: auto;
-  display: ${props => (props.order_item_created ? 'block' : 'none')};
-`;
-
-const StyledAddMoreButton = styled(StyledCheckOutButton)`
+  /* display: ${props => (props.order_item_created ? 'block' : 'none')}; */
 `;
 
 const ShowHideController = styled.div`
@@ -84,7 +81,7 @@ class CreateOrderItem extends Component {
 							<div className="title">
 								{this.props.dish.name}
 							</div>
-								<input type="text" name="special_instruction" placeholder="  &#9999;  enter any special instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
+								<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
 							</div>
 							<div className="box">
 							<div className="title">
@@ -93,23 +90,30 @@ class CreateOrderItem extends Component {
 							<input type="number" name = "quantity"  min="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
 							</div>
 							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+						
+							<ButtonRow>
+								<StyledAddItemButton 
+								order_item_created={this.state.order_item_created} 
+								onClick={ async e => {
+									e.preventDefault();
+									const res = await createOrderItem();
+									console.log("order item is created.  QueryOrderItem takes over");
+									this.props.onCreated();
+						
+									// Router.push({
+									// 	pathname: '/item',
+									// 	query: { id: res.data.createItem.id }
+									// })
+								}}
+								>
+								add item
+								</StyledAddItemButton>
+								<StyledWindowTopBarCloseXSymbolButton
+									onClick={this.props.hideModal}
+								>
 
-							<StyledAddItemButton 
-							order_item_created={this.state.order_item_created} 
-							onClick={ async e => {
-								e.preventDefault();
-								const res = await createOrderItem();
-								console.log("order item is created.  QueryOrderItem takes over");
-								this.props.onCreated();
-					
-								// Router.push({
-								// 	pathname: '/item',
-								// 	query: { id: res.data.createItem.id }
-								// })
-							}}
-							>
-							add item
-							</StyledAddItemButton>
+								</StyledWindowTopBarCloseXSymbolButton>
+							</ButtonRow>
 						</StyledOrderItemDetail>
 					)
 				}
