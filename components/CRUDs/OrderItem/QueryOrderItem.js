@@ -59,7 +59,7 @@ class QueryOrderItem extends Component {
 						{/* console.log(data); */}
 						if (loading) return <p>Loading...</p>;
 						if (error) return <p>Error: {error.message}</p>;
-						else {
+						if (data) {
 							console.log("data is ");
 							console.log(data);
 							console.log("special instruction of queried order item is: " + data.orderItems[data.orderItems.length-1].special_instruction);

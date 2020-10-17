@@ -224,7 +224,6 @@ class TabContentItemModal extends Component {
               hideModal={this.props.hideModal}
               /> ;
     } 
-
     else {
       console.log("order item exists.  directing user to QueryOrderItem");
       form =               
