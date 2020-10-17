@@ -20,7 +20,8 @@ import withData from '../lib/withData';
 class MyApp extends App {
 
 	//The static keyword defines a static method for a class. Static methods aren't called on instances of the class. Instead, they're called on the class itself
-	// we are destructuring the Component (aka files in components dir like Items.js) and ctx elements of an object passed to getInitialProps method of the app
+	// we are destructuring the Component (aka files in components dir like Items.js) and ctx elements of an object passed to getInitialProps method of the app.
+	//Component is a props given to MyApp
 	static async getInitialProps({ Component, ctx }) {
 		let pageProps = {};
 		//see if there are any initial props for the active Component, which we will render in render() below.  if yes, then ctx will allows us to access the database qury statement

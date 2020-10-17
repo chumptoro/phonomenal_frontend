@@ -80,6 +80,8 @@ const StyledModal = styled.div`
   border-radius: 5px;
   z-index: 100;
 
+  overflow-y: auto !important;
+
   
   display: grid;
   grid-row-gap: 0;
@@ -201,16 +203,30 @@ class TabContentItemModal extends Component {
     let form;
     // console.log("status of order_item_created: " + this.state.order_item_created);
 
+    // if (!(sessionStorage.getItem("order_item_created"))) {
+    //   console.log("order_item does not exist. directing user to <CreateOrderItem>");
+    //   /* console.log("false"); */
+    //   form =              
+    //         <CreateOrderItem 
+    //           dish={item} 
+    //           order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
+    //           hideModal={this.props.hideModal}
+    //           /> ;
+    // } 
+
     if (this.state.order_item_created == false) {
+      console.log("order_item does not exist. directing user to <CreateOrderItem>");
       /* console.log("false"); */
       form =              
-              <CreateOrderItem 
-                dish={item} 
-                order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
-                hideModal={this.props.hideModal}
-               /> ;
-    } else {
-      /* console.log("true"); */
+            <CreateOrderItem 
+              dish={item} 
+              order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
+              hideModal={this.props.hideModal}
+              /> ;
+    } 
+
+    else {
+      console.log("order item exists.  directing user to QueryOrderItem");
       form =               
               <QueryOrderItem 
                 dish={item} 
@@ -238,9 +254,11 @@ class TabContentItem extends Component {
   showModal = () => {
     this.setState({ show: true });
     /* document.body.style.filter = "blur(20px)"; */  
+    document.body.style.overflowY = "hidden";
   }
   hideModal = () => {
     this.setState({ show: false });
+    document.body.style.overflowY = "scroll";
     console.log("running hideModal.  state of show is " + this.state.show);
   }
   render() {

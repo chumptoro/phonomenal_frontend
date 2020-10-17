@@ -43,7 +43,6 @@ class DeleteOrderItem extends Component {
 	render() {
         console.log("id is " + this.state.id);
 		return (
-			
 				<Mutation mutation={DELETE_ORDER_ITEM_MUTATION} variables={this.state}>
 					{
 						(deleteOrderItem, {loading, error}) => (
@@ -55,6 +54,9 @@ class DeleteOrderItem extends Component {
 										console.log("item is deleted")
 										this.props.onReset();
 										this.props.hideModal();
+										localStorage.removeItem("order_item_created");
+										// sessionStorage.setItem("special_instruction", "");
+										// sessionStorage.setItem("quantity", "");
 									}
 								}
 							>
@@ -62,8 +64,7 @@ class DeleteOrderItem extends Component {
 							</StyledDeleteButton>
 						)
 					}
-				</Mutation>
-			
+				</Mutation>	
 		);
 	}
 };

@@ -53,10 +53,10 @@ const UPDATE_ORDER_ITEM_MUTATION = gql`
 
 class UpdateOrderItem extends Component {
 	state = {
-        special_instruction: this.props.data.orderItems[0].special_instruction,
-        quantity: this.props.data.orderItems[0].quantity,
-        price: this.props.data.orderItems[0].price,
-        id: this.props.data.orderItems[0].id,
+        special_instruction: this.props.data.orderItems[this.props.data.orderItems.length-1].special_instruction,
+        quantity: this.props.data.orderItems[this.props.data.orderItems.length-1].quantity,
+        price: this.props.data.orderItems[this.props.data.orderItems.length-1].price,
+        id: this.props.data.orderItems[this.props.data.orderItems.length-1].id,
 
         disable_special_instruction_field: true,
         disable_quantity_field: true,

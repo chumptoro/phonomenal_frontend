@@ -104,6 +104,9 @@ class CreateOrderItem extends Component {
 									// 	pathname: '/item',
 									// 	query: { id: res.data.createItem.id }
 									// })
+									sessionStorage.setItem("order_item_created", "true");
+									sessionStorage.setItem("special_instruction", this.state.special_instruction);
+									sessionStorage.setItem("quantity", this.state.quantity.toString());
 								}}
 								>
 								add item
