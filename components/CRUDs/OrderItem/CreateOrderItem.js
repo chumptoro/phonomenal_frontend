@@ -6,6 +6,8 @@ import gql from 'graphql-tag';
 import StyledOrderItemDetail from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
+import {adopt} from 'react-adopt';
+
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
   grid-row-start: 90;
@@ -23,11 +25,19 @@ const ShowHideController = styled.div`
 	/* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
 `;
 
-
-
 //the below says: run a CREATE_ITEM_MUTATION function with $title, $description, etc... arguments.  This function will then call a function createItem we specifies in our schema
 
 //the variables ($description, $title) are given to CREATE_ITEM_MUTATION using apollo's <Mutation>,which has a variables prop (see below)
+
+const DELETE_ALL_ORDER_ITEMS_MUTATION = gql`
+	mutation DELETE_ALL_ORDER_ITEMS_MUTATION {
+		deleteManyOrderItems 
+		{
+			count	
+		}
+	}
+`;
+
 const CREATE_ORDER_ITEM_MUTATION = gql`
 	mutation CREATE_ORDER_ITEM_MUTATION ($dish_id: ID $quantity: Int $special_instruction: String $price: Float $dish_name: String) 
 	{
@@ -74,51 +84,50 @@ class CreateOrderItem extends Component {
 				{
 					(createOrderItem, {loading, error}) => (
 
-						<StyledOrderItemDetail 
-							order_item_created={this.props.order_item_created} 
-						>
-							<div className="box">
-							<div className="title">
-								{this.props.dish.name}
-							</div>
-								<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
-							</div>
-							<div className="box">
-							<div className="title">
-								number of orders
-							</div>
-							<input type="number" name = "quantity"  min="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
-							</div>
-							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-						
-							<ButtonRow>
-								<StyledAddItemButton 
-								order_item_created={this.state.order_item_created} 
-								onClick={ async e => {
-									e.preventDefault();
-									const res = await createOrderItem();
-									console.log("order item is created.  QueryOrderItem takes over");
-									this.props.onCreated();
-						
-									// Router.push({
-									// 	pathname: '/item',
-									// 	query: { id: res.data.createItem.id }
-									// })
-									// const resy = await sessionStorage.setItem("order_item_created", "true");
-									// console.log("order_item exists and has value " +  sessionStorage.getItem("order_item_created") );
-									// sessionStorage.setItem("special_instruction", this.state.special_instruction);
-									// sessionStorage.setItem("quantity", this.state.quantity.toString());
-								}}
+					<Mutation mutation={DELETE_ALL_ORDER_ITEMS_MUTATION}>
+						{
+							(deleteManyOrderItems, {loading, error}) => (
+								<StyledOrderItemDetail 
+									order_item_created={this.props.order_item_created} 
 								>
-								add item
-								</StyledAddItemButton>
-								<StyledWindowTopBarCloseXSymbolButton
-									onClick={this.props.hideModal}
-								>
+									<div className="box">
+									<div className="title">
+										{this.props.dish.name}
+									</div>
+										<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
+									</div>
+									<div className="box">
+									<div className="title">
+										number of orders
+									</div>
+									<input type="number" name = "quantity"  min="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
+									</div>
+									<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+								
+									<ButtonRow>
+										<StyledAddItemButton 
+										order_item_created={this.state.order_item_created} 
+										onClick={ async e => {
+											e.preventDefault();
+											const reso = await deleteManyOrderItems();
+											const res = await createOrderItem();
+											console.log("order item is created.  QueryOrderItem takes over");
+											this.props.onCreated();
+										}}
+										>
+										add item
+										</StyledAddItemButton>
+										<StyledWindowTopBarCloseXSymbolButton
+											onClick={this.props.hideModal}
+										>
 
-								</StyledWindowTopBarCloseXSymbolButton>
-							</ButtonRow>
-						</StyledOrderItemDetail>
+										</StyledWindowTopBarCloseXSymbolButton>
+									</ButtonRow>
+								</StyledOrderItemDetail>
+							)
+						}
+					</Mutation>
+
 					)
 				}
 			</Mutation>
@@ -126,6 +135,8 @@ class CreateOrderItem extends Component {
 		);
 	}
 };
+
+
 
 export default CreateOrderItem;
 export { CREATE_ORDER_ITEM_MUTATION };

@@ -51,6 +51,7 @@ const UPDATE_ORDER_ITEM_MUTATION = gql`
 	}
 `;
 
+
 class UpdateOrderItem extends Component {
 	state = {
         special_instruction: this.props.data.orderItems[this.props.data.orderItems.length-1].special_instruction,
