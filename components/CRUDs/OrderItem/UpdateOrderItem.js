@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import StyledOrderItemDetail from "../../Styling/Form";
-import {StyledButton, ButtonRow} from "../../Styling/Button";
+import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
 import DeleteOrderItem from "./DeleteOrderItem.js";
 
@@ -117,6 +117,21 @@ class UpdateOrderItem extends Component {
 							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                             <ButtonRow>
+                                <StyledWindowTopBarCloseXSymbolButton onClick= {   
+                                        async e => {
+								            e.preventDefault();
+								            const res = await updateOrderItem();
+								            //console.log(res);
+                                            const x = await this.props.onSubmission();
+                                            this.props.hideModal();
+                                            console.log(
+                                                "close modal button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
+                                            );
+                                        }
+							        }
+                                >
+
+								</StyledWindowTopBarCloseXSymbolButton>
                                 <StyledAddMoreButton
                                     onClick= {   
                                         async e => {
@@ -126,13 +141,14 @@ class UpdateOrderItem extends Component {
                                             const x = await this.props.onSubmission();
                                             this.props.hideModal();
                                             console.log(
-                                                "back_to_menu button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
+                                                "add another dish button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
                                             );
                                         }
 							        }
                                 >
-                                    back to menu
+                                    add other dishes
                                 </StyledAddMoreButton>
+
                                 <StyledCheckOutButton 
                                     onClick= {   
                                         async e => {

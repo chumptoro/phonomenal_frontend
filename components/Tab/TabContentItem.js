@@ -214,6 +214,8 @@ class TabContentItemModal extends Component {
     //           /> ;
     // } 
 
+
+
     if (this.state.order_item_created == false) {
       console.log("order_item does not exist. directing user to <CreateOrderItem>");
       /* console.log("false"); */
