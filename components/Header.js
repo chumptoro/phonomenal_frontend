@@ -74,7 +74,9 @@ const Header = () => (
 		<div className="wrapper">
 			<div className="left_sided_nav">
 				<Link href="/">
-					<img alt="phonomenal logo" src="./phonomenal_icon_alt2.jpg" width="45" height="45" /> 
+					<a>
+						<img alt="phonomenal logo" src="./phonomenal_icon_alt2.jpg" width="45" height="45" /> 
+					</a>
 				</Link>
 				<a> 
 					<img className="location_pin" alt="location_pin" src="./location_pin_thin.svg" width="30" height="30" />
@@ -100,7 +102,7 @@ const Header = () => (
 					</a>
 				</Link>
 
-				<Link href="/bag">
+				<Link href="/shopping_bag">
 					<a> 
 						<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./shopping-bag-green.svg" width="30" height="30" /> 
 					</a>
