@@ -30,8 +30,8 @@ const ShowHideController = styled.div`
 //the variables ($description, $title) are given to CREATE_ITEM_MUTATION using apollo's <Mutation>,which has a variables prop (see below)
 
 const DELETE_ALL_ORDER_ITEMS_MUTATION = gql`
-	mutation DELETE_ALL_ORDER_ITEMS_MUTATION {
-		deleteManyOrderItems 
+	mutation DELETE_ALL_ORDER_ITEMS_MUTATION ($dish_id:ID) {
+		deleteManyOrderItems (where: {dish_id: $dish_id})
 		{
 			count	
 		}
@@ -84,7 +84,7 @@ class CreateOrderItem extends Component {
 				{
 					(createOrderItem, {loading, error}) => (
 
-					<Mutation mutation={DELETE_ALL_ORDER_ITEMS_MUTATION}>
+					<Mutation mutation={DELETE_ALL_ORDER_ITEMS_MUTATION} variables={this.state}>
 						{
 							(deleteManyOrderItems, {loading, error}) => (
 								<StyledOrderItemDetail 
