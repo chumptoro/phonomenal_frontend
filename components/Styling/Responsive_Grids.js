@@ -1,13 +1,36 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
+import {css} from 'styled-components';
+
+
+const ResponsiveGridHideFooter = css`
+   margin-bottom: 20vh;
+    
+`;
+
+const ResponsiveGridLeftRightMargin = css`
+	@media (max-width: 300px) {
+    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+    }
+    @media (min-width: 301px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+    }
+    @media (min-width: 1455px) {
+      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+    }
+
+`;
+
+
 
 const StyledPropsSetNumberOfRowItemsResponsiveGrid = styled.div` 
   /* width: 100%;
-  height: auto; */
-  
+  height: auto;
+   */
   display: grid;
-  grid-template-columns: repeat(${props => (props.col_num)}, 180px);
-  grid-column-gap: 30px;
+  grid-template-columns: repeat(${props => (props.col_num)}, 150px);
+  grid-column-gap: 20px;
+ /*  grid-row-gap: ${props => props.theme.min_component_vertical_distance}; */
 `;
 
 const StyledNoSetNumberOfRowItemsResponsiveGrid = styled.div` 
@@ -16,10 +39,8 @@ const StyledNoSetNumberOfRowItemsResponsiveGrid = styled.div`
   
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 800px));
-  grid-template-columns: 1fr;
   grid-auto-flow: row;
-
   grid-row-gap: 18px;
 `;
 
-export {StyledNoSetNumberOfRowItemsResponsiveGrid, StyledPropsSetNumberOfRowItemsResponsiveGrid} ;
+export {StyledNoSetNumberOfRowItemsResponsiveGrid, StyledPropsSetNumberOfRowItemsResponsiveGrid, ResponsiveGridLeftRightMargin, ResponsiveGridHideFooter} ;

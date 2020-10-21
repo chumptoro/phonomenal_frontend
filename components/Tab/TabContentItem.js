@@ -137,15 +137,19 @@ const StyledCheckOutButton = styled(StyledButton)`
   width: auto;
   height: auto;
   display: ${props => (props.order_item_created ? 'block' : 'none')};
-  
 `;
 
-
 class TabContentItemThumbnail extends Component {
+  state ={
+    order_item_created: false
+  }
+  highlightThumbnailBorder = () => {
+    this.setState({ order_item_created: true });
+    //console.log(" state of order_item created is " + this.state.order_item_created);
+  }
   render() {
     //const { onClick, props: {activeTab, label,}, } = this;
     const { item } = this.props;
-
     return (
       <StyledItem>
         <div>

@@ -6,7 +6,6 @@ const StyledButton = styled.div`
   height: auto; 
 
   margin: auto; /* center the button */
-  
   margin-top:${props => props.theme.extra_max_component_vertical_distance};
   margin-bottom: ${props => props.theme.mid_component_vertical_distance};
 

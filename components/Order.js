@@ -27,11 +27,18 @@ class Order extends Component {
       payment_card_number: "",
 
       delivery_method: "pickup",
-      total_price: "0",
+      total_price: 0,
       progress_status: "shopping bag is populated",
       payment_status: false,
 
       order_items: [{dish: "id", quantity: 1, special_instruction: "", price: 4.99}],
+  };
+
+  updateTotalPrice = (value) => {
+    var update_val = this.state.total_price + value;
+    this.setState({ total_price: update_val  });
+    console.log("total price before being updated is " +  this.state.total_price);
+    console.log("value being added to the total price is " +  value);
   };
 
   //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
@@ -71,6 +78,7 @@ class Order extends Component {
           state: this.state,
           handleTextInputChange: e => this.handleTextInputChange(e),
           handleRadioButton: e => this.handleRadioButton(e),
+          updateTotalPrice: this.updateTotalPrice,
         }}
       >
         {this.props.children}

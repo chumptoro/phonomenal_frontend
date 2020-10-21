@@ -39,6 +39,7 @@ const theme = {
   max_component_vertical_distance: '40px',
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
+  tiny_component_vertical_distance: '1px',
   
 
   font_size_title_mid: '17px',
@@ -185,7 +186,7 @@ class Page extends Component {
             {/* <OrderCategory/> */}
             {/* <Inner>{this.props.children}</Inner> */}
           </StyledPage>
-          <div>{this.props.children}</div>
+          {this.props.children}
           <Contact>
             <div></div>
             <div text-align="center">

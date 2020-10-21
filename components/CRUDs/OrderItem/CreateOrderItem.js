@@ -6,6 +6,8 @@ import gql from 'graphql-tag';
 import StyledOrderItemDetail from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
+import {Consumer} from '../../Context';
+
 import {adopt} from 'react-adopt';
 
 const StyledAddItemButton = styled(StyledButton)`
@@ -79,7 +81,8 @@ class CreateOrderItem extends Component {
 	}
 	render() {
 		return (
-			<ShowHideController  order_item_created={this.props.order_item_created} >
+			<Consumer>
+			{context => (
 			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
 					(createOrderItem, {loading, error}) => (
@@ -113,6 +116,8 @@ class CreateOrderItem extends Component {
 											const res = await createOrderItem();
 											console.log("order item is created.  QueryOrderItem takes over");
 											this.props.onCreated();
+											context.updateTotalPrice(this.state.price);
+											console.log("price of order item is  " + this.state.price);
 										}}
 										>
 										add item
@@ -131,7 +136,8 @@ class CreateOrderItem extends Component {
 					)
 				}
 			</Mutation>
-			</ShowHideController>
+			)}
+			</Consumer>
 		);
 	}
 };
