@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import Nav from './Nav.js'
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -69,6 +70,56 @@ const StyledHeader = styled.header`
 
 `;
 
+
+class AddressInput extends Component {
+	state = {
+		delivery_address: ""
+	};
+  
+	handleTextInputChange = (e) => {
+	  const { value, name } = e.target;
+	  this.setState({ [name]: value });
+	};
+
+	componentDidMount() {
+		if (localStorage.getItem("delivery_address") !== null ) {
+			this.setState({
+				delivery_address: localStorage.getItem("delivery_address")
+			});
+		}
+		else {
+			this.setState({
+				delivery_address: ""
+			});
+			//localStorage.setItem("delivery_address", ""); 
+		}
+	}
+	componentWillUnmount() {
+		//localStorage.setItem("delivery_address", this.state.delivery_address);
+	}
+	render() {
+	  return (
+		<Consumer>
+			{context => (
+				<input
+					name="delivery_address" 
+					type="text" 
+					placeholder="enter your address"
+					value={this.state.delivery_address} 
+					onChange={(e) => {
+					context.handleTextInputChange(e);
+					this.handleTextInputChange(e);
+					localStorage.setItem("delivery_address", e.target.value)
+					//localStorage.removeItem("delivery_address")
+					}
+				}/>
+			)}
+		</Consumer>
+	  );
+	}
+};
+
+
 const Header = () => (
 	<StyledHeader>
 		<div className="wrapper">
@@ -85,11 +136,17 @@ const Header = () => (
 			</div>
 
 			<div className="delivery_address">
-				<Consumer>
+				{/* <Consumer>
 					{context => (
-						<input type="text" placeholder="enter your address" onChange={e => context.handleTextInputChange(e)}/>
+						<input type="text" placeholder="enter your address" onChange={(e) => {
+							context.handleTextInputChange(e);
+							//localStorage.setItem("delivery_address", e.target.value)
+							localStorage.removeItem("delivery_address")
+							}
+						}/>
 					)}
-				</Consumer>
+				</Consumer> */}
+				<AddressInput/>
 			</div>
 
 			{/* https://codepen.io/coralsea/pen/mMwwBz */}

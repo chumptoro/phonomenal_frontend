@@ -34,6 +34,23 @@ class Order extends Component {
       order_items: [{dish: "id", quantity: 1, special_instruction: "", price: 4.99}],
   };
 
+  componentDidMount() {
+		if (localStorage.getItem("delivery_address") !== null ) {
+			this.setState({
+				delivery_address: localStorage.getItem("delivery_address")
+			});
+		}
+		else {
+			this.setState({
+				delivery_address: ""
+			});
+		}
+	}
+  
+	componentWillUnmount() {
+		localStorage.setItem("delivery_address", this.state.delivery_address);
+	}
+
   updateTotalPrice = (value) => {
     var update_val = this.state.total_price + value;
     this.setState({ total_price: update_val  });

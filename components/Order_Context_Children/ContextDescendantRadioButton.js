@@ -71,7 +71,7 @@ class ContextDescendantRadioButton extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			toggle: false
+			toggle: null
 		};
 	  	this.toggleState = this.toggleState.bind(this);
 	}
@@ -81,7 +81,28 @@ class ContextDescendantRadioButton extends Component {
 			toggle: !this.state.toggle
 		});
 	}
-
+	
+	// componentDidMount() {
+	// 	if (localStorage.getItem("delivery_method") !== null ) {
+	// 		console.log("delivery method does exist in localStorage with the value " + localStorage.getItem("delivery_method"));
+	// 		//console.log("localStorage.getItem for delivery method is " + localStorage.getItem("delivery_method"));
+	// 		this.setState({
+	// 			toggle: localStorage.getItem("delivery_method")
+	// 		});
+	// 	}
+	// 	else {
+	// 		this.setState({
+	// 			toggle: false
+	// 		});
+	// 		localStorage.setItem("delivery_method", false);
+	// 	}
+	// }
+  
+	// componentWillUnmount() {
+	// 	localStorage.setItem("delivery_method", this.state.toggle);
+	// 	console.log("localStorage.getItem for delivery method when unmouting is  " + localStorage.getItem("delivery_method"));
+	// }
+  
 	render() {
 		return (
 			<Consumer>
@@ -97,7 +118,12 @@ class ContextDescendantRadioButton extends Component {
 							value="pickup"
 							onChange={this.toggleState}
 							checked={!this.state.toggle}
-							onClick={e => context.handleRadioButton(e)} 
+							onClick={(e) => {
+									context.handleRadioButton(e);
+									//localStorage.setItem("delivery_method", false);
+									console.log("this.state.toggle value is " + this.state.toggle);
+								}
+							} 
 						/>
 						<label htmlFor="pickup">Pickup</label>
 
@@ -108,16 +134,17 @@ class ContextDescendantRadioButton extends Component {
 							value="delivery"
 							onChange={this.toggleState}
 							checked={this.state.toggle}
-							onClick={e => context.handleRadioButton(e)} 
+							onClick={(e) => {
+									context.handleRadioButton(e);
+									//localStorage.setItem("delivery_method", true);
+									//localStorage.removeItem("delivery_method");
+								}
+							}
 							
 						/>
 						<label htmlFor="delivery">Delivery</label>
 					</form>
 				</StyledToggleSwitch>	
-				  
-				  
-
-					  
               )}
             </Consumer>
 		);
