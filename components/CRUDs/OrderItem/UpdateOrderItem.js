@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import StyledOrderItemDetail from "../../Styling/Form";
+import StyledInputForm from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
 import DeleteOrderItem from "./DeleteOrderItem.js";
@@ -33,18 +33,35 @@ const StyledAddMoreButton = styled(StyledCheckOutButton)`
 const ShowHideController = styled.div`
 	/* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
 `;
+
+//if the endpoint for config.js were https://us1.prisma.sh/mark-pham-beaff5/onlinestore2/dev
+// const UPDATE_ORDER_ITEM_MUTATION = gql`
+// 	mutation UPDATE_ORDER_ITEM_MUTATION ($id: ID $quantity: Int $special_instruction: String $price: Float) 
+// 	{
+// 		updateOrderItem  ( 
+// 			data: {
+// 				quantity:  $quantity
+// 				special_instruction: $special_instruction
+// 				price: $price,
+// 			}
+// 			where: {
+// 					id: $id
+// 			}
+// 		) {
+// 		  id		
+// 		}
+// 	}
+// `;
+
+//endpoint for config.js is localhost:4444
 const UPDATE_ORDER_ITEM_MUTATION = gql`
 	mutation UPDATE_ORDER_ITEM_MUTATION ($id: ID $quantity: Int $special_instruction: String $price: Float) 
 	{
-		updateOrderItem  ( 
-			data: {
-                quantity:  $quantity
-                special_instruction: $special_instruction
-                price: $price,
-			}
-            where: {
-                id: $id
-            }
+		reviseOrderItem  ( 
+				quantity:  $quantity
+				special_instruction: $special_instruction
+				price: $price
+				id: $id
 		) {
 		  id		
 		}
@@ -93,35 +110,36 @@ class UpdateOrderItem extends Component {
 		return (
 			<Mutation mutation={UPDATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
-					(updateOrderItem, {loading, error}) => (
+					(reviseOrderItem, {loading, error}) => (
 
-						<StyledOrderItemDetail 
+						<StyledInputForm 
 							order_item_created={this.props.order_item_created} 
-                            order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
+              order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 						>
-							<div className="box">
-							<div className="title">
-								{this.props.parent_props.dish.name}
+							<div className="input_wrapper">
+                <div className="label">
+                {this.props.parent_props.dish.name}
+                </div>
+								<input 
+									type="text" name="special_instruction" 
+									placeholder="  &#9999;  enter requests or instructions"
+									value={this.state.special_instruction} 
+									className="text_input_box" 
+									onChange={this.handleChange} />
 							</div>
-								<input type="text" name="special_instruction" 
-                                placeholder="  &#9999;  enter requests or instructions"
-                                value={this.state.special_instruction} 
-                                className="text_input_box" 
-                                onChange={this.handleChange} />
-							</div>
-							<div className="box">
-							<div className="title">
+							<div className="input_wrapper">
+							<div className="label">
 								number of orders
 							</div>
 							<input type="number" name = "quantity"  min="1" value={this.state.quantity} className="number_input_box" onChange={this.handleChange} />
 							</div>
-							<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+							<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 
                             <ButtonRow>
                                 <StyledWindowTopBarCloseXSymbolButton onClick= {   
                                         async e => {
 								            e.preventDefault();
-								            const res = await updateOrderItem();
+								            const res = await reviseOrderItem();
 								            //console.log(res);
                                             const x = await this.props.onSubmission();
                                             this.props.hideModal();
@@ -137,7 +155,7 @@ class UpdateOrderItem extends Component {
                                     onClick= {   
                                         async e => {
 								            e.preventDefault();
-								            const res = await updateOrderItem();
+								            const res = await reviseOrderItem();
 								            //console.log(res);
                                             const x = await this.props.onSubmission();
                                             this.props.hideModal();
@@ -170,11 +188,11 @@ class UpdateOrderItem extends Component {
                                     id={this.state.id}
                                     onReset={this.props.onReset}
                                     order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
-									order_item_created={this.props.order_item_created}
+																		order_item_created={this.props.order_item_created}
                                     hideModal={this.props.hideModal}
                                 />
                             </ButtonRow>
-						</StyledOrderItemDetail>
+						</StyledInputForm>
 					)
 				}
 			</Mutation>

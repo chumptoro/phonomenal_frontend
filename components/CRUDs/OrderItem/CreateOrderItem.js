@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import StyledOrderItemDetail from "../../Styling/Form";
+import StyledInputForm from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 
 import {Consumer} from '../../Context';
@@ -43,15 +43,12 @@ const DELETE_ALL_ORDER_ITEMS_MUTATION = gql`
 const CREATE_ORDER_ITEM_MUTATION = gql`
 	mutation CREATE_ORDER_ITEM_MUTATION ($dish_id: ID $quantity: Int $special_instruction: String $price: Float $dish_name: String) 
 	{
-		createOrderItem(
-			data: {
+		addOrderItemFromMenu(
 				quantity:  $quantity
 				special_instruction: $special_instruction
-				price: $price,
+				price: $price
 				dish_id: $dish_id
-				dish: { connect: {id: $dish_id}},
-				dish_name: $dish_name,
-			}
+				dish_name: $dish_name
 		) {
 		  id		
 		}
@@ -85,35 +82,33 @@ class CreateOrderItem extends Component {
 			{context => (
 			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
-					(createOrderItem, {loading, error}) => (
+					(addOrderItemFromMenu, {loading, error}) => (
 
-					<Mutation mutation={DELETE_ALL_ORDER_ITEMS_MUTATION} variables={this.state}>
-						{
-							(deleteManyOrderItems, {loading, error}) => (
-								<StyledOrderItemDetail 
+				
+								<StyledInputForm
 									order_item_created={this.props.order_item_created} 
 								>
-									<div className="box">
+									<div className="input_wrapper">
 									<div className="title">
 										{this.props.dish.name}
 									</div>
 										<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
 									</div>
-									<div className="box">
+									<div className="input_wrapper">
 									<div className="title">
 										number of orders
 									</div>
 									<input type="number" name = "quantity"  min="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
 									</div>
-									<div className="box message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+									<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
 								
 									<ButtonRow>
 										<StyledAddItemButton 
 										order_item_created={this.state.order_item_created} 
 										onClick={ async e => {
 											e.preventDefault();
-											const reso = await deleteManyOrderItems();
-											const res = await createOrderItem();
+										
+											const res = await addOrderItemFromMenu();
 											console.log("order item is created.  QueryOrderItem takes over");
 											this.props.onCreated();
 											context.updateTotalPrice(this.state.price);
@@ -128,10 +123,8 @@ class CreateOrderItem extends Component {
 
 										</StyledWindowTopBarCloseXSymbolButton>
 									</ButtonRow>
-								</StyledOrderItemDetail>
-							)
-						}
-					</Mutation>
+								</StyledInputForm>
+			
 
 					)
 				}

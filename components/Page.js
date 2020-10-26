@@ -37,6 +37,7 @@ const theme = {
 
   extra_max_component_vertical_distance: '110px',
   max_component_vertical_distance: '40px',
+  upper_mid_component_vertical_distance: '25px',
   mid_component_vertical_distance: '20px',
   min_component_vertical_distance: '15px',
   tiny_component_vertical_distance: '1px',

@@ -5,7 +5,6 @@ import {css} from 'styled-components';
 
 const ResponsiveGridHideFooter = css`
    margin-bottom: 20vh;
-    
 `;
 
 const ResponsiveGridLeftRightMargin = css`

@@ -8,7 +8,6 @@ import { Consumer } from "../Context";
 import CreateOrderItem from "../CRUDs/OrderItem/CreateOrderItem"
 import QueryOrderItem from "../CRUDs/OrderItem/QueryOrderItem"
 
-import StyledOrderItemDetail from "../Styling/Form";
 import {StyledButton, ButtonRow} from "../Styling/Button"
 
 const StyledItem = styled.div`
@@ -82,7 +81,6 @@ const StyledModal = styled.div`
 
   overflow-y: auto !important;
 
-  
   display: grid;
   grid-row-gap: 0;
   grid-column-gap:0;
@@ -117,9 +115,6 @@ const StyledHeroBanner = styled.div`
 `;
 
 
-const StyledOrderItemDetailCreate = styled(StyledOrderItemDetail)`
-
-`;
 
 const StyledCloseButton = styled.div`
   position: absolute;

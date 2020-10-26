@@ -16,7 +16,7 @@ const StyledButton = styled.div`
   font-weight: bold;
   font-size: ${props => props.theme.font_size_title_mid};
 
-  /* when the button is a single button, we can have it span the last row of a grid by doing the below.  if it is inside a row, like ButtonRow (below), then BUttonRow itself should  
+  /* when the button is a single button, we can have it span the last row of a grid by doing the below.  if it is inside a row, like ButtonRow (below), then ButtonRow itself should make this happen
   grid-column: 1 / -1;
   grid-row-start: span 900; */
 

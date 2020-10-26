@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 
 
-const StyledOrderItemDetail = styled.div` 
+const StyledInputForm = styled.div` 
   width: 100%;
   height: auto;
   display: grid;
@@ -10,11 +10,18 @@ const StyledOrderItemDetail = styled.div`
   
   /* margin-bottom: 30px; */
 
-  .box {
+  .form_title {
+    margin: auto;
+    margin-top: ${props => props.theme.min_component_vertical_distance};
+    font-size: ${props => props.theme.font_size_title_mid};
+  }
+
+    /* wrapping the label and the input field */
+  .input_wrapper {
     margin: ${props => props.theme.max_component_vertical_distance};
     margin-top: ${props => props.theme.min_component_vertical_distance};
   }
-  .title {
+  .label {
     font-size: ${props => props.theme.font_size_title_small};
     font-weight: bold;
   }
@@ -36,7 +43,16 @@ const StyledOrderItemDetail = styled.div`
     font-family: "europa";
 		border-radius: 3px  ;
     border: 0.5px solid ${props => props.theme.divider_gray} ;
-	outline: none;
+	  outline: none;
+    width: 70%;
+    height: 30px;
+    margin-top: 10px;
+	}
+  input[type="password"]
+	{
+		border-radius: 3px  ;
+    border: 0.5px solid ${props => props.theme.divider_gray} ;
+	  outline: none;
     width: 70%;
     height: 30px;
     margin-top: 10px;
@@ -58,4 +74,4 @@ const StyledOrderItemDetail = styled.div`
 `;
 
 
-export default StyledOrderItemDetail;
+export default StyledInputForm;

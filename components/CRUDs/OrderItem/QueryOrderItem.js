@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import StyledOrderItemDetail from "../../Styling/Form";
 import {StyledButton, ButtonRow} from "../../Styling/Button";
 
 import UpdateOrderItem from "./UpdateOrderItem";

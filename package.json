@@ -2,7 +2,7 @@
   "name": "phonomenal_frontend",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next -p 777",
+    "dev": "next -p 7777",
     "build": "next build",
     "start": "next start"
   },

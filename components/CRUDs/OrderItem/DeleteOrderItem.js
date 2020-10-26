@@ -23,14 +23,24 @@ const StyledDeleteButton = styled(StyledButton)`
   /* display: ${props => (props.order_item_created ? 'block' : 'none')}; */
 `;
 
+//if the endpoint for config.js were https://us1.prisma.sh/mark-pham-beaff5/onlinestore2/dev
+// const DELETE_ORDER_ITEM_MUTATION = gql`
+// 	mutation DELETE_ORDER_ITEM_MUTATION ($id: ID) 
+// 	{
+// 		deleteOrderItem (
+// 			where: {
+// 				id: $id
+// 			}
+// 		) {
+// 		  id		
+// 		}
+// 	}
+// `;
+
 const DELETE_ORDER_ITEM_MUTATION = gql`
 	mutation DELETE_ORDER_ITEM_MUTATION ($id: ID) 
 	{
-		deleteOrderItem (
-			where: {
-				id: $id
-			}
-		) {
+		removeOrderItem (id: $id) {
 		  id		
 		}
 	}

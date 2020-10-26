@@ -153,7 +153,7 @@ const Header = () => (
 			<ContextDescendantRadioButton />
 
 			<div className="right_sided_nav">
-				<Link href="/account">
+				<Link href="/signup">
 					<a> 
 						<img alt="user_profile_icon" src="./user_profile_grayed_out.svg" width="30" height="30" /> 
 					</a>
