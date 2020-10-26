@@ -24,7 +24,8 @@ const theme = {
   blue:'blue',
   divider_gray: 'rgb(231,231,231)',
 
-
+  ui_actionable_red:'rgb(235, 23, 0)',
+  ui_actionable_selected_red:'rgb(209, 23, 2)',
   ui_actionable_lightgrey:'#E1E1E1',
   ui_actionable_selected_lightgrey:'#BABABA',
   ui_actionable_green:'rgb(0,204,153)',

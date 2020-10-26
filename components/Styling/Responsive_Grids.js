@@ -7,6 +7,7 @@ const ResponsiveGridHideFooter = css`
    margin-bottom: 20vh;
 `;
 
+
 const ResponsiveGridLeftRightMargin = css`
 	@media (max-width: 300px) {
     grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};

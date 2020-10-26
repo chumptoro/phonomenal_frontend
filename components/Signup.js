@@ -36,6 +36,13 @@ const SignupGrid = styled.div`
 const SignupButton = styled(StyledButton)`
 	margin-top:${props => props.theme.max_component_vertical_distance};
 	margin-bottom:${props => props.theme.max_component_vertical_distance};
+	pointer-events: ${props => (props.enable ? 'auto' : 'none')};
+	background-color: ${props => (props.enable ? props.theme.ui_actionable_red : props.theme.ui_actionable_lightgrey)};
+
+	&:hover {
+    background-color: ${props => (props.enable ? props.theme.ui_actionable_selected_red : props.theme.ui_actionable_selected_lightgrey)} ;
+  }
+
 `;
 
 const SignupInputForm = styled(StyledInputForm)`
@@ -70,11 +77,12 @@ class Signup extends Component {
   //   children: PropTypes.instanceOf(Array).isRequired,
   // }
   state = {
-		signup_name: "",
-		phone__number: "",
+		first_name: "",
+		email:"",
+		phone_number: "",
 		password: "",
 		account_exist: false,
-		signup_button_active: false,
+		signup_button_enabled: false,
 		/* login_attempts: 0,
 		login_button_disabled: true */
   };
@@ -97,8 +105,14 @@ class Signup extends Component {
   handleTextInputChange = (e) => {
     const { value, name } = e.target;
     this.setState({ [name]: value });
-    //console.log("state is currently " + this.state[name]);
-    //console.log("togglin state to value " + e.target.value);
+    console.log("state is currently " + this.state[name]);
+		console.log("changing state to value " + e.target.value);
+
+		// console.log("length is " + this.state.first_name.length);
+		// console.log("length is " + this.state.email.length);
+		// console.log("length is " + this.state.phone_number.length);
+		// console.log("length is " + this.state.password.length);
+		// console.log("signup button is enabled? " + signup_button_enabled);
   };
 
   handleRadioButton = (e) => {
@@ -108,7 +122,22 @@ class Signup extends Component {
 	};
 	
   render() {
+		var signup_button_enabled = this.state.first_name.length > 0 && this.state.email.length > 0 && this.state.phone_number.length > 0 && this.state.password.length > 0; 
+		
+		
+		/* console.log("signup button is enabled? " + signup_button_enabled);
+		console.log("signup button is enabled? " + signup_button_enabled); */
+
+		// if (this.state.first_name !== "" && this.state.phone_number !== "" && this.state.password !== "" ) {
+		// 	this.setState({signup_button_disabled: false});
+		// 	console.log("signup button is " + this.state.signup_button_disabled);
+		// }
+		// else {
+		// 	this.setState({signup_button_disabled: true});
+		// 	console.log("signup button is " + this.state.signup_button_disabled);
+		// }
     return (
+			
       // <Provider
       //   value={{
       //     state: this.state,
@@ -124,11 +153,21 @@ class Signup extends Component {
 			{
 				(signup, {error, loading}) => (
 
-
 				<SignupInputForm>
 					<div className="form_title">
 					Sign Up
 					</div>
+					<div className="input_wrapper">
+						<div className="label">
+						FIRST NAME
+						</div>
+						<input 
+							type="text" name="first_name" 
+							placeholder=""
+							value={this.state.first_name} 
+							onChange={this.handleTextInputChange} />
+					</div>
+
 					<div className="input_wrapper">
 						<div className="label">
 						EMAIL
@@ -168,6 +207,7 @@ class Signup extends Component {
 
 					<ButtonRow>
 						<SignupButton
+							enable={signup_button_enabled}
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await signup();
