@@ -1,27 +1,23 @@
 import Link from 'next/link';
-
 import styled from 'styled-components';
 import PositionVerticallyHorizontallyCentered from "./Styling/VerticallyHorizontallyCentered";
 import StyledInputForm from "./Styling/Form";
 import {ResponsiveGridHideFooter} from "./Styling/Responsive_Grids";
 import {StyledButton, ButtonRow} from "./Styling/Button";
 
+import Error from "../components/ErrorMessage";
+
 import React, { Component } from "react";
 import { Provider } from "./Context";
 
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
-
 import {CURRENT_USER_QUERY} from "./Patron";
-import Error from "../components/ErrorMessage";
 
-
-const SIGNUP_MUTATION = gql`
-	mutation SIGNUP_MUTATION ($first_name: String $email: String $phone_number: String $password: String) {
-		signup (
-			first_name: $first_name
+const SIGNIN_MUTATION = gql`
+	mutation SIGNIN_MUTATION ($email: String $password: String) {
+		signin (
 			email: $email
-			phone_number: $phone_number
 			password: $password
 		) {
 			id
@@ -29,24 +25,24 @@ const SIGNUP_MUTATION = gql`
 	}
 `;
 
-const SignupGrid = styled.div`
+const SigninGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
-  grid-row-gap: 0;
-  grid-column-gap:0;
+    grid-row-gap: 0;
+    grid-column-gap:0;
 	${PositionVerticallyHorizontallyCentered}
 `;
 
 // https://stackoverflow.com/questions/7700051/make-overlapping-div-not-clickable-so-that-content-below-can-be-accessed
-const SignupButton = styled(StyledButton)`
+const SignInButton = styled(StyledButton)`
 	margin-top:${props => props.theme.max_component_vertical_distance};
 	margin-bottom:${props => props.theme.max_component_vertical_distance};
 	
 	pointer-events: ${props => (props.enable ? 'auto' : 'none')};
-	background-color: ${props => (props.enable ? props.theme.ui_actionable_red : props.theme.ui_actionable_lightgrey)};
+	background-color: ${props => (props.enable ? props.theme.ui_actionable_green : props.theme.ui_actionable_lightgrey)};
 
 	&:hover {
-    background-color: ${props => (props.enable ? props.theme.ui_actionable_selected_red : props.theme.ui_actionable_selected_lightgrey)} ;
+    background-color: ${props => (props.enable ? props.theme.ui_actionable_selected_green : props.theme.ui_actionable_selected_lightgrey)} ;
   }
 
 `;
@@ -78,17 +74,15 @@ const SignupInputForm = styled(StyledInputForm)`
 
 `;
 
-class Signup extends Component {
+class Signin extends Component {
   // static propTypes = {
   //   children: PropTypes.instanceOf(Array).isRequired,
   // }
   state = {
-		first_name: "",
 		email:"",
-		phone_number: "",
 		password: "",
 		account_exist: false,
-		signup_button_enabled: false,
+		signin_button_enabled: false,
 		/* login_attempts: 0,
 		login_button_disabled: true */
   };
@@ -123,14 +117,11 @@ class Signup extends Component {
     console.log("state is currently " + this.state[name]);
 		console.log("changing state to value " + e.target.value);
 
-	
-
-
 		// console.log("length is " + this.state.first_name.length);
 		// console.log("length is " + this.state.email.length);
 		// console.log("length is " + this.state.phone_number.length);
 		// console.log("length is " + this.state.password.length);
-		// console.log("signup button is enabled? " + signup_button_enabled);
+		// console.log("signin button is enabled? " + signin_button_enabled);
   };
 
   handleRadioButton = (e) => {
@@ -140,18 +131,18 @@ class Signup extends Component {
 	};
 	
   render() {
-		var signup_button_enabled = this.state.first_name.length > 0 && this.state.email.length > 0 && this.state.phone_number.length > 0 && this.state.password.length > 0; 
+		var signin_button_enabled = this.state.email.length > 0 && this.state.password.length > 0; 
 		
 		
-		/* console.log("signup button is enabled? " + signup_button_enabled);
-		console.log("signup button is enabled? " + signup_button_enabled); */
+		/* console.log("signin button is enabled? " + signin_button_enabled);
+		console.log("signin button is enabled? " + signin_button_enabled); */
 
 		// if (this.state.first_name !== "" && this.state.phone_number !== "" && this.state.password !== "" ) {
-		// 	this.setState({signup_button_disabled: false});
-		// 	console.log("signup button is " + this.state.signup_button_disabled);
+		// 	this.setState({signin_button_disabled: false});
+		// 	console.log("signin button is " + this.state.signin_button_disabled);
 		// }
 		// else {
-		// 	this.setState({signup_button_disabled: true});
+		// 	this.setState({signin_button_disabled: true});
 		// 	console.log("signup button is " + this.state.signup_button_disabled);
 		// }
     return (
@@ -167,26 +158,19 @@ class Signup extends Component {
       //   {this.props.children}
 			// </Provider>
 
-			<Mutation mutation={SIGNUP_MUTATION} variables={this.state}
+			<Mutation 
+				mutation={SIGNIN_MUTATION} 
+				variables={this.state} 
 				refetchQueries={[{ query : CURRENT_USER_QUERY}]} >
 			{
-				(signup, {error, loading}) => (
-
+				(signin, {error, loading}) => (
+					
 				<SignupInputForm>
 					<div className="form_title">
-					Sign Up
+					Sign In
 					</div>
+
 					<Error error={error}/> 
-					<div className="input_wrapper">
-						<div className="label">
-						FIRST NAME
-						</div>
-						<input 
-							type="text" name="first_name" 
-							placeholder=""
-							value={this.state.first_name} 
-							onChange={this.handleTextInputChange} />
-					</div>
 
 					<div className="input_wrapper">
 						<div className="label">
@@ -196,17 +180,6 @@ class Signup extends Component {
 							type="text" name="email" 
 							placeholder=""
 							value={this.state.email} 
-							onChange={this.handleTextInputChange} />
-					</div>
-
-					<div className="input_wrapper">
-						<div className="label">
-						PHONE
-						</div>
-						<input 
-							type="text" name="phone_number" 
-							placeholder=""
-							value={this.state.phone_number} 
 							onChange={this.handleTextInputChange} />
 					</div>
 
@@ -222,20 +195,22 @@ class Signup extends Component {
 					</div>
 
 					<div className="centered_text">
-						<small>Already have an account?</small>
+						<div><small>Forgot your password? </small></div>
+						<div><small>Don't have an account?</small></div>
 					</div>
+	
 
 					<ButtonRow>
-						<SignupButton
-							enable={signup_button_enabled}
+						<SignInButton
+							enable={signin_button_enabled}
 							onClick={ async e => {
 								e.preventDefault();
-								const res = await signup();
-								console.log("user is created. Head to menu and/or promotion message");
+								const res = await signin();
+								console.log("user is logged. Head to menu and/or promotion message");
 							}}
 						>
-							Sign Up
-						</SignupButton>
+							Sign In
+						</SignInButton>
 					</ButtonRow>
 				</SignupInputForm>
 
@@ -245,6 +220,4 @@ class Signup extends Component {
     );
   }
 }
-export default Signup;
-export { };
-
+export default Signin;

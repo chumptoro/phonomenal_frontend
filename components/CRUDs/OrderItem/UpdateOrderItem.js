@@ -138,9 +138,9 @@ class UpdateOrderItem extends Component {
                             <ButtonRow>
                                 <StyledWindowTopBarCloseXSymbolButton onClick= {   
                                         async e => {
-								            e.preventDefault();
-								            const res = await reviseOrderItem();
-								            //console.log(res);
+																						e.preventDefault();
+																						const res = await reviseOrderItem();
+																						//console.log(res);
                                             const x = await this.props.onSubmission();
                                             this.props.hideModal();
                                             console.log(

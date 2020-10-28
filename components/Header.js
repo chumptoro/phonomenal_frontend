@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import ContextDescendantRadioButton from './Order_Context_Children/ContextDescendantRadioButton';
 import { Consumer } from "./Context";
 
+import User from "./Patron";
+import Dropdown from "./Styling/Dropdown";
+
 //header is a sub-component of Page so it can reference props.theme!
 //*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledHeader = styled.header`
@@ -17,7 +20,6 @@ const StyledHeader = styled.header`
 	
 	background-color:white;
   	border-bottom: 1px solid rgba(217, 219, 224, 0.5);
-
 
 	@media (max-width: 300px) {
     grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
@@ -47,16 +49,14 @@ const StyledHeader = styled.header`
 		float: right;
 		padding-top: 10px;;
 
-		a {
+		.nav_bar_icon {
 			margin-right: 12px;
 			margin-left: 12px;
 		}
-
 		.user_profile_icon {
 			padding-top: 5px;
 		}
 	}
-
 	.delivery_address {
 		float: left;
 		padding-top: 17.5px;
@@ -69,7 +69,6 @@ const StyledHeader = styled.header`
 	}
 
 `;
-
 
 class AddressInput extends Component {
 	state = {
@@ -119,7 +118,6 @@ class AddressInput extends Component {
 	}
 };
 
-
 const Header = () => (
 	<StyledHeader>
 		<div className="wrapper">
@@ -132,7 +130,6 @@ const Header = () => (
 				<a> 
 					<img className="location_pin" alt="location_pin" src="./location_pin_thin.svg" width="30" height="30" />
 				</a>
-
 			</div>
 
 			<div className="delivery_address">
@@ -148,30 +145,19 @@ const Header = () => (
 				</Consumer> */}
 				<AddressInput/>
 			</div>
-
 			{/* https://codepen.io/coralsea/pen/mMwwBz */}
 			<ContextDescendantRadioButton />
-
 			<div className="right_sided_nav">
-				<Link href="/signup">
-					<a> 
-						<img alt="user_profile_icon" src="./user_profile_grayed_out.svg" width="30" height="30" /> 
-					</a>
-				</Link>
-
+				<User>
+				</User>
+				{/* <Dropdown Signedin="true"/> */}
 				<Link href="/shopping_bag">
-					<a> 
+					<a className= "nav_bar_icon"> 
 						<img className="shopping_bag_icon" border="0" alt="shopping bag icon" src="./shopping-bag-green.svg" width="30" height="30" /> 
 					</a>
 				</Link>
 			</div>
-			{/* <div className="sub-bar">
-				<p>Search</p>
-			</div>
-
-			<div>Cart</div> */}
-		</div>
-		
+		</div>		
 	</StyledHeader>
 );
 
