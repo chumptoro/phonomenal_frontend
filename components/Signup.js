@@ -74,6 +74,9 @@ const SignupInputForm = styled(StyledInputForm)`
 	.centered_text {
 		margin: auto;
 		margin-top: ${props => props.theme.min_component_vertical_distance};
+		small {
+			cursor: pointer;
+		}
 	}
 
 `;
@@ -176,7 +179,7 @@ class Signup extends Component {
 					<div className="form_title">
 					Sign Up
 					</div>
-					<Error error={error}/> 
+					<Error error={error}/>
 					<div className="input_wrapper">
 						<div className="label">
 						FIRST NAME
@@ -222,7 +225,10 @@ class Signup extends Component {
 					</div>
 
 					<div className="centered_text">
-						<small>Already have an account?</small>
+						<Link href="/signin">
+							<small>Already have an account?</small>
+						</Link>	
+						 
 					</div>
 
 					<ButtonRow>

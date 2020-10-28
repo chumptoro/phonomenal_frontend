@@ -2,6 +2,8 @@ import React, { useState, Component } from "react";
 import styled from "styled-components";
 import Link from 'next/link';
 
+import Signout from "../Signout";
+
 const DropDownContainer = styled.span`
 	margin-left: 12px;
 	margin-right: 24px;
@@ -121,12 +123,13 @@ class Dropdown extends Component {
 					dropdown_header_is_clicked={this.state.dropdown_header_is_clicked}
 				>
 					<Link href="/account" className="link">
-						<ListItem>Account</ListItem>
+						<ListItem>{this.props.first_name}</ListItem>
 					</Link>
 					<Divider/>
 					<Link href="/signout" className="link">
-						<ListItem>Sign Out</ListItem> 
+						<ListItem>Sign Out Link</ListItem> 
 					</Link>
+					<Signout/>
 					<Divider/>
 				</DropDownList>
 			;

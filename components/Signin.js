@@ -4,6 +4,7 @@ import PositionVerticallyHorizontallyCentered from "./Styling/VerticallyHorizont
 import StyledInputForm from "./Styling/Form";
 import {ResponsiveGridHideFooter} from "./Styling/Responsive_Grids";
 import {StyledButton, ButtonRow} from "./Styling/Button";
+import Router from 'next/router';
 
 import Error from "../components/ErrorMessage";
 
@@ -70,6 +71,9 @@ const SignupInputForm = styled(StyledInputForm)`
 	.centered_text {
 		margin: auto;
 		margin-top: ${props => props.theme.min_component_vertical_distance};
+		small {
+			cursor: pointer;
+		}
 	}
 
 `;
@@ -195,8 +199,12 @@ class Signin extends Component {
 					</div>
 
 					<div className="centered_text">
-						<div><small>Forgot your password? </small></div>
-						<div><small>Don't have an account?</small></div>
+						<div>
+							<Link href="/signin"><small>Don't have an account?</small></Link>
+						</div>
+						<div>
+							<Link href="/resetpassword"><small>Forgot your password?</small></Link>
+						</div>
 					</div>
 	
 
@@ -206,7 +214,9 @@ class Signin extends Component {
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await signin();
+								Router.push({ pathname: '/' });
 								console.log("user is logged. Head to menu and/or promotion message");
+
 							}}
 						>
 							Sign In
