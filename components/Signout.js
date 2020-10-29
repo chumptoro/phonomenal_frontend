@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from "styled-components";
 import { CURRENT_USER_QUERY } from "./Patron";
+import Router from 'next/router';
 
 const SIGN_OUT_MUTATION = gql`
   mutation SIGN_OUT_MUTATION {
@@ -40,7 +41,11 @@ const ListItem = styled.div`
 `;
 
 const Signout = props => (
-  <Mutation mutation={SIGN_OUT_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
+  <Mutation 
+    mutation={SIGN_OUT_MUTATION} 
+    refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+    onCompleted={() => Router.push({ pathname: '/signin' })}
+>
     {signout => <ListItem onClick={signout}>Sign Out</ListItem>}
   </Mutation>
 );

@@ -126,9 +126,9 @@ class Dropdown extends Component {
 						<ListItem>{this.props.first_name}</ListItem>
 					</Link>
 					<Divider/>
-					<Link href="/signout" className="link">
+					{/* <Link href="/signout" className="link">
 						<ListItem>Sign Out Link</ListItem> 
-					</Link>
+					</Link> */}
 					<Signout/>
 					<Divider/>
 				</DropDownList>

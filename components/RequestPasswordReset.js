@@ -16,13 +16,10 @@ import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import {CURRENT_USER_QUERY} from "./Patron";
 
-const SIGNIN_MUTATION = gql`
-	mutation SIGNIN_MUTATION ($email: String $password: String) {
-		signin (
-			email: $email
-			password: $password
-		) {
-			id
+const REQUEST_PASSWORD_RESET_MUTATION = gql`
+	mutation REQUEST_PASSWORD_RESET_MUTATION ($email: String) {
+		requestPasswordReset(email: $email) {
+			message
 		}
 	}
 `;
@@ -30,26 +27,26 @@ const SIGNIN_MUTATION = gql`
 const SigninGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
-    grid-row-gap: 0;
-    grid-column-gap:0;
+	grid-row-gap: 0;
+	grid-column-gap:0;
 	${PositionVerticallyHorizontallyCentered}
 `;
 
 // https://stackoverflow.com/questions/7700051/make-overlapping-div-not-clickable-so-that-content-below-can-be-accessed
-const SignInButton = styled(StyledButton)`
+const RequestPasswordResetButton = styled(StyledButton)`
 	margin-top:${props => props.theme.max_component_vertical_distance};
 	margin-bottom:${props => props.theme.max_component_vertical_distance};
 	
 	pointer-events: ${props => (props.enable ? 'auto' : 'none')};
-	background-color: ${props => (props.enable ? props.theme.ui_actionable_green : props.theme.ui_actionable_lightgrey)};
+	background-color: ${props => (props.enable ? props.theme.ui_actionable_red : props.theme.ui_actionable_lightgrey)};
 
 	&:hover {
-    background-color: ${props => (props.enable ? props.theme.ui_actionable_selected_green : props.theme.ui_actionable_selected_lightgrey)} ;
+    background-color: ${props => (props.enable ? props.theme.ui_actionable_selected_red : props.theme.ui_actionable_selected_lightgrey)} ;
   }
 
 `;
 
-const SignupInputForm = styled(StyledInputForm)`
+const RequestPasswordResetInputForm = styled(StyledInputForm)`
 	grid-template-columns: 1fr;
 	/* ${PositionVerticallyHorizontallyCentered} */
 	${ResponsiveGridHideFooter}
@@ -75,33 +72,24 @@ const SignupInputForm = styled(StyledInputForm)`
 		small {
 			cursor: pointer;
 		}
+		.success {
+			color: ${props => props.theme.ui_actionable_green};
+		}
 	}
 
 `;
 
-class Signin extends Component {
+class RequestPasswordReset extends Component {
   // static propTypes = {
   //   children: PropTypes.instanceOf(Array).isRequired,
   // }
   state = {
 		email:"",
-		password: "",
-		account_exist: false,
-		signin_button_enabled: false,
+		password_reset_button_enabled: false,
 		/* login_attempts: 0,
 		login_button_disabled: true */
   };
   componentDidMount() {
-		// if (localStorage.getItem("delivery_address") !== null ) {
-		// 	this.setState({
-		// 		delivery_address: localStorage.getItem("delivery_address")
-		// 	});
-		// }
-		// else {
-		// 	this.setState({
-		// 		delivery_address: ""
-		// 	});
-		// }
 	}
 	componentWillUnmount() {
 		//localStorage.setItem("delivery_address", this.state.delivery_address);
@@ -121,12 +109,6 @@ class Signin extends Component {
 		}
     console.log("state is currently " + this.state[name]);
 		console.log("changing state to value " + e.target.value);
-
-		// console.log("length is " + this.state.first_name.length);
-		// console.log("length is " + this.state.email.length);
-		// console.log("length is " + this.state.phone_number.length);
-		// console.log("length is " + this.state.password.length);
-		// console.log("signin button is enabled? " + signin_button_enabled);
   };
 
   handleRadioButton = (e) => {
@@ -136,46 +118,30 @@ class Signin extends Component {
 	};
 	
   render() {
-		var signin_button_enabled = this.state.email.length > 0 && this.state.password.length > 0; 
+		var password_reset_button_enabled = this.state.email.length > 0; 
 		
-		
-		/* console.log("signin button is enabled? " + signin_button_enabled);
-		console.log("signin button is enabled? " + signin_button_enabled); */
-
-		// if (this.state.first_name !== "" && this.state.phone_number !== "" && this.state.password !== "" ) {
-		// 	this.setState({signin_button_disabled: false});
-		// 	console.log("signin button is " + this.state.signin_button_disabled);
-		// }
-		// else {
-		// 	this.setState({signin_button_disabled: true});
-		// 	console.log("signup button is " + this.state.signup_button_disabled);
-		// }
     return (
-			
-      // <Provider
-      //   value={{
-      //     state: this.state,
-      //     handleTextInputChange: e => this.handleTextInputChange(e),
-      //     handleRadioButton: e => this.handleRadioButton(e),
-      //     updateTotalPrice: this.updateTotalPrice,
-      //   }}
-      // >
-      //   {this.props.children}
-			// </Provider>
-
 			<Mutation 
-				mutation={SIGNIN_MUTATION} 
+				mutation={REQUEST_PASSWORD_RESET_MUTATION} 
 				variables={this.state} 
-				refetchQueries={[{ query : CURRENT_USER_QUERY}]} >
+				//refetchQueries={[{ query : CURRENT_USER_QUERY}]} 
+			>
 			{
-				(signin, {error, loading}) => (
+				(resetPasswordRequest, {error, loading, called}) => (
 					
-				<SignupInputForm>
+				<RequestPasswordResetInputForm>
 					<div className="form_title">
-					Sign In
+					Password Reset
 					</div>
 
 					<Error error={error}/> 
+					{!error && !loading && called && 					
+						<div className="centered_text">
+							<div className="success">
+								Your Password is resetted. Check your email!
+							</div>
+						</div>
+					}
 
 					<div className="input_wrapper">
 						<div className="label">
@@ -188,41 +154,21 @@ class Signin extends Component {
 							onChange={this.handleTextInputChange} />
 					</div>
 
-					<div className="input_wrapper">
-						<div className="label">
-						PASSWORD
-						</div>
-						<input 
-							type="password" name="password" 
-							placeholder=""
-							value={this.state.password} 
-							onChange={this.handleTextInputChange} />
-					</div>
-
-					<div className="centered_text">
-						<div>
-							<Link href="/signup"><small>Don't have an account?</small></Link>
-						</div>
-						<div>
-							<Link href="/request_password_reset"><small>Forgot your password?</small></Link>
-						</div>
-					</div>
 	
 					<ButtonRow>
-						<SignInButton
-							enable={signin_button_enabled}
+						<RequestPasswordResetButton
+							enable={password_reset_button_enabled}
 							onClick={ async e => {
 								e.preventDefault();
-								const res = await signin();
-								Router.push({ pathname: '/' });
-								console.log("user is logged. Head to menu and/or promotion message");
-
+								const res = await resetPasswordRequest();
+								//Router.push({ pathname: '/' });
+								console.log("sending reset token to user email");
 							}}
 						>
-							Sign In
-						</SignInButton>
+							Reset Password
+						</RequestPasswordResetButton>
 					</ButtonRow>
-				</SignupInputForm>
+				</RequestPasswordResetInputForm>
 
 				)
 			}
@@ -230,4 +176,4 @@ class Signin extends Component {
     );
   }
 }
-export default Signin;
+export default RequestPasswordReset;

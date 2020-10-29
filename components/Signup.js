@@ -6,6 +6,9 @@ import StyledInputForm from "./Styling/Form";
 import {ResponsiveGridHideFooter} from "./Styling/Responsive_Grids";
 import {StyledButton, ButtonRow} from "./Styling/Button";
 
+import Router from 'next/router';
+
+
 import React, { Component } from "react";
 import { Provider } from "./Context";
 
@@ -238,6 +241,7 @@ class Signup extends Component {
 								e.preventDefault();
 								const res = await signup();
 								console.log("user is created. Head to menu and/or promotion message");
+								Router.push({ pathname: '/' });
 							}}
 						>
 							Sign Up

@@ -23,13 +23,13 @@ const User = props => (
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error: {error.message}</p>;
         if (data.me != null) {
-          console.log("yo we are in!");
+          console.log("you are signed in!");
           return (
             <Dropdown Signedin="true" first_name={data.me.first_name}/>
           ); 
         }
         else {
-          console.log("yo we are NOT in!");
+          console.log("you we are NOT signed in!");
           return (      
             <Dropdown Signedin="false"/>
           );
