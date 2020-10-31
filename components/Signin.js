@@ -137,32 +137,27 @@ class Signin extends Component {
 	
   render() {
 		var signin_button_enabled = this.state.email.length > 0 && this.state.password.length > 0; 
-		
-		
-		/* console.log("signin button is enabled? " + signin_button_enabled);
-		console.log("signin button is enabled? " + signin_button_enabled); */
 
-		// if (this.state.first_name !== "" && this.state.phone_number !== "" && this.state.password !== "" ) {
-		// 	this.setState({signin_button_disabled: false});
-		// 	console.log("signin button is " + this.state.signin_button_disabled);
-		// }
-		// else {
-		// 	this.setState({signin_button_disabled: true});
-		// 	console.log("signup button is " + this.state.signup_button_disabled);
-		// }
+		let already_signed_in_message;
+		if (this.props.already_signed_in_with) {
+			already_signed_in_message = 
+				<div className="centered_text">
+					<div>
+						You are already signed in as {this.props.already_signed_in_with}. 
+					</div>
+					<div>
+						Signing in with a different account will sign you out!
+					</div>
+				</div> 
+			;
+		}
+		else {
+			already_signed_in_message = <div></div>;
+		}
+		
+	/* 	"You are already signed in as {data.me.email}. Signing in with a different account will sign you out!" */
+
     return (
-			
-      // <Provider
-      //   value={{
-      //     state: this.state,
-      //     handleTextInputChange: e => this.handleTextInputChange(e),
-      //     handleRadioButton: e => this.handleRadioButton(e),
-      //     updateTotalPrice: this.updateTotalPrice,
-      //   }}
-      // >
-      //   {this.props.children}
-			// </Provider>
-
 			<Mutation 
 				mutation={SIGNIN_MUTATION} 
 				variables={this.state} 
@@ -172,10 +167,12 @@ class Signin extends Component {
 					
 				<SignupInputForm>
 					<div className="form_title">
-					Sign In
+						{this.props.title}
 					</div>
 
-					<Error error={error}/> 
+					<Error error={error}/>
+
+					{already_signed_in_message}
 
 					<div className="input_wrapper">
 						<div className="label">
@@ -200,9 +197,9 @@ class Signin extends Component {
 					</div>
 
 					<div className="centered_text">
-						<div>
+						{/* <div>
 							<Link href="/signup"><small>Don't have an account?</small></Link>
-						</div>
+						</div> */}
 						<div>
 							<Link href="/request_password_reset"><small>Forgot your password?</small></Link>
 						</div>
@@ -214,8 +211,16 @@ class Signin extends Component {
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await signin();
-								Router.push({ pathname: '/' });
-								console.log("user is logged. Head to menu and/or promotion message");
+								//Router.push({ pathname: '/' });
+								//Router.back();
+								if (this.props.redirect) {
+									Router.push({ pathname: this.props.redirect });
+								}
+								else {
+									Router.push({ pathname: '/' });
+								}
+								//populate address on the home page with the right address
+								console.log("user is logged in. Head to menu and/or promotion message");
 
 							}}
 						>

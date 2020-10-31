@@ -21,7 +21,9 @@ const DropDownList = styled.div`
 	padding-bottom: 11px;
   margin: 0px;
   background: #ffffff;
-	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+	/* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15); */
+	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+	
 	border-radius: ${props => props.theme.border_radius_value};
 	/* border: solid ${props => props.theme.divider_gray} 0.5px;  */
 `;

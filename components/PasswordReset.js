@@ -127,6 +127,7 @@ class PasswordReset extends Component {
           password: this.state.password,
           confirmPassword: this.state.confirmPassword,
         }}
+				//sign in user upon successful password reset
         refetchQueries={[{ query: CURRENT_USER_QUERY }]} 
 			>
 			{
