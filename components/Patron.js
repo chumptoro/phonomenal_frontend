@@ -23,20 +23,20 @@ const User = props => (
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error: {error.message}</p>;
         if (data.me != null) {
-          console.log("you are signed in!");
+          console.log("user " + data.me.email + " signed in!");
           return (
             <Dropdown Signedin="true" first_name={data.me.first_name}/>
           ); 
         }
         else {
-          console.log("you we are NOT signed in!");
+          console.log("no user is signed in");
           return (      
             <Dropdown Signedin="false"/>
           );
         }
       }
 			}
-{/* {payload => props.children(payload)} */}
+      {/* {payload => props.children(payload)} */}
   </Query>
 );
 

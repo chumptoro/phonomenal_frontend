@@ -92,16 +92,6 @@ class Signin extends Component {
 		login_button_disabled: true */
   };
   componentDidMount() {
-		// if (localStorage.getItem("delivery_address") !== null ) {
-		// 	this.setState({
-		// 		delivery_address: localStorage.getItem("delivery_address")
-		// 	});
-		// }
-		// else {
-		// 	this.setState({
-		// 		delivery_address: ""
-		// 	});
-		// }
 	}
 	componentWillUnmount() {
 		//localStorage.setItem("delivery_address", this.state.delivery_address);
@@ -121,12 +111,6 @@ class Signin extends Component {
 		}
     console.log("state is currently " + this.state[name]);
 		console.log("changing state to value " + e.target.value);
-
-		// console.log("length is " + this.state.first_name.length);
-		// console.log("length is " + this.state.email.length);
-		// console.log("length is " + this.state.phone_number.length);
-		// console.log("length is " + this.state.password.length);
-		// console.log("signin button is enabled? " + signin_button_enabled);
   };
 
   handleRadioButton = (e) => {
@@ -143,10 +127,10 @@ class Signin extends Component {
 			already_signed_in_message = 
 				<div className="centered_text">
 					<div>
-						You are already signed in as {this.props.already_signed_in_with}. 
+						You are already signed in as {this.props.already_signed_in_with}!
 					</div>
 					<div>
-						Signing in with a different account will sign you out!
+						You can sign out of it and sign in with a different account below.
 					</div>
 				</div> 
 			;
@@ -211,7 +195,8 @@ class Signin extends Component {
 							onClick={ async e => {
 								e.preventDefault();
 								const res = await signin();
-								//Router.push({ pathname: '/' });
+								const sto = await localStorage.setItem('guest_checkout', false);
+								console.log("localStorage for guest_checkout is " + localStorage.getItem('guest_checkout'));
 								//Router.back();
 								if (this.props.redirect) {
 									Router.push({ pathname: this.props.redirect });
@@ -221,6 +206,31 @@ class Signin extends Component {
 								}
 								//populate address on the home page with the right address
 								console.log("user is logged in. Head to menu and/or promotion message");
+
+							var localStorageSpace = function(){
+								var data = '';
+
+								console.log('Current local storage: ');
+
+								for(var key in localStorage){
+
+										if(localStorage.hasOwnProperty(key)){
+												data += localStorage[key];
+												console.log( key + " = " + ((window.localStorage[key].length * 16)/(8 * 1024)).toFixed(2) + ' KB' );
+										}
+
+								}
+
+								console.log(data ? '\n' + 'Total space used: ' + ((data.length * 16)/(8 * 1024)).toFixed(2) + ' KB' : 'Empty (0 KB)');
+								console.log(data ? 'Approx. space remaining: ' + (5120 - ((data.length * 16)/(8 * 1024)).toFixed(2)) + ' KB' : '5 MB');
+							};
+
+							localStorageSpace();
+
+
+
+
+
 
 							}}
 						>

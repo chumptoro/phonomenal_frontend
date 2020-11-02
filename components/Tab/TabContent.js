@@ -96,101 +96,24 @@ class DishesUnderEachCategory extends Component {
 
 
 class TabContent extends Component {
-  static propTypes = {
-    // activeTab: PropTypes.string.isRequired,
-    // label: PropTypes.string.isRequired,
-    // onClick: PropTypes.func.isRequired,
-  };
-  //onClick = () => {
-    // const { label, onClick } = this.props;
-    // onClick(label);
-  //}
   render() {
-    // const { onClick, props: {activeTab, label,}, } = this;
-    
-    // let className = 'tab-list-item';
-
-    // if (activeTab === label) {
-    //   className += ' tab-list-active';
-    // }
     return (
-        <Query query={ALL_DISH_CATEGORIES_QUERY}>
-            {
-              ({ data, error, loading }) => {
-              if (loading) return <p>Loading...</p>;
-              if (error) return <p>Error: {error.message}</p>;
-              {/* console.log (data) */}
-
-              return (
-                <StyledTabContent>
-                {data.categories.map(
-                  category => 
-                    <DishesUnderEachCategory category={category} key={category.id}/>
-                )}
-                </StyledTabContent>
-              );
-              }
-            }
-          </Query>
-    );
-  }
-}
-
-class TabContento extends Component {
-  static propTypes = {
-    // activeTab: PropTypes.string.isRequired,
-    // label: PropTypes.string.isRequired,
-    // onClick: PropTypes.func.isRequired,
-  };
-  //onClick = () => {
-    // const { label, onClick } = this.props;
-    // onClick(label);
-  //}
-  render() {
-    // const { onClick, props: {activeTab, label,}, } = this;
-    
-    // let className = 'tab-list-item';
-
-    // if (activeTab === label) {
-    //   className += ' tab-list-active';
-    // }
-    return (
-      <StyledTabContent>
-        <LevelTwoHeader>Signature Pho</LevelTwoHeader>
-        {/* <StyledItemsList>
-          {data_array.map(item => <TabContentItem item={item} key={item.id} category={this.props.category} />)}
-        </StyledItemsList> */}
-        <Query query={ALL_DISHES_QUERY}>
-          {
-            ({ data, error, loading }) => {
+      <Query query={ALL_DISH_CATEGORIES_QUERY}>
+        {
+          ({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
-            {/* console.log (data) */}
             return (
-              <StyledItemsList>
-                {data.dishes.filter(function(item) {return item.category == "pho";}).map(item => <TabContentItem item={item} key={item.id} />)}
-              </StyledItemsList> 
+              <StyledTabContent>
+              {data.categories.map(
+                category => 
+                  <DishesUnderEachCategory category={category} key={category.id}/>
+              )}
+              </StyledTabContent>
             );
-            }
           }
-        </Query>
-
-        <LevelTwoHeader>Banh Mi</LevelTwoHeader>
-        <Query query={ALL_DISHES_QUERY}>
-          {
-            ({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error.message}</p>;
-            console.log (data)
-            return (
-              <StyledItemsList>
-                {data.dishes.filter(function(item) {return item.category == "sandwich";}).map(item => <TabContentItem item={item} key={item.id} />)}
-              </StyledItemsList> 
-            );
-            }
-          }
-        </Query>
-      </StyledTabContent>
+        }
+      </Query>
     );
   }
 }

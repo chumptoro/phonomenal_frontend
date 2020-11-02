@@ -59,11 +59,11 @@ class QueryOrderItem extends Component {
 						if (loading) return <p>Loading...</p>;
 						if (error) return <p>Error: {error.message}</p>;
 						if (data) {
-							console.log("data is ");
+							{/* console.log("data is ");
 							console.log(data);
 							console.log("special instruction of queried order item is: " + data.orderItems[data.orderItems.length-1].special_instruction);
 							console.log("id of queried order item is: " + data.orderItems[data.orderItems.length-1].id);
-							{/* console.log("order_item exists and has value " +  sessionStorage.getItem("order_item_created") ); */}
+							console.log("order_item exists and has value " +  sessionStorage.getItem("order_item_created") ); */}
 							return (
 								<UpdateOrderItem
 									data ={data}
@@ -74,6 +74,7 @@ class QueryOrderItem extends Component {
 									onSubmission={this.props.onSubmission}
 									onReset={this.props.onReset}
 									hideModal={this.props.hideModal}
+									
 								/>
 							); 
 						}

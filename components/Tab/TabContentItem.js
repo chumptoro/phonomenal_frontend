@@ -49,7 +49,6 @@ const PriceCompare = styled.small`
 
 `;
 
-
 const StyledBlurLayer= styled.div`
   /* filter: blur(0px) !important; */
   display: ${props => (props.clicked ? 'block' : 'none')};
@@ -85,15 +84,7 @@ const StyledModal = styled.div`
   grid-row-gap: 0;
   grid-column-gap:0;
 
-  .buttons_span {
-    /* display: grid;
-    grid-auto-flow: column;
-    grid-column-gap: 0px; */
-  }
-  
 `;
-
-
 
 const StyledHeroBanner = styled.div` 
     /* display: grid;
@@ -113,9 +104,6 @@ const StyledHeroBanner = styled.div`
 
     border-radius: 4px 4px 0px 0px;
 `;
-
-
-
 const StyledCloseButton = styled.div`
   position: absolute;
   top: 10px;
@@ -125,7 +113,6 @@ const StyledCloseButton = styled.div`
   cursor: pointer;
   background-image: url('/icons/close_button.svg');
 `;
-
 
 const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
@@ -165,61 +152,37 @@ class TabContentItemModal extends Component {
   state = { 
     order_item_created: false,
     order_item_update_first_time_shown: true,
-
     dish: this.props.item,
     quantity: 1,
     special_instruction: this.props.item.price
   }
   itemCreationSuccessMessageCanBeShown = () => {
     this.setState({ order_item_created: true });
-    //console.log(" state of order_item created is " + this.state.order_item_created);
   }
-
   hideItemCreationSuccessMessage = () => {
     this.setState({ order_item_update_first_time_shown: false });
   }
-
   itemDeletionResetState = () => {
     this.setState({ order_item_created: false });
     this.setState({ order_item_update_first_time_shown: true });
-    //console.log(" state of order_item created is " + this.state.order_item_created);
   }
-  
-  //if we  use this arrow property, there is no need to bind handleChange to the correct this,  it wil be handled
   handleTextInputChange = (e) => {
-    //const val = type === 'number'? parseFloat(value) : value;
-    //we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
     const { name, value } = e.target;
     this.setState({ [name]: value });
     console.log("order item field currently has value " + this.state[name]);
-    console.log("changing ore item field value to " + e.target.value);
-  
+    console.log("changing item field value to " + e.target.value);
   };
   render() {
     const { item, hideModal, show} = this.props;
-    // console.log(show);
-    // console.log(" state of order_item_created is " + this.state.order_item_created);
     let form;
-    // console.log("status of order_item_created: " + this.state.order_item_created);
-
-    // if (!(sessionStorage.getItem("order_item_created"))) {
-    //   console.log("order_item does not exist. directing user to <CreateOrderItem>");
-    //   /* console.log("false"); */
-    //   form =              
-    //         <CreateOrderItem 
-    //           dish={item} 
-    //           order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
-    //           hideModal={this.props.hideModal}
-    //           /> ;
-    // } 
-
     if (this.state.order_item_created == false) {
       console.log("order_item does not exist. directing user to <CreateOrderItem>");
       /* console.log("false"); */
       form =              
             <CreateOrderItem 
               dish={item} 
-              order_item_created={this.state.order_item_created} onCreated={this.itemCreationSuccessMessageCanBeShown}
+              order_item_created={this.state.order_item_created} 
+              onCreated={this.itemCreationSuccessMessageCanBeShown}
               hideModal={this.props.hideModal}
               /> ;
     } 
@@ -246,7 +209,6 @@ class TabContentItemModal extends Component {
   }
 }
 
-
 class TabContentItem extends Component {
   state = { show: false }
   showModal = () => {
@@ -254,13 +216,17 @@ class TabContentItem extends Component {
     /* document.body.style.filter = "blur(20px)"; */  
     document.body.style.overflowY = "hidden";
   }
-  hideModal = () => {
+  hideModal = async () => { 
     this.setState({ show: false });
     document.body.style.overflowY = "scroll";
-    console.log("running hideModal.  state of show is " + this.state.show);
+
   }
   render() {
-    //const { onClick, props: {activeTab, label,}, } = this;
+    let modal;
+    if (this.state.show) {
+      modal= <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
+    }
+
     const { item } = this.props;
     return (
       <div>
@@ -268,11 +234,9 @@ class TabContentItem extends Component {
           {/* <button type='button' onClick={this.showModal} >Open</button> */}
           <TabContentItemThumbnail item={item} />
         </div>
-          <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
+        <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
       </div>
-
     );
   }
 }
-
 export default TabContentItem;

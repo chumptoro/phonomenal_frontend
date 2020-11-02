@@ -46,7 +46,20 @@ const Signout = props => (
     refetchQueries={[{ query: CURRENT_USER_QUERY }]}
     onCompleted={() => Router.push({ pathname: '/signin' })}
 >
-    {signout => <ListItem onClick={signout}>Sign Out</ListItem>}
+    {signout => 
+			<ListItem 
+					onClick={
+						async e => {
+								e.preventDefault();
+								const res = await signout();
+								const sto = await localStorage.setItem('guest_checkout', true);
+								console.log("localStorage for guest_checkout is " + localStorage.getItem('guest_checkout'));
+								//console.log("user is logs out");
+							}
+					}>
+					Sign Out
+			</ListItem>
+		}
   </Mutation>
 );
 export default Signout;

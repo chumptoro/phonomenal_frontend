@@ -75,7 +75,6 @@ class UpdateOrderItem extends Component {
         quantity: this.props.data.orderItems[this.props.data.orderItems.length-1].quantity,
         price: this.props.data.orderItems[this.props.data.orderItems.length-1].price,
         id: this.props.data.orderItems[this.props.data.orderItems.length-1].id,
-
         disable_special_instruction_field: true,
         disable_quantity_field: true,
     }
@@ -134,21 +133,18 @@ class UpdateOrderItem extends Component {
 							<input type="number" name = "quantity"  min="1" value={this.state.quantity} className="number_input_box" onChange={this.handleChange} />
 							</div>
 							<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-
-                            <ButtonRow>
-                                <StyledWindowTopBarCloseXSymbolButton onClick= {   
-                                        async e => {
-																						e.preventDefault();
-																						const res = await reviseOrderItem();
-																						//console.log(res);
-                                            const x = await this.props.onSubmission();
-                                            this.props.hideModal();
-                                            console.log(
-                                                "close modal button is clicked.  order_item_created is " + this.props.order_item_created + ". order_item_update_first_time_shown is " + this.props.order_item_update_first_time_shown
-                                            );
-                                        }
-							        }
-                                >
+                <ButtonRow>
+                  <StyledWindowTopBarCloseXSymbolButton 
+										onClick= {   
+											async e => {
+												e.preventDefault();
+												const res = await reviseOrderItem();	
+												const x = await this.props.onSubmission();
+												this.props.onReset();
+												this.props.hideModal();
+											}
+							      }
+                  >
 
 								</StyledWindowTopBarCloseXSymbolButton>
                                 <StyledAddMoreButton

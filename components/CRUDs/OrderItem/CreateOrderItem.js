@@ -63,69 +63,101 @@ class CreateOrderItem extends Component {
 		special_instruction:'',
 		price: parseFloat(this.props.dish.price),
 	}
+	componentDidMount() {
+		var dish = localStorage.getItem(this.state.dish_name);
+		if (dish) {
+			var dish_obj = JSON.parse(dish);
+			console.log ("YOOOOOOO "+ dish_obj.quantity);
+			console.log ("YOOOOOOO "+ dish_obj.special_instruction);
+			this.setState({quantity : dish_obj.quantity});
+			this.setState({special_instruction : dish_obj.special_instruction});
+		}
 
-	//if we  use this arrow property, there is no need to bind handleChange to the cirrect this,  it wil be handled
-	handleTextInputChange = (e) => {
+  }
+	handleTextInputChange = async (e) => {
 		const { name, type, value } = e.target;
 		var val = type === 'number'? parseFloat(value) : value;
-		if (name === "quantity") {
+		if (name === "quantity") {	
 			this.setState({ price: val*parseFloat(this.props.dish.price)});
 		} 
-		//we can let the state change field dynanically by using a placeholder in side [ ] (see JS's computed property name)
 		this.setState({[name]:val});
-		// console.log("order item field currently has value " + this.statex[name]);
-		// console.log("changing ore item field value to " + e.target.value);
+		
 	}
+	handleClose = async (e) => {
+		if (this.state.quantity>0 || this.state.special_instruction.length>0) {
+			var len = "orderItem".concat((localStorage.length).toString());
+			const sto = await localStorage.setItem(this.state.dish_name, JSON.stringify({
+				dish_id: this.state.dish_id,
+				dish_name:this.state.dish_name,
+				quantity:this.state.quantity,
+				special_instruction:this.state.special_instruction,
+				price: this.state.price,
+				order_item_number: len,
+			}));
+			// var order_total_price = await localStorage.getItem("order_total_price");
+			// if(order_total_price) {
+			// 	order_total_price = (parseFloat(order_total_price) + this.state.price).toString();
+			// 	localStorage.setItem("order_total_price",order_total_price  );
+			// }
+			// else {
+			// 	localStorage.setItem("order_total_price",this.state.price)
+			// }
+		}
+		this.props.hideModal();
+	}
+	
 	render() {
 		return (
 			<Consumer>
 			{context => (
 			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
 				{
-					(addOrderItemFromMenu, {loading, error}) => (
+					(addOrderItemFromMenu, {loading, error}) => (				
+						<StyledInputForm
+							order_item_created={this.props.order_item_created} 
+						>
+							<div className="input_wrapper">
+							<div className="label">
+								{this.props.dish.name}
+							</div>
+								<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} 
+								value = {this.state.special_instruction}
 
-				
-								<StyledInputForm
-									order_item_created={this.props.order_item_created} 
+								/>
+							</div>
+							<div className="input_wrapper">
+							<div className="label">
+								number of orders
+							</div>
+							<input type="number" name = "quantity"  min="1" 
+								placeholder="1"
+								className="number_input_box" 
+								onChange={e => this.handleTextInputChange(e)} 
+								value = {this.state.quantity}
+							/>	
+							</div>
+							
+							<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+						
+							<ButtonRow>
+								<StyledAddItemButton 
+									order_item_created={this.state.order_item_created} 
+									onClick={ async e => {
+										e.preventDefault();
+										const res = await addOrderItemFromMenu();
+										this.props.onCreated();
+										localStorage.removeItem(this.state.dish_name)
+										context.updateTotalPrice(this.state.price);
+									}}
 								>
-									<div className="input_wrapper">
-									<div className="title">
-										{this.props.dish.name}
-									</div>
-										<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} />
-									</div>
-									<div className="input_wrapper">
-									<div className="title">
-										number of orders
-									</div>
-									<input type="number" name = "quantity"  min="1" className="number_input_box" onChange={e => this.handleTextInputChange(e)} />
-									</div>
-									<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-								
-									<ButtonRow>
-										<StyledAddItemButton 
-										order_item_created={this.state.order_item_created} 
-										onClick={ async e => {
-											e.preventDefault();
-										
-											const res = await addOrderItemFromMenu();
-											console.log("order item is created.  QueryOrderItem takes over");
-											this.props.onCreated();
-											context.updateTotalPrice(this.state.price);
-											console.log("price of order item is  " + this.state.price);
-										}}
-										>
-										add item
-										</StyledAddItemButton>
-										<StyledWindowTopBarCloseXSymbolButton
-											onClick={this.props.hideModal}
-										>
-
-										</StyledWindowTopBarCloseXSymbolButton>
-									</ButtonRow>
-								</StyledInputForm>
-			
-
+								add item
+								</StyledAddItemButton>
+								<StyledWindowTopBarCloseXSymbolButton
+									onClick={this.handleClose}
+								>
+								</StyledWindowTopBarCloseXSymbolButton>
+							</ButtonRow>
+						</StyledInputForm>
 					)
 				}
 			</Mutation>
