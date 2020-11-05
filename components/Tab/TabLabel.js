@@ -65,8 +65,6 @@ class TabLabel extends Component {
               <div>{label}</div>
             </StyledTabLabel>
           </Link>
-
-  
         );
       }
       return (
@@ -78,7 +76,6 @@ class TabLabel extends Component {
             <div>{label}</div>
           </StyledTabLabel>
         </Link>
-
       );
     }
 }

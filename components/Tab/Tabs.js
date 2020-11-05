@@ -148,9 +148,6 @@ class Tabs extends Component {
                 );
               })
             }
-            {/* <div className="TabContentWrapper">
-              <TabContent category={activeTab}/>
-            </div>             */}
           </StyledTabHorizontalScroll>
           {/* <DividerRight>hi</DividerRight> */}
 

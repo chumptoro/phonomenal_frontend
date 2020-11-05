@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
-
+import {css} from 'styled-components';
 
 const StyledInputForm = styled.div` 
   width: 100%;
@@ -73,5 +73,36 @@ const StyledInputForm = styled.div`
   }
 `;
 
+const FormMiniInline = styled('div')`
+  border: 1px solid ${props => props.theme.ui_actionable_green} ;
+  /* border: 0.5px solid ${props => props.theme.divider_gray}; */  
+  border-radius: 3px;
+  grid-column-start: 2;
+  width: 80%;
+  margin-bottom: 20px; 
+  color: ${props => props.theme.content_gray};
+
+  input[type="text"] {
+    width: 58%;
+    height: 25px;
+  }
+  .non_submit_button {
+    border-radius: 20%;
+    height: 25px;
+    width: 20px;
+    font-size: 15px;
+    /* display:inline-block; */ /* to control height and width.  inline does not have width or height */
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+  .submit_button {
+    margin: -1px;
+    float:right; 
+    border-radius: 0px 3px 3px 0px;
+    height: 20px;
+    padding: 5px;
+    /* display:inline-block; */
+  }
+`;
 
 export default StyledInputForm;

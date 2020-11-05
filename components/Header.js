@@ -8,6 +8,7 @@ import { Consumer } from "./Context";
 import User from "./Patron";
 import Dropdown from "./Styling/Dropdown";
 
+
 //header is a sub-component of Page so it can reference props.theme!
 //*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledHeader = styled.header`
@@ -147,8 +148,23 @@ const Header = () => (
 			</div>
 			{/* https://codepen.io/coralsea/pen/mMwwBz */}
 			<ContextDescendantRadioButton />
+			
 			<div className="right_sided_nav">
 				<User>
+					{({ data }) => {
+						const me = data ? data.me : null;
+						if (me) {
+							return (
+								<Dropdown Signedin="true" first_name={me.first_name}/>
+							)
+						}
+						else {
+          	//console.log("no user is signed in");
+          		return (      
+            	<Dropdown Signedin="false"/>
+          		);
+       			 }
+					}}
 				</User>
 				{/* <Dropdown Signedin="true"/> */}
 				<Link href="/shopping_bag">

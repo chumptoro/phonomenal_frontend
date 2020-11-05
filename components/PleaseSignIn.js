@@ -12,7 +12,7 @@ const PleaseSignIn = props => (
             <Signin 
               title="Please Sign In First" 
               redirect={props.redirect}
-              />
+            />
           </div>
         );
       }

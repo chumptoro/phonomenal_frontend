@@ -88,8 +88,6 @@ class Signin extends Component {
 		password: "",
 		account_exist: false,
 		signin_button_enabled: false,
-		/* login_attempts: 0,
-		login_button_disabled: true */
   };
   componentDidMount() {
 	}
@@ -109,19 +107,18 @@ class Signin extends Component {
 				this.setState({ [name]: value });
 			 }
 		}
-    console.log("state is currently " + this.state[name]);
-		console.log("changing state to value " + e.target.value);
+    // console.log("state is currently " + this.state[name]);
+		// console.log("changing state to value " + e.target.value);
   };
 
   handleRadioButton = (e) => {
-    console.log("togglin state to value " + e.target.value);
+    //console.log("togglin state to value " + e.target.value);
     const { value, name } = e.target;
     this.setState({ [name]: value });
 	};
 	
   render() {
 		var signin_button_enabled = this.state.email.length > 0 && this.state.password.length > 0; 
-
 		let already_signed_in_message;
 		if (this.props.already_signed_in_with) {
 			already_signed_in_message = 
@@ -181,9 +178,9 @@ class Signin extends Component {
 					</div>
 
 					<div className="centered_text">
-						{/* <div>
+						<div>
 							<Link href="/signup"><small>Don't have an account?</small></Link>
-						</div> */}
+						</div>
 						<div>
 							<Link href="/request_password_reset"><small>Forgot your password?</small></Link>
 						</div>
@@ -226,11 +223,6 @@ class Signin extends Component {
 							};
 
 							localStorageSpace();
-
-
-
-
-
 
 							}}
 						>

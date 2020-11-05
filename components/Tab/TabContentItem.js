@@ -179,12 +179,12 @@ class TabContentItemModal extends Component {
       console.log("order_item does not exist. directing user to <CreateOrderItem>");
       /* console.log("false"); */
       form =              
-            <CreateOrderItem 
-              dish={item} 
-              order_item_created={this.state.order_item_created} 
-              onCreated={this.itemCreationSuccessMessageCanBeShown}
-              hideModal={this.props.hideModal}
-              /> ;
+        <CreateOrderItem 
+          dish={item} 
+          order_item_created={this.state.order_item_created} 
+          onCreated={this.itemCreationSuccessMessageCanBeShown}
+          hideModal={this.props.hideModal}
+          /> ;
     } 
     else {
       console.log("order item exists.  directing user to QueryOrderItem");
@@ -195,6 +195,7 @@ class TabContentItemModal extends Component {
                 onSubmission={this.hideItemCreationSuccessMessage}
                 onReset={this.itemDeletionResetState}  
                 hideModal={this.props.hideModal}
+                onClose={this.itemCreationSuccessMessageCanBeShown}
               /> ;
     }
     return (
@@ -219,14 +220,12 @@ class TabContentItem extends Component {
   hideModal = async () => { 
     this.setState({ show: false });
     document.body.style.overflowY = "scroll";
-
   }
   render() {
     let modal;
     if (this.state.show) {
       modal= <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
     }
-
     const { item } = this.props;
     return (
       <div>

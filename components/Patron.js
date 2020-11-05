@@ -11,34 +11,48 @@ const CURRENT_USER_QUERY = gql`
       email
       first_name
       permissions
+      shopping_bag {
+        id
+        dish_name
+        special_instruction
+        quantity
+        price
+      }
     }
   }
 `;
 
 const User = props => (
   <Query {...props} query={CURRENT_USER_QUERY}>
+    {payload => props.children(payload)}
+  </Query>
+);
+
+const UserDropdown = props => (
+  <Query {...props} query={CURRENT_USER_QUERY}>
     {
       ({data, loading, error}) => {
-        console.log(data); 
+        //console.log(data); 
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error: {error.message}</p>;
         if (data.me != null) {
-          console.log("user " + data.me.email + " signed in!");
+          //console.log("user " + data.me.email + " signed in!");
           return (
             <Dropdown Signedin="true" first_name={data.me.first_name}/>
           ); 
         }
         else {
-          console.log("no user is signed in");
+          //console.log("no user is signed in");
           return (      
             <Dropdown Signedin="false"/>
           );
         }
       }
-			}
-      {/* {payload => props.children(payload)} */}
+		}
   </Query>
 );
+
+
 
 // User.propTypes = {
 //   children: PropTypes.func.isRequired,

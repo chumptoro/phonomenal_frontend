@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
+import {CURRENT_USER_QUERY} from '../../Patron';
 import gql from 'graphql-tag';
-
 import StyledInputForm from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
-
 import {Consumer} from '../../Context';
-
 import {adopt} from 'react-adopt';
+import Router from 'next/router';
 
 const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
@@ -67,8 +66,6 @@ class CreateOrderItem extends Component {
 		var dish = localStorage.getItem(this.state.dish_name);
 		if (dish) {
 			var dish_obj = JSON.parse(dish);
-			console.log ("YOOOOOOO "+ dish_obj.quantity);
-			console.log ("YOOOOOOO "+ dish_obj.special_instruction);
 			this.setState({quantity : dish_obj.quantity});
 			this.setState({special_instruction : dish_obj.special_instruction});
 		}
@@ -77,9 +74,9 @@ class CreateOrderItem extends Component {
 	handleTextInputChange = async (e) => {
 		const { name, type, value } = e.target;
 		var val = type === 'number'? parseFloat(value) : value;
-		if (name === "quantity") {	
-			this.setState({ price: val*parseFloat(this.props.dish.price)});
-		} 
+		// if (name === "quantity") {	
+		// 	this.setState({ price: val*parseFloat(this.props.dish.price)});
+		// } 
 		this.setState({[name]:val});
 		
 	}
@@ -110,57 +107,71 @@ class CreateOrderItem extends Component {
 		return (
 			<Consumer>
 			{context => (
-			<Mutation mutation={CREATE_ORDER_ITEM_MUTATION} variables={this.state}>
+			<Mutation 
+				mutation={CREATE_ORDER_ITEM_MUTATION} 
+				variables={this.state} 
+				refetchQueries={[{ query : CURRENT_USER_QUERY}]}>
 				{
-					(addOrderItemFromMenu, {loading, error}) => (				
-						<StyledInputForm
-							order_item_created={this.props.order_item_created} 
-						>
-							<div className="input_wrapper">
-							<div className="label">
-								{this.props.dish.name}
-							</div>
-								<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} 
-								value = {this.state.special_instruction}
-
-								/>
-							</div>
-							<div className="input_wrapper">
-							<div className="label">
-								number of orders
-							</div>
-							<input type="number" name = "quantity"  min="1" 
-								placeholder="1"
-								className="number_input_box" 
-								onChange={e => this.handleTextInputChange(e)} 
-								value = {this.state.quantity}
-							/>	
-							</div>
-							
-							<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
-						
-							<ButtonRow>
-								<StyledAddItemButton 
-									order_item_created={this.state.order_item_created} 
-									onClick={ async e => {
-										e.preventDefault();
-										const res = await addOrderItemFromMenu();
-										this.props.onCreated();
-										localStorage.removeItem(this.state.dish_name)
-										context.updateTotalPrice(this.state.price);
-									}}
+					(addOrderItemFromMenu, {loading, error}) => (
+						<Query query={CURRENT_USER_QUERY}>
+						{({ data, loading }) => { 
+							return (
+								<StyledInputForm
+									order_item_created={this.props.order_item_created} 
 								>
-								add item
-								</StyledAddItemButton>
-								<StyledWindowTopBarCloseXSymbolButton
-									onClick={this.handleClose}
-								>
-								</StyledWindowTopBarCloseXSymbolButton>
-							</ButtonRow>
-						</StyledInputForm>
+									<div className="input_wrapper">
+									<div className="label">
+										{this.props.dish.name}
+									</div>
+										<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} 
+										value = {this.state.special_instruction}
+										/>
+									</div>
+									<div className="input_wrapper">
+									<div className="label">
+										number of orders
+									</div>
+									<input type="number" name = "quantity"  min="1" 
+										placeholder="1"
+										className="number_input_box" 
+										onChange={e => this.handleTextInputChange(e)} 
+										value = {this.state.quantity}
+									/>	
+									</div>
+									
+									<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+								
+									<ButtonRow>
+										<StyledAddItemButton 
+											order_item_created={this.state.order_item_created} 
+											onClick={ async e => {
+												e.preventDefault();
+												if (data.me) {
+													const res = await addOrderItemFromMenu();
+													this.props.onCreated();
+													localStorage.removeItem(this.state.dish_name)
+													context.updateTotalPrice(this.state.price)
+												}
+												else {
+													Router.push({ pathname: '/signinfirstplease' });
+												}
+											}}
+										>
+										add item
+										</StyledAddItemButton>
+										<StyledWindowTopBarCloseXSymbolButton
+											onClick={this.handleClose}
+										>
+										</StyledWindowTopBarCloseXSymbolButton>
+									</ButtonRow>
+								</StyledInputForm>
+							)
+						}}
+					</Query>
 					)
 				}
 			</Mutation>
+
 			)}
 			</Consumer>
 		);

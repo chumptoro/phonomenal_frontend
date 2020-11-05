@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
+import {css} from 'styled-components';
 
 const StyledButton = styled.div`
   width: auto;
@@ -49,9 +50,7 @@ const ButtonRow = styled.div`
     margin-right: 15px;
     margin-left: 15px;
   }
-
 `;
-
 
 const StyledWindowTopBarCloseXSymbolButton = styled.div`
   position: absolute;
@@ -66,8 +65,6 @@ const StyledWindowTopBarCloseXSymbolButton = styled.div`
     background-image: url('/icons/close_button_selected.svg'); ;
 }`
 
-
-
 const StyledWindowTopBarCloseButtonWithText = styled.div`
   position: absolute;
   top: 10px;
@@ -80,13 +77,35 @@ const StyledWindowTopBarCloseButtonWithText = styled.div`
 
   &:hover {
   background-color: ${props => props.theme.red_selected} ;
-}
+}  
+`;
 
-
-
+const GreenPrimaryStyle = css`
+  background-color: ${props => props.theme.ui_actionable_green} ;
+	color: white;
+	&:hover {
+	  color: white ;
+	  background-color: ${props => props.theme.ui_actionable_selected_green} ;
+	}
+`;
+const GreenNonPrimaryStyle = css`
+  background-color: white ;
+  
+	color: ${props => props.theme.ui_actionable_green};
+	&:hover {
+	  background-color: ${props => props.theme.divider_gray} ;
+	}
+`;
+const ButtonInline = styled("span")`
+	font-size: ${props => props.theme.font_size_content};
+  text-align:center;
+  cursor: pointer;
+	transition: all 0.25s;
   
 `;
 
 
 
-export {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow};
+
+export {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow, ButtonInline, GreenNonPrimaryStyle, GreenPrimaryStyle
+};
