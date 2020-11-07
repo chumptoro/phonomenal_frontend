@@ -40,7 +40,7 @@ const StyledNoSetNumberOfRowItemsResponsiveGrid = styled.div`
   grid-row-gap: 18px;
 `;
 
-//must be wrapped under a grid with left and right margin set by ResponsiveGridLeftRightMargin
+//must be wrapped under a grid with left and right margin set by ResponsiveGridLeftRightMargin. see grid-column-start: 2;
 const GridSingleRow = styled('div')`
 	display: grid;
   grid-column-start: 2;

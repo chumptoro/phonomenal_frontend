@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import ContextDescendantRadioButton from './Order_Context_Children/ContextDescendantRadioButton';
 import { Consumer } from "./Context";
-
 import User from "./Patron";
 import Dropdown from "./Styling/Dropdown";
 
@@ -12,15 +11,14 @@ import Dropdown from "./Styling/Dropdown";
 //header is a sub-component of Page so it can reference props.theme!
 //*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledHeader = styled.header`
-  	display: grid;
+  display: grid;
 	z-index: 1;
 	position: fixed;
 	top: 0;
-  	width: 100%;
-	padding: 17px 0px 8px 0px;
-	
+  width: 100%;
+	padding: 17px 0px 8px 0px;	
 	background-color:white;
-  	border-bottom: 1px solid rgba(217, 219, 224, 0.5);
+  border-bottom: 1px solid rgba(217, 219, 224, 0.5);
 
 	@media (max-width: 300px) {
     grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
@@ -74,13 +72,11 @@ const StyledHeader = styled.header`
 class AddressInput extends Component {
 	state = {
 		delivery_address: ""
-	};
-  
+	};  
 	handleTextInputChange = (e) => {
 	  const { value, name } = e.target;
 	  this.setState({ [name]: value });
 	};
-
 	componentDidMount() {
 		if (localStorage.getItem("delivery_address") !== null ) {
 			this.setState({
@@ -134,16 +130,6 @@ const Header = () => (
 			</div>
 
 			<div className="delivery_address">
-				{/* <Consumer>
-					{context => (
-						<input type="text" placeholder="enter your address" onChange={(e) => {
-							context.handleTextInputChange(e);
-							//localStorage.setItem("delivery_address", e.target.value)
-							localStorage.removeItem("delivery_address")
-							}
-						}/>
-					)}
-				</Consumer> */}
 				<AddressInput/>
 			</div>
 			{/* https://codepen.io/coralsea/pen/mMwwBz */}
@@ -159,7 +145,6 @@ const Header = () => (
 							)
 						}
 						else {
-          	//console.log("no user is signed in");
           		return (      
             	<Dropdown Signedin="false"/>
           		);

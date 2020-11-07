@@ -2,6 +2,37 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import {css} from 'styled-components';
 
+
+const GreenPrimaryStyle = css`
+  background-color: ${props => props.theme.ui_actionable_green} ;
+	color: white;
+	&:hover {
+	  color: white ;
+	  background-color: ${props => props.theme.ui_actionable_selected_green} ;
+	}
+`;
+const GreenNonPrimaryStyle = css`
+  background-color: white ;
+	color: ${props => props.theme.ui_actionable_green};
+	&:hover {
+	  background-color: ${props => props.theme.divider_gray} ;
+	}
+`;
+
+const RedPrimaryStyle = css`
+  background-color: ${props => props.theme.ui_actionable_red} ;
+	color: white;
+	&:hover {
+	  color: white ;
+	  background-color: ${props => props.theme.ui_actionable_selected_red} ;
+	}
+`;
+
+const CenterButtonInsideGrid = css`
+  grid-column: 1 / -1;
+  grid-row-start: span 90; 
+`;
+
 const StyledButton = styled.div`
   width: auto;
   height: auto; 
@@ -9,10 +40,11 @@ const StyledButton = styled.div`
   margin: auto; /* center the button */
   margin-top:${props => props.theme.extra_max_component_vertical_distance};
   margin-bottom: ${props => props.theme.mid_component_vertical_distance};
-
   padding: 12px;
-  background-color: ${props => props.theme.red} ;
-  border-radius: 4px;
+
+  ${RedPrimaryStyle};
+  
+  border-radius: 2.7px;
   color: white;
   font-weight: bold;
   font-size: ${props => props.theme.font_size_title_mid};
@@ -22,11 +54,6 @@ const StyledButton = styled.div`
   grid-row-start: span 900; */
 
   cursor: pointer;
-
-  &:hover {
-    background-color: ${props => props.theme.red_selected} ;
-  }
-
   /* animation */ 
   transition: all 0.25s;
   
@@ -60,7 +87,6 @@ const StyledWindowTopBarCloseXSymbolButton = styled.div`
   height: 30px;
   cursor: pointer;
   background-image: url('/icons/close_button.svg');
-
   &:hover {
     background-image: url('/icons/close_button_selected.svg'); ;
 }`
@@ -71,41 +97,27 @@ const StyledWindowTopBarCloseButtonWithText = styled.div`
   right: 25px;
   margin:0;
   padding: 5px;
-
   /* background-image: url('/icons/close_button.svg'); */
   background-color: ${props => props.theme.lightgrey} ;
-
   &:hover {
   background-color: ${props => props.theme.red_selected} ;
 }  
 `;
 
-const GreenPrimaryStyle = css`
-  background-color: ${props => props.theme.ui_actionable_green} ;
-	color: white;
-	&:hover {
-	  color: white ;
-	  background-color: ${props => props.theme.ui_actionable_selected_green} ;
-	}
+//use with ButtoInline to line up a button at the end of its parent
+const RightAlightBorderOfParent = css`
+  margin: -1px;
+  float:right; 
+  border-radius: 0px 3px 3px 0px;
+  padding: 5px;
 `;
-const GreenNonPrimaryStyle = css`
-  background-color: white ;
-  
-	color: ${props => props.theme.ui_actionable_green};
-	&:hover {
-	  background-color: ${props => props.theme.divider_gray} ;
-	}
-`;
+
 const ButtonInline = styled("span")`
 	font-size: ${props => props.theme.font_size_content};
   text-align:center;
   cursor: pointer;
 	transition: all 0.25s;
-  
 `;
 
-
-
-
-export {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow, ButtonInline, GreenNonPrimaryStyle, GreenPrimaryStyle
+export {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow, ButtonInline, GreenNonPrimaryStyle, GreenPrimaryStyle, CenterButtonInsideGrid, RightAlightBorderOfParent
 };

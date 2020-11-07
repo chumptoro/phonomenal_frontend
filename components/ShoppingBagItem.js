@@ -8,6 +8,7 @@ import RemoveFromShoppingBag from './RemoveFromShoppingBag';
 import {InputText, InputTextCSS, InputTextBorderlessCSS, InputTextBorderless} from './Styling/Input';
 import {GridSingleRow} from './Styling/Responsive_Grids';
 import {ButtonInline, GreenPrimaryStyle, GreenNonPrimaryStyle} from './Styling/Button';
+import EditShoppingBag from './EditShoppingBag';
 
 const UPDATE_ORDER_ITEM_MUTATION = gql`
 	mutation UPDATE_ORDER_ITEM_MUTATION ($id: ID $quantity: Int $special_instruction: String $price: Float) 
@@ -33,8 +34,8 @@ const EditForm = styled('div')`
   border-radius: 3px;
   grid-column-start: 2;
   width: 80%;
-  margin-bottom: 25px; 
-  color: ${props => props.theme.content_gray};
+  margin-bottom: 20px; 
+  color: black; /* ${props => props.theme.content_gray}; */
 
   input[type="text"] {
     width: 58%;
@@ -53,7 +54,6 @@ const EditForm = styled('div')`
     margin: -1px;
     float:right; 
     border-radius: 0px 3px 3px 0px;
-    height: 20px;
     padding: 5px;
     /* display:inline-block; */
   }
@@ -75,10 +75,14 @@ const EditPencil = styled('a') `
 
 class ShoppingBagItem extends Component {
   state = {
-    editing: true,
+    editing: false,
     special_instruction: null,
     quantity: 0,
     price: null,
+  }
+  componentDidMount() {
+    this.setState({special_instruction: this.props.orderitem.special_instruction});
+    this.setState({quantity: this.props.orderitem.quantity});
   }
   handleEditToggle = (e) => {
     this.setState({editing: !this.state.editing});
@@ -103,7 +107,7 @@ class ShoppingBagItem extends Component {
         <OrderItemData>
           {orderitem.dish_name} (x{orderitem.quantity})
         </OrderItemData>
-        <OrderItemData>${orderitem.price}</OrderItemData>
+        <OrderItemData>${(orderitem.price*orderitem.quantity).toFixed(2)}</OrderItemData>
         <OrderItemData>
           <EditPencil 
             title="Edit Item"
@@ -123,7 +127,11 @@ class ShoppingBagItem extends Component {
         <EditForm>         
           <InputTextBorderless
             placeholder="special instruction"
-            type="text" /> 
+            name="special_instruction"
+            type="text" 
+            value = {this.state.special_instruction}  
+            onChange={this.handleChange}
+          /> 
 
           <EditButton 
             className='non_submit_button'
@@ -137,9 +145,19 @@ class ShoppingBagItem extends Component {
             +
           </EditButton>
 
-          <ConfirmEditButton onClick={this.handleEditToggle} className='submit_button'>
+  {/*         <ConfirmEditButton onClick={this.handleEditToggle}              className='submit_button'>
             update
-          </ConfirmEditButton>
+          </ConfirmEditButton> */}
+
+          <EditShoppingBag
+            Toggle={this.handleEditToggle} 
+            id={orderitem.id}
+            quantity={this.state.quantity}
+            special_instruction={this.state.special_instruction}
+          />
+
+         
+
         </EditForm>
       )
     }

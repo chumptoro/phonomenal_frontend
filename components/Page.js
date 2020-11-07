@@ -182,7 +182,7 @@ class Page extends Component {
         <Meta/>
         <Order>
           <Header/>
-          <Hero/>
+          {/* <Hero/> */}
           <StyledPage>
             {/* <Header/> */}
             {/* <Hero/> */}

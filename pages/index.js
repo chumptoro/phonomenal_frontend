@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import Tabs from "../components/Tab/Tabs";
+import Hero from '../components/Hero';
+import Header from '../components/Header';
 
 const Home = props => (
+	<>
+	
+	<Hero/>
 	<Tabs>
 	{/* <div label="Fan Favorites">
 		See ya later, <em>Alligator</em>!
@@ -33,6 +38,7 @@ const Home = props => (
 		Canh chua ca loc <em>extinct</em>!
 	</div>
   </Tabs>
+	</>
 );
 
 export default Home;

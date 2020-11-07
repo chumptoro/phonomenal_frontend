@@ -215,7 +215,7 @@ class TabContentItem extends Component {
   showModal = () => {
     this.setState({ show: true });
     /* document.body.style.filter = "blur(20px)"; */  
-    document.body.style.overflowY = "hidden";
+   /*  document.body.style.overflowY = "hidden"; */
   }
   hideModal = async () => { 
     this.setState({ show: false });
