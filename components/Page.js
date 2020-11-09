@@ -65,7 +65,9 @@ const theme = {
   grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
   grid_template_desktop_large_width: '1fr 1121px 1fr',
 
-  border_radius_value: '8px;'
+  border_radius_value: '8px;',
+
+  top_nav_bar_height:'73px;'
 };
 
 const GlobalStyle = createGlobalStyle`

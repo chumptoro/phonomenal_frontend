@@ -7,7 +7,9 @@ const StyledDesktopOrderNav = styled.div`
 	z-index: 1;
 	position: fixed;
 	top: 0;
-  width: 100%;
+  width: 100vw;
+	height: ${props => props.theme.top_nav_bar_height};
+	/* box-sizing: border-box; */
 	padding: 13px 0px 8px 0px;	
 	background-color:white;
   border-bottom: 1px solid rgba(217, 219, 224, 0.5);
@@ -42,6 +44,10 @@ const StyledDesktopOrderNav = styled.div`
 			vertical-align: middle;
 			padding-top: 18px;
 			cursor: pointer;
+		}
+
+		.hamburger_dropdown {
+			
 		}
 	}
 `;
