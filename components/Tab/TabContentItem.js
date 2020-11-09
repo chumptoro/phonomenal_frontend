@@ -76,7 +76,7 @@ const StyledModal = styled.div`
   width: 70vw;
   height: auto;
   border-radius: 5px;
-  z-index: 100;
+  z-index: 1;
 
   overflow-y: auto !important;
 

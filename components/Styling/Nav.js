@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import {ResponsiveGridLeftRightMargin} from  './Responsive_Grids';
+import {FullScreenModal} from './Modal';
 
 //*creating a fixed nav bar: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_fixed_menu
 const StyledDesktopOrderNav = styled.div`
@@ -16,7 +17,6 @@ const StyledDesktopOrderNav = styled.div`
 	.place_float_right_and_left_on_one_line {
 		grid-column-start:2;
 		position: relative;
-
 	}
 	.left_sided_nav {
 	/* 	grid-column-start:2; */
@@ -32,11 +32,12 @@ const StyledDesktopOrderNav = styled.div`
 		}
 	}
 	.right_sided_nav {
-		/* float: right; */
+		float: right; 
     /* width: 80%; */
-		position: absolute;
-		right:0px;
-		/* grid-column-start:2; */
+
+		/* position: absolute;
+		right:0px; */
+		
 		.shopping_bag {
 			vertical-align: middle;
 			padding-top: 18px;
@@ -44,4 +45,9 @@ const StyledDesktopOrderNav = styled.div`
 		}
 	}
 `;
-export {StyledDesktopOrderNav};
+
+const HamburgerDropdownModal = styled(FullScreenModal)`
+`;
+
+
+export {StyledDesktopOrderNav, HamburgerDropdownModal};

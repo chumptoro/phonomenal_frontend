@@ -1,1 +1,8 @@
-<svg id="ac9c9fff-56ec-46a6-add3-3fb0dbfa03cf" data-name="unclicked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M4,9H28a2,2,0,0,0,0-4H4A2,2,0,0,0,4,9Zm24,5H4a2,2,0,0,0,0,4H28a2,2,0,0,0,0-4Zm0,9H4a2,2,0,0,0,0,4H28a2,2,0,0,0,0-4Z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ac9c9fff-56ec-46a6-add3-3fb0dbfa03cf"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32"
+	 style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<path d="M4,9h24c1.1,0,2-0.9,2-2s-0.9-2-2-2H4C2.9,5,2,5.9,2,7S2.9,9,4,9z M28,14H4c-1.1,0-2,0.9-2,2s0.9,2,2,2h24c1.1,0,2-0.9,2-2
+	S29.1,14,28,14z M28,23H4c-1.1,0-2,0.9-2,2s0.9,2,2,2h24c1.1,0,2-0.9,2-2S29.1,23,28,23z"/>
+</svg>

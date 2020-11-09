@@ -8,6 +8,7 @@ import Dropdown from "./Styling/Dropdown";
 import MediaQuery, { useMediaQuery }  from 'react-responsive';
 import {AddressInput} from './AddressInput';
 import {StyledDesktopOrderNav} from './Styling/Nav';
+import {MobileHamburgerDropdown} from './TopNavComponents';
 
 const DesktopOrderNav = styled(StyledDesktopOrderNav)`
 `;
@@ -33,13 +34,26 @@ const ShoppingBag = () => (
 	</>
 );
 
+
+
 const TopNav = () => {
 	let nav;
 	const isDesktop = useMediaQuery({ minWidth: 992 });
-	const minIphone678XWidth = useMediaQuery({ minWidth: 375 });
-	const maxIphone678XWidth = useMediaQuery({ maxWidth: 812 });
+	const minIphone678XWidth = useMediaQuery({ minWidth: 0 });
+	const maxIphone678XWidth = useMediaQuery({ maxWidth: 767 });
 	if (minIphone678XWidth && maxIphone678XWidth) {
-		return null;
+		return (
+			<DesktopOrderNav>
+				<div className="place_float_right_and_left_on_one_line">
+					<div className="left_sided_nav">
+						<Logo/>
+					</div>
+					<div className="right_sided_nav">
+						<MobileHamburgerDropdown/>
+					</div> 
+				</div>
+			</DesktopOrderNav>
+		);
 	}
 	else return(
 			<DesktopOrderNav>
@@ -48,6 +62,7 @@ const TopNav = () => {
 						<Logo/>
 						<DeliveryPickupToggle/>
 						<DeliveryAddress/>
+						
 					</div>
 					<div className="right_sided_nav">
 						<User>
