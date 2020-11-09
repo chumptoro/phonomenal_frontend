@@ -34,11 +34,11 @@ const StyledDesktopOrderNav = styled.div`
 		}
 	}
 	.right_sided_nav {
-		float: right; 
+		/* float: right;  */
     /* width: 80%; */
 
-		/* position: absolute;
-		right:0px; */
+		position: absolute;
+		right:0px;
 		
 		.shopping_bag {
 			vertical-align: middle;
@@ -47,12 +47,18 @@ const StyledDesktopOrderNav = styled.div`
 		}
 
 		.hamburger_dropdown {
-			
+			position: absolute;
+			top: 23px;
+			right: 1px;
+			/* margin-top: 100px; */
 		}
 	}
 `;
 
 const HamburgerDropdownModal = styled(FullScreenModal)`
+`;
+
+const HamburgerDropdownActionable=styled('img')`
 `;
 
 

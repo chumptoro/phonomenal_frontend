@@ -19,25 +19,27 @@ class MobileHamburgerDropdown extends Component {
 
               </HamburgerDropdownModal>;
 
-      icon = <img className="hamburger_dropdown" 
+      icon = <img 
                   alt="close hamburger dropdown menu" 
                   src="./close_hamburger_dropdown.svg" 
                   width="30" height="30" 
-                  onClick={this.toggleModal}
+                  //onClick={this.toggleModal}
+                  //className="hamburger_dropdown" 
             /> ; 
     }
     else {
-      icon =  <img className="hamburger_dropdown" 
+      icon =  <img 
                   alt="open hamburger dropdown menu" 
                   src="./hamburger_dropdown_menu_unclicked_green.svg" width="30" height="30" 
-                  onClick={this.toggleModal}
+                  // onClick={this.toggleModal}
+                  //className="hamburger_dropdown" 
               /> ; 
     }
     return (
       <>
-        {/* <a onClick={this.toggleModal}> */}
+        <a className="hamburger_dropdown" onClick={this.toggleModal}>
           {icon}
- {/*        </a> */}
+        </a>
         {modal}
       </>
     );
