@@ -7,17 +7,19 @@ import { Consumer } from "../Context";
 
 // refs for creating a toggle switch in ReactJS https://codepen.io/coralsea/pen/mMwwBz
 
-const StyledToggleSwitch = styled.a`
+const StyledToggleSwitch = styled.form`
+	display:inline;
 	/* position: relative; */
 	/* padding-bottom: 500px;  *//* does not work */
 	margin-left: 7vw;
 	margin-right: 3vw;
 	font-weight: bold;
+	
 	input {
 		position: absolute !important;
 		/* clip: rect(0, 0, 0, 0); */
-		height: 1px;
-		width: 1px;
+		height: 0px;
+		width: 0px;
 		border: 0;
 		overflow: hidden;
 	}
@@ -31,7 +33,7 @@ const StyledToggleSwitch = styled.a`
 		padding: 6px 8px;
 		/* border: 1px solid rgba(0, 0, 0, 0.2); */
 		box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-		transition: all 0.1s ease-in-out;
+		/* transition: all 0.1s ease-in-out; */
 	}
 	label:hover {
 		cursor: pointer;
@@ -60,6 +62,7 @@ class ContextDescendantRadioButton extends Component {
 	}
 	toggleState() {
 		this.setState({ toggle: !this.state.toggle });
+		console.log("hi " + this.state.toggle);
 	}
 	render() {
 		return (
@@ -71,12 +74,14 @@ class ContextDescendantRadioButton extends Component {
 							id="pickup"
 							name="delivery_method"
 							value="pickup"
-							onChange={this.toggleState}
+							onChange={
+								this.toggleState
+							} 
 							checked={!this.state.toggle}
 							onClick={(e) => {
 								context.handleRadioButton(e);
-								localStorage.setItem("delivery_method", "false");
-								console.log("this.state.toggle value is " + this.state.toggle);
+								localStorage.setItem("delivery_method", "pickup");
+								console.log("pickup being clicked");
 							}} 
 						/>
 						<label htmlFor="pickup">Pickup</label>
@@ -85,12 +90,15 @@ class ContextDescendantRadioButton extends Component {
 							id="delivery"
 							name="delivery_method"
 							value="delivery"
-							onChange={this.toggleState}
+							onChange={
+								this.toggleState
+							} 
 							checked={this.state.toggle}
 							onClick={(e) => {
 								context.handleRadioButton(e);
 								localStorage.setItem("delivery_method", "delivery");
 								//localStorage.removeItem("delivery_method");
+								console.log("delivery  being clicked");
 							}}
 						/>
 						<label htmlFor="delivery">Delivery</label>

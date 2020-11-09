@@ -67,7 +67,11 @@ const theme = {
 
   border_radius_value: '8px;',
 
-  top_nav_bar_height:'73px;'
+  top_nav_bar_height:'60px;',
+  top_nav_bar_top_padding:'7px;',
+  top_nav_bar_bottom_padding:'7px;',
+  element_right_below_top_nav_margin:'74px;' /* we arrive at 74 by adding top_nav_bar_height (60px) to its top and bottom padding (7+7) */
+
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -188,13 +192,6 @@ class Page extends Component {
         <Order>
           <TopNav />
           {/* <Hero/> */}
-          <StyledPage>
-            
-            {/* <Hero/> */}
-            {/* <HorizontalScrollGridItem/> */}
-            {/* <OrderCategory/> */}
-            {/* <Inner>{this.props.children}</Inner> */}
-          </StyledPage>
           {this.props.children}
           <Contact>
             <div></div>

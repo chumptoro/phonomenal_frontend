@@ -16,13 +16,13 @@ class MobileHamburgerDropdown extends Component {
     let modal, icon;
     if (this.state.show) {
       modal=  <HamburgerDropdownModal onClick={this.toggleModal} >
-
+                Hello
               </HamburgerDropdownModal>;
 
       icon = <img 
                   alt="close hamburger dropdown menu" 
                   src="./close_hamburger_dropdown.svg" 
-                  width="30" height="30" 
+                  width="25" height="25" 
                   //onClick={this.toggleModal}
                   //className="hamburger_dropdown" 
             /> ; 
@@ -30,7 +30,7 @@ class MobileHamburgerDropdown extends Component {
     else {
       icon =  <img 
                   alt="open hamburger dropdown menu" 
-                  src="./hamburger_dropdown_menu_unclicked_green.svg" width="30" height="30" 
+                  src="./hamburger_dropdown_menu_unclicked_green.svg" width="25" height="25" 
                   // onClick={this.toggleModal}
                   //className="hamburger_dropdown" 
               /> ; 

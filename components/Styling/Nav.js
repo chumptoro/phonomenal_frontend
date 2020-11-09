@@ -10,7 +10,7 @@ const StyledDesktopOrderNav = styled.div`
   width: 100vw;
 	height: ${props => props.theme.top_nav_bar_height};
 	/* box-sizing: border-box; */
-	padding: 13px 0px 8px 0px;	
+	padding: ${props => props.theme.top_nav_bar_top_padding} 0px ${props => props.theme.top_nav_bar_bottom_padding} 0px;	
 	background-color:white;
   border-bottom: 1px solid rgba(217, 219, 224, 0.5);
 	display: grid;
@@ -45,11 +45,10 @@ const StyledDesktopOrderNav = styled.div`
 			padding-top: 18px;
 			cursor: pointer;
 		}
-
 		.hamburger_dropdown {
 			position: absolute;
 			top: 23px;
-			right: 1px;
+			right: 0px;
 			/* margin-top: 100px; */
 		}
 	}
@@ -57,9 +56,6 @@ const StyledDesktopOrderNav = styled.div`
 
 const HamburgerDropdownModal = styled(FullScreenModal)`
 `;
-
 const HamburgerDropdownActionable=styled('img')`
 `;
-
-
 export {StyledDesktopOrderNav, HamburgerDropdownModal};

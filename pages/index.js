@@ -4,16 +4,10 @@ import Hero from '../components/Hero';
 import TopNav from '../components/TopNav';
 import MediaQuery from 'react-responsive';
 
-var contain = true;
 const Home = props => (
-	<>
-	<TopNav />
+	<>	
 	<Hero/>
 	<Tabs>
-	{/* <div label="Fan Favorites">
-		See ya later, <em>Alligator</em>!
-	</div> */}
-
 	<div label="Small Dishes">
 		After 'while, <em>Crocodile</em>!
 	</div>
@@ -42,5 +36,6 @@ const Home = props => (
   </Tabs>
 	</>
 );
+{/* <ContextDescendantRadioButton/> */}
 
 export default Home;

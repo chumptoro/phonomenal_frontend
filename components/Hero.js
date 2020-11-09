@@ -18,7 +18,7 @@ function OpenOrCLose(props) {
 }
 //header is a sub-component of Page so it can reference props.theme!
 const StyledHeroBanner = styled.div` 
-    margin-top: 76px;
+    margin-top: ${props => props.theme.element_right_below_top_nav_margin};
     display: grid;
     grid-row-gap: 0px;
     grid-column-gap:0;
