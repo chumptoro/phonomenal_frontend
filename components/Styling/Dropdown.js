@@ -5,21 +5,25 @@ import Link from 'next/link';
 import Signout from "../Signout";
 
 const DropDownContainer = styled.span`
-	margin-left: 12px;
-	margin-right: 24px;
+	margin-left: 1vw;
+	margin-right: 3vw;
+	position: relative; /* so that the DropDownList menu could be position relative to the container! */
+	top: 22px;
 `;
-
-const DropDownHeader = styled.a`
+const DropDownIcon = styled.img`
 	cursor: pointer;
 `;
-
-const DropDownList = styled.div`
+const DropDownList = styled.span`
 	display: ${props => (props.dropdown_header_is_clicked ? 'block' : 'none')}; 
 	position: absolute;
+	left: -40px;
+	top: 20px;
+	width: 120px;
   padding: 0px;
 	padding-top: 8px;
 	padding-bottom: 11px;
-  margin: 0px;
+  
+	margin-top: 8px;
   background: #ffffff;
 	/* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15); */
 	box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
@@ -61,8 +65,6 @@ const Divider = styled.div`
 	margin: auto;
 `;
 
-
-
 // ref: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
 class Dropdown extends Component {
 	state = {
@@ -102,7 +104,7 @@ class Dropdown extends Component {
   }
 	
 	render() {
-		let 	DropdownOptions; 
+		let DropdownOptions; 
 		if (this.props.Signedin == "false") {
 			DropdownOptions = 
 				<DropDownList 
@@ -136,7 +138,6 @@ class Dropdown extends Component {
 				</DropDownList>
 			;
 		}
-
 		return (
 			<DropDownContainer 
 				ref={this.wrapperRef}
@@ -144,13 +145,8 @@ class Dropdown extends Component {
 				// onMouseEnter={this.showMenu}
 				// onMouseLeave={this.hideMenu}
 			>				
-				<DropDownHeader>
-					<img alt="user_profile_icon" src="./user_profile_grayed_out.svg" width="30" height="30" /> 
-			 </DropDownHeader>
-
-				 
+					<DropDownIcon alt="user_profile_icon" src="./user_profile_grayed_out.svg" width="30" height="30" /> 
 				{DropdownOptions}
-				
 			</DropDownContainer>
 		)
 	}

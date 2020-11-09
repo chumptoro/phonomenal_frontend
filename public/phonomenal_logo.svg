@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 350 350" style="enable-background:new 0 0 350 350;" xml:space="preserve">
 <style type="text/css">
 	.st0{display:none;}
@@ -11,10 +11,10 @@
 	.st5{letter-spacing:-7;}
 	.st6{fill:#E3111B;}
 	.st7{fill:#FFFFFF;}
-	.st8{font-size:357.7633px;}
-	.st9{letter-spacing:-10;}
+	.st8{font-size:368.2858px;}
+	.st9{letter-spacing:-9;}
 </style>
-<g id="Layer_1" class="st0">
+<g id="Layer_1_1_" class="st0">
 	<rect class="st1" width="350" height="350"/>
 	<text transform="matrix(1 0 0 1 130.08 291)" class="st2 st3 st4 st5">P</text>
 </g>
@@ -28,8 +28,7 @@
 	<text transform="matrix(1 0 0 1 111.08 285)" class="st2 st3 st4 st5">P</text>
 </g>
 <g id="for_logo">
-	<rect x="512" class="st6" width="350" height="350"/>
-	<circle class="st6" cx="175" cy="175" r="170"/>
-	<text transform="matrix(1 0 0 1 99.7737 343.5478)" class="st7 st3 st8 st9">P</text>
+	<circle class="st6" cx="175" cy="175.7" r="175"/>
+	<text transform="matrix(1 0 0 1 97.5615 349.2383)" class="st7 st3 st8 st9">P</text>
 </g>
 </svg>

@@ -17,7 +17,6 @@ const ResponsiveGridLeftRightMargin = css`
     @media (min-width: 1455px) {
       grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
     }
-
 `;
 
 const StyledPropsSetNumberOfRowItemsResponsiveGrid = styled.div` 

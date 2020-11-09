@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import Tabs from "../components/Tab/Tabs";
 import Hero from '../components/Hero';
-import Header from '../components/Header';
+import TopNav from '../components/TopNav';
+import MediaQuery from 'react-responsive';
 
+var contain = true;
 const Home = props => (
 	<>
-	
+	<TopNav />
 	<Hero/>
 	<Tabs>
 	{/* <div label="Fan Favorites">

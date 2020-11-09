@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './Header.js';
+import TopNav from './TopNav.js';
 import Meta from './Meta.js';
 import Hero from './Hero.js';
 import HorizontalScrollGridItem from './HorizontalScrollGridItem.js'
@@ -19,10 +19,12 @@ const theme = {
   black: '#393939',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
-  content_gray: 'rgba(143, 149, 163, 0.9)',
+  content_gray: 'rgba(143, 149, 163, 0.9)', /* #9a9fac */
   offWhite: '#EDEDED',
   blue:'blue',
   divider_gray: 'rgb(231,231,231)',
+
+  text_gray: 'rgba(0,0,0,0.6)',
 
   ui_actionable_red:'rgb(235, 23, 0)',
   ui_actionable_selected_red:'rgb(209, 23, 2)',
@@ -118,6 +120,7 @@ const GlobalStyle = createGlobalStyle`
     
     overflow-x:hidden;
     height: 100%;
+    color: black ${'' /* ${props => props.theme.text_gray} */} ;
     
   }
   a {
@@ -181,10 +184,10 @@ class Page extends Component {
         <GlobalStyle/>
         <Meta/>
         <Order>
-          <Header/>
+          <TopNav />
           {/* <Hero/> */}
           <StyledPage>
-            {/* <Header/> */}
+            
             {/* <Hero/> */}
             {/* <HorizontalScrollGridItem/> */}
             {/* <OrderCategory/> */}

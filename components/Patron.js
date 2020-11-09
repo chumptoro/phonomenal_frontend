@@ -27,7 +27,6 @@ const User = props => (
     {payload => props.children(payload)}
   </Query>
 );
-
 const UserDropdown = props => (
   <Query {...props} query={CURRENT_USER_QUERY}>
     {
@@ -51,8 +50,6 @@ const UserDropdown = props => (
 		}
   </Query>
 );
-
-
 
 // User.propTypes = {
 //   children: PropTypes.func.isRequired,
