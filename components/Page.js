@@ -61,7 +61,7 @@ const theme = {
   line_height_content: '1.5',
   line_height_between_paragraphs: '3',
 
-  grid_template_desktop_small_width: '0px 1fr 5px',
+  grid_template_desktop_small_width: '7px 1fr 5px',
   grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
   grid_template_desktop_large_width: '1fr 1121px 1fr',
 

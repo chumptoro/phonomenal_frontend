@@ -10,7 +10,9 @@ const StyledDesktopOrderNav = styled.div`
   width: 100vw;
 	height: ${props => props.theme.top_nav_bar_height};
 	/* box-sizing: border-box; */
-	padding: ${props => props.theme.top_nav_bar_top_padding} 0px ${props => props.theme.top_nav_bar_bottom_padding} 0px;	
+	padding:0px;
+	padding-top: ${props => props.theme.top_nav_bar_top_padding};
+	padding-bottom: ${props => props.theme.top_nav_bar_bottom_padding};
 	background-color:white;
   border-bottom: 1px solid rgba(217, 219, 224, 0.5);
 	display: grid;
@@ -48,7 +50,7 @@ const StyledDesktopOrderNav = styled.div`
 		.hamburger_dropdown {
 			position: absolute;
 			top: 23px;
-			right: 5px;
+			right: 7px;
 			/* margin-top: 100px; */
 		}
 	}
