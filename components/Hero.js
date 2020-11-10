@@ -21,6 +21,14 @@ function OpenOrCLose(props) {
 
 //header is a sub-component of Page so it can reference props.theme!
 const StyledHeroBanner = styled.div` 
+	@media (max-width : 667px) {
+		background-image: url('');
+		width:0px;
+		height: 0px;
+		padding: 0px;
+		margin: 0px;
+	}
+
     margin-top: ${props => props.theme.element_right_below_top_nav_margin};
     display: grid;
     grid-row-gap: 0px;
@@ -38,7 +46,7 @@ const StyledHeroBanner = styled.div`
     background-repeat: no-repeat;
     background-position: center;
 
-		${ResponsiveGridLeftRightMargin}
+		${ResponsiveGridLeftRightMargin};
 
     .heroBannerText {
         /* position: absolute;
@@ -56,14 +64,8 @@ const Hero = () => {
 	const maxIphone678XWidth = useMediaQuery({ maxWidth: 767 }); 
 	if (minIphone678XWidth && maxIphone678XWidth) {
 		return(
-			// <StyledHeroBanner>
-			// 		<div className="heroBannerText">
-			// 				{/* <h1>You want Pho. We get it. </h1>
-			// 				<OpenOrCLose/>   */}
-			// 				{/* <a href="/">enter code 'getpho' for 10% off your first order.</a> */}
-			// 		</div>
-			// </StyledHeroBanner>
-			null
+			<StyledHeroBanner>
+			</StyledHeroBanner>
 		);
 	}
 	return(
