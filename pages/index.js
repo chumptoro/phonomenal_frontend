@@ -5,8 +5,10 @@ import TopNav from '../components/TopNav';
 import MediaQuery from 'react-responsive';
 
 const Home = props => (
-	<>	
-	<Hero/>
+	<>
+	
+	<Hero/> 
+  
 	<Tabs>
 	<div label="Small Dishes">
 		After 'while, <em>Crocodile</em>!

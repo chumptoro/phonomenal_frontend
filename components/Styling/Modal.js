@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 const FullScreen =  css`
 	width: 100vw;
 	height: 100vh;
-	top: ${props => props.theme.top_nav_bar_height};
+	top: ${props => props.theme.modal_right_below_top_nav_margin};
  
   bottom: 0;
   left: 0;

@@ -70,7 +70,8 @@ const theme = {
   top_nav_bar_height:'60px;',
   top_nav_bar_top_padding:'7px;',
   top_nav_bar_bottom_padding:'7px;',
-  element_right_below_top_nav_margin:'74px;' /* we arrive at 74 by adding top_nav_bar_height (60px) to its top and bottom padding (7+7) */
+  element_right_below_top_nav_margin:'74px;', /* we arrive at 74 by adding top_nav_bar_height (60px) to its top and bottom padding (7+7) */
+  modal_right_below_top_nav_margin:'75px;'
 
 };
 
@@ -164,24 +165,24 @@ const Inner = styled.div`
 	padding: 2rem; */}
 `;
 
-const Contact = styled.div`
-  background-color: black;
-  color: white;
-  text-align: center;
-  display: grid;
-  padding-bottom: ${props => props.theme.max_component_vertical_distance};
-  padding-top: ${props => props.theme.max_component_vertical_distance};
-  /* background-color: rgb(250,250,250); */
-  @media (max-width: 300px) {
-  grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
-  }
-  @media (min-width: 301px) {
-    grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
-  }
-  @media (min-width: 1455px) {
-    grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
-  }
-`;
+// const Contact = styled.div`
+//   background-color: black;
+//   color: white;
+//   text-align: center;
+//   display: grid;
+//   padding-bottom: ${props => props.theme.max_component_vertical_distance};
+//   padding-top: ${props => props.theme.max_component_vertical_distance};
+//   /* background-color: rgb(250,250,250); */
+//   @media (max-width: 300px) {
+//   grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
+//   }
+//   @media (min-width: 301px) {
+//     grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
+//   }
+//   @media (min-width: 1455px) {
+//     grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
+//   }
+// `;
 
 class Page extends Component {
 	render() {
@@ -193,7 +194,7 @@ class Page extends Component {
           <TopNav />
           {/* <Hero/> */}
           {this.props.children}
-          <Contact>
+          {/* <Contact>
             <div></div>
             <div text-align="center">
               <div>
@@ -209,7 +210,7 @@ class Page extends Component {
                 <small>Terms of Service & Privacy Policy</small> 
               </div>
             </div>
-          </Contact>
+          </Contact> */}
           </Order>
 			</ThemeProvider>
 		);

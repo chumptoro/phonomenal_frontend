@@ -22,7 +22,7 @@ const DeliveryAddress = () => (
 const Logo = () => (
 	<>
 	<Link href='/'>
-		<img className="logo" alt="phonomenal logo" src="./phonomenal_logo.svg" width="60" height="60"/>
+		<img className="logo" alt="phonomenal logo" src="./phonomenal_logo.png" width="60" height="60"/>
 	</Link>
 	</>
 );
