@@ -9,7 +9,7 @@ const Field = styled('input')`
 	font-family: "europa";
 	border: none;
 	font-weight: bold;
-	color:${props => props.theme.text_gray};
+	color:${props => props.theme.text_gray};	
 	outline: none;
 	::placeholder {
 		font-weight: bold;
