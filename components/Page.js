@@ -192,7 +192,6 @@ class Page extends Component {
         <Meta/>
         <Order>
           <TopNav />
-          {/* <Hero/> */}
           {this.props.children}
           {/* <Contact>
             <div></div>

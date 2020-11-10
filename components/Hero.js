@@ -1,21 +1,24 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import MediaQuery, { useMediaQuery }  from 'react-responsive';
+import {ResponsiveGridLeftRightMargin} from  './Styling/Responsive_Grids';
 
 //function to display whether we are closed or open
 function OpenOrCLose(props) {
     var now = new Date();
     if (now.getDay() >= 0 && now.getDay() <= 5) {
         if (now.getHours() >= 11 && now.getHours() <= 21) {
-            return <p>We're open today until 9 pm.</p>;
+          return <p>We're open today until 9 pm.</p>;
         }
     }
     else {
         if (now.getHours() >= 11 && now.getHours() <= 21 && now.getMinutes() <= 30) {
-            return <p>We're open today until 9:30 pm.</p>;
+          return <p>We're open today until 9:30 pm.</p>;
         }
     }
     return <p>We're closed</p>;
 }
+
 //header is a sub-component of Page so it can reference props.theme!
 const StyledHeroBanner = styled.div` 
     margin-top: ${props => props.theme.element_right_below_top_nav_margin};
@@ -35,15 +38,7 @@ const StyledHeroBanner = styled.div`
     background-repeat: no-repeat;
     background-position: center;
 
-    @media (max-width: 300px) {
-    grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
-    }
-    @media (min-width: 301px) {
-      grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
-    }
-    @media (min-width: 1455px) {
-      grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
-    }
+		${ResponsiveGridLeftRightMargin}
 
     .heroBannerText {
         /* position: absolute;
@@ -56,15 +51,31 @@ const StyledHeroBanner = styled.div`
     }
 `;
 
-const Hero = () => (
+const Hero = () => {
+	const minIphone678XWidth = useMediaQuery({ minWidth: 0 });
+	const maxIphone678XWidth = useMediaQuery({ maxWidth: 767 }); 
+	if (minIphone678XWidth && maxIphone678XWidth) {
+		return(
+			// <StyledHeroBanner>
+			// 		<div className="heroBannerText">
+			// 				{/* <h1>You want Pho. We get it. </h1>
+			// 				<OpenOrCLose/>   */}
+			// 				{/* <a href="/">enter code 'getpho' for 10% off your first order.</a> */}
+			// 		</div>
+			// </StyledHeroBanner>
+			null
+		);
+	}
+	return(
     <StyledHeroBanner>
-        <div className="heroBannerText">
-            {/* <h1>You want Pho. We get it. </h1>
-            <OpenOrCLose/>   */}
-            {/* <a href="/">enter code 'getpho' for 10% off your first order.</a> */}
-        </div>
+        {/* <div className="heroBannerText">
+            <h1>You want Pho. We get it. </h1>
+            <OpenOrCLose/>  
+            <a href="/">enter code 'getpho' for 10% off your first order.</a>
+        </div> */}
     </StyledHeroBanner>
-);
+	);
+}
 export default Hero;
 
 {/* <p>mon - thurs: 11 am - 9 pm (9:30 pm fri & sat )</p> */}

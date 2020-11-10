@@ -6,35 +6,16 @@ import MediaQuery from 'react-responsive';
 
 const Home = props => (
 	<>
-	
-	<Hero/> 
-  
+	<Hero></Hero> 
 	<Tabs>
-	<div label="Small Dishes">
-		After 'while, <em>Crocodile</em>!
-	</div>
-	<div label="Pho">
-		After 'while, <em>Crocodile</em>!
-	</div>
-	<div label="Banh Mi">
-		Banh Mi
-	</div>
-	<div label="Rice">
-		Com Ga, Com Tam 
-	</div>
-	<div label="Vermicelli">
-		Canh chua ca loc <em>extinct</em>!
-	</div>
-
-	<div label="Vegetarian">
-		Canh chua ca loc <em>extinct</em>!
-	</div>
-	<div label="Bar">
-		Canh chua ca loc <em>extinct</em>!
-	</div>
-	<div label="Dessert">
-		Canh chua ca loc <em>extinct</em>!
-	</div>
+	<div label="Small Dishes"></div>
+	<div label="Pho"></div>
+	<div label="Banh Mi"></div>
+	<div label="Rice"></div>
+	<div label="Vermicelli"></div>
+	<div label="Vegetarian"></div>
+	<div label="Bar"></div>
+	<div label="Dessert"></div>
   </Tabs>
 	</>
 );
