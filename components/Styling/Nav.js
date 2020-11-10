@@ -48,7 +48,7 @@ const StyledDesktopOrderNav = styled.div`
 		.hamburger_dropdown {
 			position: absolute;
 			top: 23px;
-			right: 0px;
+			right: 5px;
 			/* margin-top: 100px; */
 		}
 	}
