@@ -23,7 +23,8 @@ const StyledTabHorizontalScroll = styled.div`
   /* hide scrollbar ref for firefox: https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width */
   scrollbar-width: none;
 
-  grid-column-start: 2;   
+  grid-column-start: ${props => props.theme.margin_using_grid_column};
+  ;   
   /* display: grid; */
   /* grid-template-columns: repeat(auto-fill, 107px); */
   

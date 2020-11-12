@@ -49,13 +49,6 @@ const TopNav = () => {
 						<Logo/>
 					</div>
 					<div className="right_sided_nav">
-					<User>
-								{({ data }) => {
-								const me = data ? data.me : null;
-								if (me) return <Dropdown Signedin="true" first_name={me.first_name}/>
-								else return <Dropdown Signedin="false"/>	
-								}}
-						</User>
 						<MobileHamburgerDropdown/>
 					</div> 
 				</div>

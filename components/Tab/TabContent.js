@@ -3,12 +3,7 @@ import styled from 'styled-components';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
-
 import TabContentItem from './TabContentItem.js';
-
-var dummy_data_point = {"name":"Pho Tai", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak", "id":"1"};
-var dummy_data_point_two = {"name":"Pho Tai Gau", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak and fatty cuts", "id":"1"};
-var data_array = [dummy_data_point, dummy_data_point, dummy_data_point_two, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point];
 
 const ALL_DISHES_QUERY = gql`
   query ALL_DISHES_QUERY {
@@ -25,7 +20,6 @@ const ALL_DISHES_QUERY = gql`
     }
   }
 `;
-
 const ALL_DISH_CATEGORIES_QUERY = gql`
   query ALL_DISH_CATEGORIES_QUERY {
     categories (orderBy:order_ASC) {
@@ -48,16 +42,14 @@ const StyledTabContent = styled.div`
 `;
 
 const StyledItemsList = styled.div`
-  grid-column-start: 2;   
+ /*  grid-column-start: 2;    */
   display: grid;
-  /* align-items: center; */
-  grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(${props => props.theme.dish_thumbnail_width}, 1fr));
   grid-gap: 30px;
+  @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
+    grid-gap-row: 0px;
+  }
   margin-top: ${props => props.theme.min_component_vertical_distance}; 
-  /* background-color: ${props => props.theme.divider_gray}; */
-  /* grid-auto-flow: column; */
-  /* margin: 0 auto; */
-  /* overflow-x: initial; */
 `;
 
 const LevelTwoHeader = styled.h2`
@@ -121,3 +113,7 @@ class TabContent extends Component {
 {/* <StyledItemsList>{data.dishes.map(item => <TabContentItem item={item} key={item.id} />)}</StyledItemsList>  */}
 
 export default TabContent;
+
+var dummy_data_point = {"name":"Pho Tai", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak", "id":"1"};
+var dummy_data_point_two = {"name":"Pho Tai Gau", "image":"photai.jpeg", "description": "rice noodle and beef broth topped with rare steak and fatty cuts", "id":"1"};
+var data_array = [dummy_data_point, dummy_data_point, dummy_data_point_two, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point, dummy_data_point];

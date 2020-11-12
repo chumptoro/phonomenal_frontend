@@ -13,7 +13,8 @@ import {StyledButton, ButtonRow} from "../Styling/Button"
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
-  margin: 0px;
+  /* padding-right: 10px;
+  padding-left: 10px; */
   padding: 20px;
 
   display: grid;
@@ -26,6 +27,15 @@ const StyledItem = styled.div`
   } */
 
   cursor: pointer;
+
+
+  @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding-right: 0;
+    padding-left:0;
+  }
   
 `;
 

@@ -66,13 +66,23 @@ const theme = {
   grid_template_desktop_large_width: '1fr 1121px 1fr',
   grid_template_desktop_mid_width_for_tabs_content_item: '20px 1fr 20px',
 
-  border_radius_value: '8px;',
+  border_radius_value: '8px',
 
-  top_nav_bar_height:'60px;',
-  top_nav_bar_top_padding:'7px;',
-  top_nav_bar_bottom_padding:'7px;',
-  element_right_below_top_nav_margin:'74px;', /* we arrive at 74 by adding top_nav_bar_height (60px) to its top and bottom padding (7+7) */
-  modal_right_below_top_nav_margin:'75px;'
+  top_nav_bar_height:'60px',
+  top_nav_bar_top_padding:'7px',
+  top_nav_bar_bottom_padding:'7px',
+  element_right_below_top_nav_margin:'74px', /* we arrive at 74 by adding top_nav_bar_height (60px) to its top and bottom padding (7+7) */
+  modal_right_below_top_nav_margin:'75px',
+
+  margin_using_grid_column: '2',
+
+  // http://stephen.io/mediaqueries/#iPhone
+  screen_width_iphone678X_min: '375px',
+  screen_width_iphone678X_max: '821px',
+
+  dish_thumbnail_width: '410px',
+  dish_thumbnail_screensize_where_one_dish_takes_up_entire_row: '1020px'
+
 
 };
 
@@ -136,6 +146,7 @@ const GlobalStyle = createGlobalStyle`
 
   ${'' /* but then if we have a stick position ::-webkit-progress-inner-element, we are fucked: https://uxdesign.cc/position-stuck-96c9f55d9526 */}
   
+  ${'' /* we will temporarily just prevent scrolling for iphone, which means we won;t have a sticky position for dish carousel */}
   @media only screen 
   and (min-device-width : 375px) 
   and (max-device-width : 667px) { 
