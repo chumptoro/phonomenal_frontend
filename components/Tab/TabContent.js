@@ -47,7 +47,7 @@ const StyledItemsList = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(${props => props.theme.dish_thumbnail_width}, 1fr));
   grid-gap: 30px;
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
-    grid-gap-row: 0px;
+    grid-row-gap: 0px;
   }
   margin-top: ${props => props.theme.min_component_vertical_distance}; 
 `;
