@@ -64,6 +64,7 @@ const theme = {
   grid_template_desktop_small_width: '7px 1fr 5px',
   grid_template_desktop_mid_width: '0.1fr 1fr 0.1fr',
   grid_template_desktop_large_width: '1fr 1121px 1fr',
+  grid_template_desktop_mid_width_for_tabs_content_item: '20px 1fr 20px',
 
   border_radius_value: '8px;',
 
@@ -135,13 +136,20 @@ const GlobalStyle = createGlobalStyle`
 
   ${'' /* but then if we have a stick position ::-webkit-progress-inner-element, we are fucked: https://uxdesign.cc/position-stuck-96c9f55d9526 */}
   
-  html, body {
+  @media only screen 
+  and (min-device-width : 375px) 
+  and (max-device-width : 667px) { 
+    html, body {
     overflow-x: hidden;
+    }
+    body {
+      position: relative; 
+      ${'' /* prevents left and right margin and padding from causing trouble */}
+    }
+
   }
-  body {
-    position: relative; 
-    ${'' /* prevents left and right margin and padding from causing trouble */}
-  }
+
+
 
 
 
