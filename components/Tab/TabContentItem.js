@@ -18,7 +18,7 @@ const StyledItem = styled.div`
   padding: 20px;
 
   display: grid;
-  grid-template-columns: 1fr 129px;
+  grid-template-columns: 1fr 0.1fr;
   grid-column-gap: 20px;
 
   line-height: ${props => props.theme.line_height_between_paragraphs};
@@ -27,7 +27,6 @@ const StyledItem = styled.div`
   } */
 
   cursor: pointer;
-
 
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     border-left: none;

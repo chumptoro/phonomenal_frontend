@@ -160,7 +160,9 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
-
+html, body{
+  width: 100%;
+}
 
 
 
