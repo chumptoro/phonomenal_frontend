@@ -8,10 +8,10 @@ const ResponsiveGridHideFooter = css`
 `;
 
 const ResponsiveGridLeftRightMargin = css`
-	@media (max-width: 376px) {
+	@media (max-width: 375px) {
     grid-template-columns: ${props => props.theme.grid_template_desktop_small_width};
     }
-    @media (min-width: 377px) {
+    @media (min-width: 376px) {
       grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width};
     }
     @media (min-width: 1455px) {
