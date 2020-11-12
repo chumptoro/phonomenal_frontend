@@ -32,9 +32,22 @@ const StyledItem = styled.div`
     border-left: none;
     border-right: none;
     border-bottom: none;
-    padding-right: 0;
-    padding-left:0;
+    padding-right: 0px;
+    padding-left:0px;
+  
   }
+  @media only screen 
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
+    and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+    and (-webkit-device-pixel-ratio : 3) {
+      width: 83%;
+      align-self:center;
+    }
+
+
+    
+
+
   
 `;
 

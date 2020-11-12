@@ -78,7 +78,8 @@ const theme = {
 
   // http://stephen.io/mediaqueries/#iPhone
   screen_width_iphone678X_min: '375px',
-  screen_width_iphone678X_max: '821px',
+  screen_width_iphoneX_max: '821px',
+  
 
   dish_thumbnail_width: '410px',
   dish_thumbnail_screensize_where_one_dish_takes_up_entire_row: '1020px'
@@ -160,9 +161,9 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
-html, body{
+${'' /* html, body{
   width: 100%;
-}
+} */}
 
 
 

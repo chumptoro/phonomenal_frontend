@@ -21,10 +21,10 @@ const StyledTabs = styled.div`
     }
 
     @media only screen 
-  and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
-  and (max-device-width : ${props => props.theme.screen_width_iphone678X_max})
-  and (-webkit-device-pixel-ratio : 3) {
-    grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width_for_tabs_content_item};
-  }
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+    and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+    and (-webkit-device-pixel-ratio : 3) {
+        grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width_for_tabs_content_item};
+    }
 `;
 export {StyledTabs};
