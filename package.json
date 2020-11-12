@@ -29,6 +29,7 @@
     "react-dom": "^16.13.1",
     "react-responsive": "^8.1.0",
     "react-scroll": "^1.8.1",
+    "react-sticky": "6.0.3",
     "react-stripe-checkout": "^2.6.3",
     "react-transition-group": "^2.5.0",
     "styled-components": "^4.1.2",

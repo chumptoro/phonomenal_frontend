@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 import TabLabel from './TabLabel.js';
 import TabContent from './TabContent.js';
 import {StyledTabs} from '../Styling/StyledTabs';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 const StyledTabHorizontalScroll = styled.div` 
  /* scroll ref: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_hor_scroll : */  
   white-space: nowrap;
   overflow-x: auto !important;
   width: 100%; 
-  height: 50%;
+  height: 30px;
   /* hide scrollbar ref: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable/43186311 : */
   ::-webkit-scrollbar {
     width: 0px;
@@ -80,3 +81,4 @@ export default Tabs;
 // https://uxdesign.cc/creating-horizontal-scrolling-containers-the-right-way-css-grid-c256f64fc585
 // http://jsfiddle.net/PieBie/6y291fud/
 // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+

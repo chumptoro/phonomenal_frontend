@@ -123,12 +123,24 @@ const GlobalStyle = createGlobalStyle`
     
     line-height:  ${theme.line_height_content};
     margin:0;
+    padding:0;
     background: rgb(255,255,255);
     
     overflow-x:hidden;
     height: 100%;
     color: black ${'' /* ${props => props.theme.text_gray} */} ; 
-    position: relative;
+  }
+
+  ${'' /* prevent horizontal scrolling. ref: https://stackoverflow.com/questions/4192277/disable-horizontal-scroll-on-mobile-web */}
+
+  ${'' /* but then if we have a stick position ::-webkit-progress-inner-element, we are fucked: https://uxdesign.cc/position-stuck-96c9f55d9526 */}
+  
+  html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative; 
+    ${'' /* prevents left and right margin and padding from causing trouble */}
   }
 
 
