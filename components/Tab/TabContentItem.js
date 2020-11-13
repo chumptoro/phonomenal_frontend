@@ -13,17 +13,22 @@ import {StyledButton, ButtonRow} from "../Styling/Button"
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
-  padding: 13px;
+  padding: 10px;
+
+  
   display: grid;
   grid-template-columns: 1fr 0.1fr;
   grid-column-gap: 20px;
   line-height: ${props => props.theme.line_height_between_paragraphs};
   cursor: pointer;
-  /* take out borders when there is only 1 dish thumbnail displayed per line */
+  /* take out borders and left/right paddings when there is only 1 dish thumbnail displayed per line */
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     border-left: none;
     border-right: none;
     border-bottom: none;
+    border-radius:0px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `;
 
@@ -41,10 +46,15 @@ const Price = styled.div`
   /* font-weight: ${props => props.theme.font_weight_bold}; */
   color:${props => props.theme.green};
 `;
+const DishImage = styled.div`
+  padding-top: 16px;
+  img {
+    border-radius: 1px;
+  }
+`;
 const PriceCompare = styled.small`
   /* text-decoration: line-through; */
   color: black;
-
 `;
 
 const StyledBlurLayer= styled.div`
@@ -139,8 +149,8 @@ class TabContentItemThumbnail extends Component {
             ${item.price} <PriceCompare> </PriceCompare>
           </Price>
         </div>
-        <div><img src={item.image} alt="" width="128px" height="128px" />
-        </div>
+        <DishImage><img src={item.image} alt="" width="128px" height="128px" />
+        </DishImage>
       </StyledItem>
     );
   }
