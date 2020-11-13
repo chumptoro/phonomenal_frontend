@@ -62,7 +62,6 @@ const StyledButton = styled.div`
 
 // for a row of buttons, place the button inside this component:
 const ButtonRow = styled.div`
-
   /* if parent of ButtonRow is a grid, we can have the button span the entire last column using: */
   grid-column: 1 / -1;
   grid-row-start: 90;

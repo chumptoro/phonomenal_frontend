@@ -16,7 +16,7 @@ const StyledTabContentItem = styled.div`
       :last-child {
         border: solid 1px ${props => props.theme.divider_gray};
       }
-  }
+    }
 `;
 
 
@@ -196,7 +196,7 @@ class TabContentItemModal extends Component {
         <StyledBlurLayer clicked={show}>
           <StyledModal>
               {/* <StyledCloseButton onClick={hideModal}></StyledCloseButton> */}
-              <StyledHeroBanner/>
+              {/* <StyledHeroBanner/> */}
               {form}
           </StyledModal>
         </StyledBlurLayer>
