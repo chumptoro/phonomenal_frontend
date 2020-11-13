@@ -48,6 +48,7 @@ const StyledItemsList = styled.div`
   grid-gap: 30px;
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     grid-row-gap: 0px;
+    
   }
 
     /* iPhone 6,7,8 */

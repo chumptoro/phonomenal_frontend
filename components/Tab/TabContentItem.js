@@ -10,12 +10,20 @@ import QueryOrderItem from "../CRUDs/OrderItem/QueryOrderItem"
 
 import {StyledButton, ButtonRow} from "../Styling/Button"
 
+// give last child a border bottom when there is only 1 dish thumbnail displayed per line
+const StyledTabContentItem = styled.div`
+    @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
+      :last-child {
+        border: solid 1px ${props => props.theme.divider_gray};
+      }
+  }
+`;
+
+
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
   padding: 10px;
-
-  
   display: grid;
   grid-template-columns: 1fr 0.1fr;
   grid-column-gap: 20px;
@@ -95,11 +103,6 @@ const StyledModal = styled.div`
 `;
 
 const StyledHeroBanner = styled.div` 
-    /* display: grid;
-    grid-row-gap: 0px;
-    grid-column-gap:0; */
-   /*  display: block; */
-    /* grid-column-start: 0; */
     width: 100%;
     height: auto;
     box-sizing: border-box;
@@ -109,24 +112,7 @@ const StyledHeroBanner = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
     border-radius: 4px 4px 0px 0px;
-`;
-const StyledCloseButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  background-image: url('/icons/close_button.svg');
-`;
-
-const StyledCheckOutButton = styled(StyledButton)`
-  text-align: center;
-  width: auto;
-  height: auto;
-  display: ${props => (props.order_item_created ? 'block' : 'none')};
 `;
 
 class TabContentItemThumbnail extends Component {
@@ -236,13 +222,13 @@ class TabContentItem extends Component {
     }
     const { item } = this.props;
     return (
-      <div>
-        <div onClick={this.showModal}>
+      <>
+        <StyledTabContentItem onClick={this.showModal}>
           {/* <button type='button' onClick={this.showModal} >Open</button> */}
           <TabContentItemThumbnail item={item} />
-        </div>
+        </StyledTabContentItem>
         <TabContentItemModal item={item} show={this.state.show} hideModal={this.hideModal}/>
-      </div>
+      </>
     );
   }
 }
