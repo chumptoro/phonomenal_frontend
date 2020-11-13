@@ -13,44 +13,33 @@ import {StyledButton, ButtonRow} from "../Styling/Button"
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
-  /* padding-right: 10px;
-  padding-left: 10px; */
   padding: 20px;
-
   display: grid;
   grid-template-columns: 1fr 0.1fr;
   grid-column-gap: 20px;
-
   line-height: ${props => props.theme.line_height_between_paragraphs};
-  /* .item_photo {
-    float: right;
-  } */
-
   cursor: pointer;
-
-
+  /* take out borders when there is only 1 dish thumbnail displayed per line */
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     border-left: none;
     border-right: none;
     border-bottom: none;
-    /* padding-right: 0px;
-    padding-left:0px; */
   }
   /* iPhone 10 */
   @media only screen 
     and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
     and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
     and (-webkit-device-pixel-ratio : 3) {
-      width: 83%;
-      align-self:center;
+      /* width: 83%;
+      align-self:center; */
   }
   /* iPhone 6,7,8 */
   @media only screen 
     and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
     and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
     and (-webkit-device-pixel-ratio : 3) {
-      width: 83%;
-      align-self:center;
+  /*     width: 83%;
+      align-self:center; */
   }
 `;
 

@@ -42,13 +42,26 @@ const StyledTabContent = styled.div`
 `;
 
 const StyledItemsList = styled.div`
- /*  grid-column-start: 2;    */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(${props => props.theme.dish_thumbnail_width}, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(${props => props.theme.dish_thumbnail_width_desktop}, 1fr));
+
+
   grid-gap: 30px;
   @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     grid-row-gap: 0px;
   }
+
+    /* iPhone 6,7,8 */
+  @media only screen 
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
+    and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+    and (-webkit-device-pixel-ratio : 3) {
+      grid-template-columns: 1fr;
+  }
+
+
+
+
   margin-top: ${props => props.theme.min_component_vertical_distance}; 
 `;
 
