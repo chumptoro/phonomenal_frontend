@@ -28,27 +28,29 @@ const StyledItem = styled.div`
 
   cursor: pointer;
 
-  @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
+  /* @media only screen and (max-width: ${props => props.theme.dish_thumbnail_screensize_where_one_dish_takes_up_entire_row}) {
     border-left: none;
     border-right: none;
     border-bottom: none;
     padding-right: 0px;
     padding-left:0px;
-  
-  }
+  } */
+  /* iPhone 10 */
   @media only screen 
     and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
     and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
     and (-webkit-device-pixel-ratio : 3) {
       width: 83%;
       align-self:center;
-    }
-
-
-    
-
-
-  
+  }
+  /* iPhone 6,7,8 */
+  @media only screen 
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
+    and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+    and (-webkit-device-pixel-ratio : 3) {
+      width: 83%;
+      align-self:center;
+  }
 `;
 
 const DishName = styled.div`

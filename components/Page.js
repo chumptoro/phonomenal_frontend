@@ -78,6 +78,7 @@ const theme = {
 
   // http://stephen.io/mediaqueries/#iPhone
   screen_width_iphone678X_min: '375px',
+  screen_width_iphone678_max: '667px',
   screen_width_iphoneX_max: '821px',
   
 

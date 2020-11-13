@@ -60,4 +60,4 @@ const HamburgerDropdownModal = styled(FullScreenModal)`
 `;
 const HamburgerDropdownActionable=styled('img')`
 `;
-export {StyledDesktopOrderNav, HamburgerDropdownModal};
+export {StyledDesktopOrderNav, HamburgerDropdownModal};      
