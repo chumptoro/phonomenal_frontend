@@ -82,7 +82,7 @@ const theme = {
   screen_width_iphoneX_max: '821px',
   
 
-  dish_thumbnail_width: '100vw',
+  dish_thumbnail_width_desktop: '410px',
   dish_thumbnail_screensize_where_one_dish_takes_up_entire_row: '1020px'
 
 

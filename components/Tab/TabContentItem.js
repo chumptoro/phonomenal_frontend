@@ -13,7 +13,7 @@ import {StyledButton, ButtonRow} from "../Styling/Button"
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
-  padding: 20px;
+  padding: 13px;
   display: grid;
   grid-template-columns: 1fr 0.1fr;
   grid-column-gap: 20px;
@@ -24,22 +24,6 @@ const StyledItem = styled.div`
     border-left: none;
     border-right: none;
     border-bottom: none;
-  }
-  /* iPhone 10 */
-  @media only screen 
-    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
-    and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
-    and (-webkit-device-pixel-ratio : 3) {
-      /* width: 83%;
-      align-self:center; */
-  }
-  /* iPhone 6,7,8 */
-  @media only screen 
-    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min})
-    and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
-    and (-webkit-device-pixel-ratio : 3) {
-  /*     width: 83%;
-      align-self:center; */
   }
 `;
 
