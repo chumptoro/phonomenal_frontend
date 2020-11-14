@@ -38,8 +38,25 @@ const StyledButton = styled.div`
   height: auto; 
 
   margin: auto; /* center the button */
-  margin-top:${props => props.theme.extra_max_component_vertical_distance};
+  margin-top:${props => props.theme.max_component_vertical_distance};
   margin-bottom: ${props => props.theme.mid_component_vertical_distance};
+
+  @media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+	{
+    margin-top:0;
+    margin-bottom: ${props => props.theme.min_component_vertical_distance};
+	}
+	/* iPhone 6, 7, 8 */
+	@media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+  {
+    margin-top:0;
+    margin-bottom: ${props => props.theme.min_component_vertical_distance};
+  }
+
   padding: 12px;
 
   ${RedPrimaryStyle};
@@ -64,12 +81,27 @@ const StyledButton = styled.div`
 const ButtonRow = styled.div`
   /* if parent of ButtonRow is a grid, we can have the button span the entire last column using: */
   grid-column: 1 / -1;
-  grid-row-start: 90;
+  grid-row-start: 4;
   margin: auto;
 
   display:grid;
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
   grid-auto-flow: column;
+
+  @media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+	{
+   /* grid-auto-flow: row; */
+	}
+	/* iPhone 6, 7, 8 */
+	@media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+  {
+   /*  grid-auto-flow: row; */
+  }
+
 
   /* distance between buttons */
   div {

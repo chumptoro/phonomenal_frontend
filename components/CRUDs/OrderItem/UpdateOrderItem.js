@@ -138,7 +138,7 @@ class UpdateOrderItem extends Component {
 										}
 									}
 									>
-										add other dishes
+										back to menu
 									</StyledAddMoreButton>
 
 									<StyledCheckOutButton 
@@ -155,13 +155,13 @@ class UpdateOrderItem extends Component {
 										check out 
 									</StyledCheckOutButton>
 									
-									<DeleteOrderItem 
+									{/* <DeleteOrderItem 
 										id={this.state.id}
 										onReset={this.props.onReset}
 										order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 										order_item_created={this.props.order_item_created}
 										hideModal={this.props.hideModal}
-									/>
+									/> */}
               </ButtonRow>
 						</StyledEditOrdertemForm>
 					)

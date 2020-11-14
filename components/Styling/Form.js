@@ -24,6 +24,20 @@ const StyledInputForm = styled.div`
   .input_wrapper {
     margin: ${props => props.theme.max_component_vertical_distance};
     margin-top: ${props => props.theme.min_component_vertical_distance};
+    @media only screen 
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+    and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+    {
+      margin-bottom: 0;
+    }
+    /* iPhone 6, 7, 8 */
+    @media only screen 
+    and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+    and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+    {
+      margin-bottom: 0;
+    }
+
   }
   .label {
     font-size: ${props => props.theme.font_size_title_small};
