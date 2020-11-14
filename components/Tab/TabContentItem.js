@@ -19,7 +19,6 @@ const StyledTabContentItem = styled.div`
     }
 `;
 
-
 const StyledItem = styled.div`
   border: solid 1px ${props => props.theme.divider_gray};
   border-radius: 2.5px;
@@ -87,9 +86,6 @@ const StyledBlurLayer= styled.div`
   {
     
   }
-
-  
-
   /* opacity: 0.2; */
  	background-color: rgba(0,0,0,0.5);
    
