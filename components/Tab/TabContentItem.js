@@ -93,22 +93,18 @@ const StyledBlurLayer= styled.div`
 
 //centered vertically and horizontally: https://www.w3schools.com/howto/howto_css_center-vertical.asp
 const StyledModal = styled.div`
-  margin: 0;
+  /* margin: 0; */
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-color: white;
-  /* width: 70vw;
-  height: auto; */
   @media only screen 
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
 	{
-    /* width: 100vw; */
-   /*  top: 0;
-    left: 0; */
+    top: 50%;
    
 	}
 	/* iPhone 6, 7, 8 */
@@ -116,10 +112,7 @@ const StyledModal = styled.div`
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
   {
-    /* width: 100vw; */
-  /*   top: 0;
-    left: 0; */
-    
+    top: 50%;
   }
   border-radius: 5px;
   z-index: 1;
