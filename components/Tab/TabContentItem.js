@@ -74,6 +74,21 @@ const StyledBlurLayer= styled.div`
   z-index: 10;
   width: 100%;
   height: 100%; 
+  @media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+	{
+    
+	}
+	/* iPhone 6, 7, 8 */
+	@media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+  {
+    
+  }
+
+  
 
   /* opacity: 0.2; */
  	background-color: rgba(0,0,0,0.5);
@@ -91,6 +106,21 @@ const StyledModal = styled.div`
   background-color: white;
   width: 70vw;
   height: auto;
+  @media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
+	{
+    width: 100vw;
+   
+	}
+	/* iPhone 6, 7, 8 */
+	@media only screen 
+	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
+	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
+  {
+    width: 100vw;
+    
+  }
   border-radius: 5px;
   z-index: 1;
 

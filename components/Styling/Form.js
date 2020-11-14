@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import {css} from 'styled-components';
 
+const StyledInputFormMargin = css`
+  margin-top: 15%;
+`; 
+
 const StyledInputForm = styled.div` 
   width: 100%;
   height: auto;
@@ -105,4 +109,5 @@ const FormMiniInline = styled('div')`
   }
 `;
 
-export default StyledInputForm;
+
+export {StyledInputFormMargin, StyledInputForm};

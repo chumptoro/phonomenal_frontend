@@ -20,14 +20,14 @@ const StyledTabs = styled.div`
   @media (min-width: 1455px) {
       grid-template-columns: ${props => props.theme.grid_template_desktop_large_width};
     }
-
+	/* iPhone X */
 	@media only screen 
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
 	 {
 		grid-template-columns: ${props => props.theme.grid_template_desktop_mid_width_for_tabs_content_item};
 	}
-
+	/* iPhone 6, 7, 8 */
 	@media only screen 
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})

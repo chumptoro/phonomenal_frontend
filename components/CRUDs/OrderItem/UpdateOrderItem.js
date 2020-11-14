@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Router from 'next/router';
-import StyledInputForm from "../../Styling/Form";
+import {StyledInputForm, StyledInputFormMargin} from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 import DeleteOrderItem from "./DeleteOrderItem.js";
 import {CURRENT_USER_QUERY} from '../../Patron';
 
-const StyledAddItemButton = styled(StyledButton)`
-  grid-column: 1 / -1;
-  grid-row-start: 90;
-  /* display: ${props => (props.order_item_created ? 'none' : 'block')}; */
+
+
+
+const StyledEditOrdertemForm = styled(StyledInputForm)`
+	${StyledInputFormMargin};
 `;
 const StyledCheckOutButton = styled(StyledButton)`
   text-align: center;
@@ -92,7 +93,7 @@ class UpdateOrderItem extends Component {
 			>
 				{
 					(reviseOrderItem, {loading, error}) => (
-						<StyledInputForm 
+						<StyledEditOrdertemForm 
 							order_item_created={this.props.order_item_created} 
               order_item_update_first_time_shown={this.props.order_item_update_first_time_shown}
 						>
@@ -162,7 +163,7 @@ class UpdateOrderItem extends Component {
 										hideModal={this.props.hideModal}
 									/>
               </ButtonRow>
-						</StyledInputForm>
+						</StyledEditOrdertemForm>
 					)
 				}
 			</Mutation>

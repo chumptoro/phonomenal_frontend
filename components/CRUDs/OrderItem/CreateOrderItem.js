@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Mutation, Query } from 'react-apollo';
 import {CURRENT_USER_QUERY} from '../../Patron';
 import gql from 'graphql-tag';
-import StyledInputForm from "../../Styling/Form";
+import {StyledInputForm, StyledInputFormMargin} from "../../Styling/Form";
 import {StyledButton, StyledWindowTopBarCloseXSymbolButton, ButtonRow} from "../../Styling/Button";
 import {Consumer} from '../../Context';
 import {adopt} from 'react-adopt';
@@ -13,6 +13,10 @@ const StyledAddItemButton = styled(StyledButton)`
   grid-column: 1 / -1;
   grid-row-start: 90;
   display: ${props => (props.order_item_created ? 'none' : 'block')};
+`;
+
+const StyledAddOrdertemForm = styled(StyledInputForm)`
+	${StyledInputFormMargin};
 `;
 
 const StyledCheckOutButton = styled(StyledButton)`
@@ -116,14 +120,14 @@ class CreateOrderItem extends Component {
 						<Query query={CURRENT_USER_QUERY}>
 						{({ data, loading }) => { 
 							return (
-								<StyledInputForm
+								<StyledAddOrdertemForm
 									order_item_created={this.props.order_item_created} 
 								>
 									<div className="input_wrapper">
 									<div className="label">
 										{this.props.dish.name}
 									</div>
-										<input type="text" name="special_instruction" placeholder="  &#9999;  enter requests or instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} 
+										<input type="text" name="special_instruction" placeholder="special instructions" className="text_input_box"  onChange={e => this.handleTextInputChange(e)} 
 										value = {this.state.special_instruction}
 										/>
 									</div>
@@ -139,7 +143,7 @@ class CreateOrderItem extends Component {
 									/>	
 									</div>
 									
-									<div className="input_wrapper message"> &#10004; added to your shopping bag  <span>&#10024;</span> </div>
+									<div className="input_wrapper message">&#10004; added to shopping bag <span>&#10024;</span> </div>
 								
 									<ButtonRow>
 										<StyledAddItemButton 
@@ -164,7 +168,7 @@ class CreateOrderItem extends Component {
 										>
 										</StyledWindowTopBarCloseXSymbolButton>
 									</ButtonRow>
-								</StyledInputForm>
+								</StyledAddOrdertemForm>
 							)
 						}}
 					</Query>
