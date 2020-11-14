@@ -104,7 +104,13 @@ const StyledModal = styled.div`
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
 	{
-    top: 50%;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    -ms-transform:none;
+    transform: none;
+    border-radius: 0px;
    
 	}
 	/* iPhone 6, 7, 8 */
@@ -112,12 +118,18 @@ const StyledModal = styled.div`
 	and (min-device-width : ${props => props.theme.screen_width_iphone678X_min}) 
 	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
   {
-    top: 50%;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    -ms-transform:none;
+    transform: none;
+    border-radius: 0px;
   }
   border-radius: 5px;
   z-index: 1;
 
-  overflow-y: auto !important;
+  /* overflow-y: auto !important; */
 
   display: grid;
   grid-row-gap: 0;

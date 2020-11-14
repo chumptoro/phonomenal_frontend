@@ -81,7 +81,7 @@ const ButtonRow = styled.div`
 const StyledWindowTopBarCloseXSymbolButton = styled.div`
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
   width: 20px;
   height: 20px;
   cursor: pointer;
