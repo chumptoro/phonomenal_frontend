@@ -46,7 +46,7 @@ const StyledButton = styled.div`
 	and (max-device-width : ${props => props.theme.screen_width_iphoneX_max})
 	{
     margin-top:0;
-    margin-bottom: ${props => props.theme.min_component_vertical_distance};
+    margin-bottom: 0;
 	}
 	/* iPhone 6, 7, 8 */
 	@media only screen 
@@ -54,7 +54,7 @@ const StyledButton = styled.div`
 	and (max-device-width : ${props => props.theme.screen_width_iphone678_max})
   {
     margin-top:0;
-    margin-bottom: ${props => props.theme.min_component_vertical_distance};
+    margin-bottom: 0;
   }
 
   padding: 12px;
@@ -83,6 +83,7 @@ const ButtonRow = styled.div`
   grid-column: 1 / -1;
   grid-row-start: 4;
   margin: auto;
+  margin-top: 0px;
 
   display:grid;
   /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
