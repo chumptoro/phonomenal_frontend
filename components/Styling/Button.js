@@ -80,14 +80,14 @@ const ButtonRow = styled.div`
 
 const StyledWindowTopBarCloseXSymbolButton = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  background-image: url('/icons/close_button.svg');
+  background-image: url('x_close_button.svg');
   &:hover {
-    background-image: url('/icons/close_button_selected.svg'); ;
+    background-image: url('x_close_button.svg'); ;
 }`
 
 const StyledWindowTopBarCloseButtonWithText = styled.div`
