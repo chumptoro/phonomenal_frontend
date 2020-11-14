@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import PositionVerticallyHorizontallyCentered from "./Styling/VerticallyHorizontallyCentered";
-import StyledInputForm from "./Styling/Form";
+import {StyledInputForm} from "./Styling/Form";
 import {ResponsiveGridHideFooter} from "./Styling/Responsive_Grids";
 import {StyledButton, ButtonRow} from "./Styling/Button";
 import Router from 'next/router';
